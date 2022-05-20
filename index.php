@@ -2,36 +2,41 @@
 
 $alert1 = '';
 $alert2 = '';
-if(!empty($_POST))
+
+session_start();
+if(!empty($_SESSION['active']))
 {
-    if(empty($_POST['usuario']) || empty($_POST['contra']))
+    header('location: sistema/index.php');
+}else{
+    if(!empty($_POST))
     {
-        $alert1="Inserte su usuario y/o contraseña";
-    } else {
-        require_once "conexion.php";
-        $user = $_POST['usuario'];
-        $pass = $_POST['contra'];
-        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'");
-        $result = mysqli_num_rows($query);
-
-        if($result > 0)
+        if(empty($_POST['usuario']) || empty($_POST['contra']))
         {
-            $data = mysqli_fetch_array($query);
-            session_start();
-            $_SESSION['active'] = true;
-            $_SESSION['cve_usuario'] = $data['cve_usuario'];
-            $_SESSION['cve_tipou'] = $data['cve_tipou'];
-            $_SESSION['usuario'] = $data['usuario'];
-            $_SESSION['activo'] = $data['activo'];
-
-            header('location: sistema/index.php');
+            $alert1="Inserte su usuario y/o contraseña";
         } else {
-            $alert2 = "El usuario y/o la contraseña son incorrectos";
-            //session_destroy();
+            require_once "conexion.php";
+            $user = $_POST['usuario'];
+            $pass = $_POST['contra'];
+            $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'");
+            $result = mysqli_num_rows($query);
+
+            if($result > 0)
+            {
+                $data = mysqli_fetch_array($query);
+                $_SESSION['active'] = true;
+                $_SESSION['cve_usuario'] = $data['cve_usuario'];
+                $_SESSION['cve_tipou'] = $data['cve_tipou'];
+                $_SESSION['usuario'] = $data['usuario'];
+                $_SESSION['activo'] = $data['activo'];
+
+                header('location: sistema/index.php');
+            } else {
+                $alert2 = "El usuario y/o la contraseña son incorrectos";
+                session_destroy();
+            }
         }
     }
 }
-
 
 ?>
 

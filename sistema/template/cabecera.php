@@ -1,3 +1,14 @@
+<?php
+session_start();
+if(!isset($_SESSION['usuario'])){
+  header("Location:../../../SITA/index.php");
+} else {
+  if($_SESSION['active']==true){
+    $usuario=$_SESSION["usuario"];
+  }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -34,11 +45,10 @@
 						</li>
 					</ul>
 					<form class="d-flex">
-						<p> <?php echo date('d-m-Y') ?> </p>
-						<span> | </span>
-						<span class="user"> [usuario] </span>
+						<p> <?php echo date('d-m-Y') ?> |</p>
+						<span class="user">|  <?php echo $usuario; ?>  </span>
 						<img class="photouser" src="img/user.png" alt="Usuario" style="width: 25px; height:25px;">
-						<a href="#"><img class="close" src="img/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
+						<a href="salir.php"><img class="close" src="img/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
 					</form>
 				</div>
 			</div>
