@@ -1,3 +1,30 @@
+<?php
+
+$alert = '';
+if(!empty($_POST))
+{
+    if(empty($_POST['usuario']) || empty($_POST['contra']))
+    {
+        $alert="Ah dado click en entrar";
+    }else{
+        require_once "conexion.php";
+        $user = $_POST['usuario'];
+        $pass = $_POST['contra'];
+        $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'");
+        $result = mysqli_num_rows($query);
+
+        if($result > 0)
+        {
+            $data = mysqli_fetch_array($query);
+
+            print_r($data);
+        }
+    }
+    
+}
+
+?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -8,7 +35,7 @@
     <title>Login | SITA</title>
 </head>
 <body>
-    <form>
+    <form action="" method="POST">
         <div class="container">
             <div class="row">
                 <div class="col-md-5 mx-auto">
@@ -21,14 +48,14 @@
                         </div>
                         <div class="card-body">
                             <div class = "form-group">
-                                <label>Correo electronico</label>
-                                <input type="email" class="form-control" id="correo" placeholder="ejemplo@correo.com">
+                                <label>Usuario</label>
+                                <input type="text" class="form-control" name="usuario" placeholder="usuario">
                             </div>
                             <div class="form-group">
                                 <label>Contraseña</label>
-                                <input type="password" class="form-control" id="contra" placeholder="*******">
+                                <input type="password" class="form-control" name="contra" placeholder="*******">
                             </div>
-                            <button type="submit" class="btn btn-primary">Entrar</button>
+                            <button type="submit" name="accion" value="entrar" class="btn btn-primary">Entrar</button>
                         </div>
                     </div>
                 </div>
