@@ -1,12 +1,13 @@
 <?php
 
-$alert = '';
+$alert1 = '';
+$alert2 = '';
 if(!empty($_POST))
 {
     if(empty($_POST['usuario']) || empty($_POST['contra']))
     {
-        $alert="Ah dado click en entrar";
-    }else{
+        $alert1="Inserte su usuario y/o contraseña";
+    } else {
         require_once "conexion.php";
         $user = $_POST['usuario'];
         $pass = $_POST['contra'];
@@ -16,12 +17,21 @@ if(!empty($_POST))
         if($result > 0)
         {
             $data = mysqli_fetch_array($query);
+            session_start();
+            $_SESSION['active'] = true;
+            $_SESSION['cve_usuario'] = $data['cve_usuario'];
+            $_SESSION['cve_tipou'] = $data['cve_tipou'];
+            $_SESSION['usuario'] = $data['usuario'];
+            $_SESSION['activo'] = $data['activo'];
 
-            print_r($data);
+            header('location: sistema/index.php');
+        } else {
+            $alert2 = "El usuario y/o la contraseña son incorrectos";
+            //session_destroy();
         }
     }
-    
 }
+
 
 ?>
 
@@ -32,7 +42,7 @@ if(!empty($_POST))
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <title>Login | SITA</title>
+    <title>SITA | login</title>
 </head>
 <body>
     <form action="" method="POST">
@@ -55,7 +65,11 @@ if(!empty($_POST))
                                 <label>Contraseña</label>
                                 <input type="password" class="form-control" name="contra" placeholder="*******">
                             </div>
-                            <button type="submit" name="accion" value="entrar" class="btn btn-primary">Entrar</button>
+                            <div class="text-center">
+                                <div class="text-warning"><strong><?php echo isset($alert1)? $alert1 : ''; ?></strong></div>
+                                <div class="text-danger"><strong><?php echo isset($alert2)? $alert2 : ''; ?></strong></div>
+                                <button type="submit" name="accion" value="entrar" class="btn btn-lg btn-primary">Entrar</button>
+                            </div>
                         </div>
                     </div>
                 </div>

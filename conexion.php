@@ -8,9 +8,9 @@ $db = 'sita'; //Guarda el nombre de la base de datos
 $conexion = @mysqli_connect($host,$user,$password,$db); //Realiza la coneccion
 
 if(!$conexion){ //Sentencia "IF" para saber si se conecta
-    echo "Error en la coneccion :("; 
+    //echo "Error en la coneccion :("; 
 }else{
-    echo "Coneccion exitosa :D";
+    //echo "Coneccion exitosa :D";
 }
 
 ?>
