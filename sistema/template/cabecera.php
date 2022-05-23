@@ -1,7 +1,7 @@
 <?php
 session_start();
 if(!isset($_SESSION['usuario'])){
-  header("Location:../../../SITA/index.php");
+  header("Location:/SITA/index.php");
 } else {
   if($_SESSION['active']==true){
     $usuario=$_SESSION["usuario"];
@@ -9,7 +9,25 @@ if(!isset($_SESSION['usuario'])){
 }
 ?>
 
-<?php include("config/functions.php"); ?>
+<?php 
+	date_default_timezone_set('America/Mexico_City'); 
+	function fechaC(){
+		$mes = array("","Enero", 
+					  "Febrero", 
+					  "Marzo", 
+					  "Abril", 
+					  "Mayo", 
+					  "Junio", 
+					  "Julio", 
+					  "Agosto", 
+					  "Septiembre", 
+					  "Octubre", 
+					  "Noviembre", 
+					  "Diciembre");
+		return date('d')." de ". $mes[date('n')] . " de " . date('Y');
+	}
+ ?>
+
 
 <!DOCTYPE html>
 <html lang="es">
@@ -17,7 +35,7 @@ if(!isset($_SESSION['usuario'])){
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="/SITA/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
 </head>
 <body>
 	<header>
@@ -31,7 +49,7 @@ if(!isset($_SESSION['usuario'])){
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item">
-							<a class="nav-link" href="#">Usuarios</a>
+							<a class="nav-link" href="/SITA/sistema/secciones/verUsuario.php">Usuarios</a>
 						</li>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Academicos</a>
@@ -40,8 +58,8 @@ if(!isset($_SESSION['usuario'])){
 					<form class="d-flex">
 						<p> <?php echo fechaC(); ?> |</p>
 						<span class="user">|  <?php echo $usuario; ?>  </span>
-						<img class="photouser" src="img/user.png" alt="Usuario" style="width: 25px; height:25px;">
-						<a href="config/salir.php"><img class="close" src="img/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
+						<img class="photouser" src="/SITA/sistema/img/elementos/user.png" alt="Usuario" style="width: 25px; height:25px;">
+						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/SITA/sistema/img/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
 					</form>
 				</div>
 			</div>
