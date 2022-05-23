@@ -14,7 +14,7 @@ if(!empty($_SESSION['active']))
         {
             $alert1="Inserte su usuario y/o contraseña";
         } else {
-            require_once "conexion.php";
+            require_once "sistema/config/conexion.php";
             $user = $_POST['usuario'];
             $pass = $_POST['contra'];
             $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'");
@@ -46,8 +46,8 @@ if(!empty($_SESSION['active']))
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
     <title>SITA | login</title>
+    <link rel="stylesheet" href="sistema/css/bootstrap.min.css"/> <!-- Referencia a la hoja de estilos -->
 </head>
 <body>
     <form action="" method="POST">
@@ -57,7 +57,7 @@ if(!empty($_SESSION['active']))
                     <br>
                     <div class="card">
                         <div class="card-header text-center">
-                            <img src="img/avatar.png" alt="Login" style="width: 100px; height: 100px;">
+                            <img src="sistema/img/elementos/avatar.png" alt="Login" style="width: 100px; height: 100px;">
                             </br>
                             Iniciar sesion
                         </div>

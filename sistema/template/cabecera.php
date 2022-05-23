@@ -16,7 +16,7 @@ if(!isset($_SESSION['usuario'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITA - Inicio</title>
-    <link rel="stylesheet" href="../css/bootstrap.min.css"/> <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="css/bootstrap.min.css"/> <!-- Referencia a la hoja de estilos -->
 </head>
 <body>
 	<header>
@@ -48,7 +48,7 @@ if(!isset($_SESSION['usuario'])){
 						<p> <?php echo date('d-m-Y') ?> |</p>
 						<span class="user">|  <?php echo $usuario; ?>  </span>
 						<img class="photouser" src="img/user.png" alt="Usuario" style="width: 25px; height:25px;">
-						<a href="salir.php"><img class="close" src="img/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
+						<a href="config/salir.php"><img class="close" src="img/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
 					</form>
 				</div>
 			</div>
