@@ -40,7 +40,7 @@ switch($decision){
                         </div>
                         ';
                     }else{
-                        $query_insert = mysqli_query($conexion,"INSERT INTO usuario(cve_tipou,usuario,pass,activo) VALUES ('$tipou','$usuario',md5('$contra1'),'Si')");
+                        $query_insert = mysqli_query($conexion,"INSERT INTO usuario(tipo,usuario,pass,activo) VALUES ('$tipou','$usuario',md5('$contra1'),'Si')");
                         if($query_insert){
                             $alert='
                                 <div class="alert alert-dismissible alert-success">
@@ -93,7 +93,7 @@ switch($decision){
                                         {
                                             while ($tipou = mysqli_fetch_array($query_tipou)){
                                                 ?>
-                                                <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["nombre"]; ?></option>
+                                                <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["tipo"]; ?></option>
                                                 <?php
                                             }
                                         }
