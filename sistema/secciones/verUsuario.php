@@ -15,6 +15,22 @@
                         </div>
                     </nav>
                 </div>
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                        <th scope="col">Clave del usuario</th>
+                        <th scope="col">Nombre del usuario</th>
+                        <th scope="col">Activo</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="table-active">
+                        <th scope="row">8</th>
+                        <td>Tester8</td>
+                        <td>Si</td>
+                        </tr>
+                    </tbody>
+                </table>
 			</div>
 
 <?php include("../template/pie.php"); ?>
