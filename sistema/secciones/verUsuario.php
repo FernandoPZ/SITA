@@ -44,7 +44,7 @@ include "../config/conexion.php";
                                     <td>
                                         <form method="post">
                                             <a role="button" class="btn btn-outline-warning" href="editarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>">Editar</a>
-                                            <a role="button" class="btn btn-outline-danger">Borrar</a>
+                                            <a role="button" class="btn btn-outline-danger" href="eliminarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>" >Borrar</a>
                                         </form>
                                     </td>
                                     </tr>
