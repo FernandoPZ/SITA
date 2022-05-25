@@ -36,6 +36,7 @@ if(!isset($_SESSION['usuario'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/SITA/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
+	<link rel="stylesheet" href="/SITA/sistema/css/style.css"/> <!-- hoja de estilos propia -->
 </head>
 <body>
 	<header>

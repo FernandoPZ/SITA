@@ -93,6 +93,7 @@ switch($decision){
                                         {
                                             while ($tipou = mysqli_fetch_array($query_tipou)){
                                                 ?>
+                                                <option value="" hidden>Selecciona una opción</option>
                                                 <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["tipo"]; ?></option>
                                                 <?php
                                             }

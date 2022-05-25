@@ -10,7 +10,7 @@ include "../config/conexion.php";
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div class="container-fluid">
-                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-success">Nuevo usuario</button>
+                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo usuario</button>
                             <form class="d-flex">
                                 <input class="form-control me-sm-2" type="text" placeholder="Nombre de usuario">
                                 <button class="btn btn-secondary my-2 my-sm-0" type="submit">Buscar</button>
@@ -43,8 +43,8 @@ include "../config/conexion.php";
                                     <td><?php echo $data ['activo']; ?></td>
                                     <td>
                                         <form method="post">
-                                            <input type="submit" name="accion" value="Editar" class="btn btn-primary"/>
-                                            <input type="submit" name="accion" value="Borrar" class="btn btn-danger"/>
+                                            <a role="button" class="btn btn-outline-warning" href="editarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>">Editar</a>
+                                            <a role="button" class="btn btn-outline-danger">Borrar</a>
                                         </form>
                                     </td>
                                     </tr>
