@@ -28,7 +28,7 @@ include "../config/conexion.php";
                         </tr>
                     </thead>
                     <?php
-                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1");
+                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1 ORDER BY cve_usuario ASC");
 
                         $result = mysqli_num_rows($query);
                         if($result > 0){
@@ -54,6 +54,31 @@ include "../config/conexion.php";
                         }
                     ?>
                 </table>
+                <div>
+                    <ul class="pagination justify-content-center">
+                        <li class="page-item disabled">
+                        <a class="page-link" href="#">&laquo;</a>
+                        </li>
+                        <li class="page-item active">
+                        <a class="page-link" href="#">1</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">3</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">4</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">5</a>
+                        </li>
+                        <li class="page-item">
+                        <a class="page-link" href="#">&raquo;</a>
+                        </li>
+                    </ul>
+                </div>
 			</div>
 
 <?php include("../template/pie.php"); ?>
