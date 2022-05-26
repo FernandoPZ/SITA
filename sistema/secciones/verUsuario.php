@@ -24,12 +24,11 @@ include "../config/conexion.php";
                         <th scope="col">Clave del usuario</th>
                         <th scope="col">Tipo de usuario</th>
                         <th scope="col">Nombre del usuario</th>
-                        <th scope="col">Activo</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <?php
-                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario, u.activo FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou");
+                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1");
 
                         $result = mysqli_num_rows($query);
                         if($result > 0){
@@ -40,11 +39,12 @@ include "../config/conexion.php";
                                     <th scope="row"><?php echo $data ['cve_usuario']; ?></th>
                                     <td><?php echo $data ['tipo']; ?></td>
                                     <td><?php echo $data ['usuario']; ?></td>
-                                    <td><?php echo $data ['activo']; ?></td>
                                     <td>
                                         <form method="post">
                                             <a role="button" class="btn btn-outline-warning" href="editarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>">Editar</a>
+                                            <?php if($data['cve_usuario'] != 1){ ?>
                                             <a role="button" class="btn btn-outline-danger" href="eliminarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>" >Borrar</a>
+                                            <?php } ?>
                                         </form>
                                     </td>
                                     </tr>

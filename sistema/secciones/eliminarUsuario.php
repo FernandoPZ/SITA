@@ -7,7 +7,9 @@ include "../config/conexion.php"; //Conexion con la base de datos
 if(!empty($_POST))
 {
     $iduser = $_POST['cve_usuario'];
-    $query_delete = mysqli_query($conexion,"DELETE FROM usuario WHERE cve_usuario = $iduser");
+    //$query_delete = mysqli_query($conexion,"DELETE FROM usuario WHERE cve_usuario = $iduser");// Elimina el registro
+    $query_delete = mysqli_query($conexion,"UPDATE usuario SET activo = 0 WHERE cve_usuario = $iduser");// Desactiva el registro
+    header("location: verUsuario.php");
 }
 
 if(empty($_REQUEST['id']))

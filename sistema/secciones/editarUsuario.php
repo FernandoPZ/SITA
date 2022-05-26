@@ -10,7 +10,7 @@ switch($decision){
         if(!empty($_POST))
         {
             $alert='';
-            if(empty($_POST['usuario']) || empty($_POST['tipou']) || empty($_POST['activo']))
+            if(empty($_POST['usuario']) || empty($_POST['tipou']))
             {
                 $alert='
                 <div class="alert alert-dismissible alert-warning">
@@ -23,7 +23,6 @@ switch($decision){
                 $usuario = $_POST['usuario'];
                 $tipou = $_POST['tipou'];
                 $contra = $_POST['contra'];
-                $activo = $_POST['activo'];
 
                 $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE (usuario = '$usuario' AND cve_usuario != $iduser)");
                 $result = mysqli_fetch_array($query);
@@ -37,7 +36,7 @@ switch($decision){
                 }else{
                     if(empty($_POST['contra'])){
                         
-                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou', activo = '$activo' WHERE cve_usuario = $iduser");
+                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou' WHERE cve_usuario = $iduser");
 
                         if($sql_update){
                             $alert='
@@ -55,7 +54,7 @@ switch($decision){
 
                     }else{
 
-                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou', pass = '$contra', activo = '$activo' WHERE cve_usuario = $iduser");
+                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou', pass = '$contra' WHERE cve_usuario = $iduser");
                         
                         if($sql_update){
                             $alert='
@@ -106,33 +105,13 @@ if($result_sql == 0){
         $activo = $data['activo'];
 
         if($idtipo == 1){
-            $option1 = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-            if($activo == 'Si'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }else if($activo == 'No'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }
+            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
         }else if($idtipo == 2){
-            $option1 = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-            if($activo == 'Si'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }else if($activo == 'No'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }
+            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
         }else if($idtipo == 3){
-            $option1 = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-            if($activo == 'Si'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }else if($activo == 'No'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }
+            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
         }else if($idtipo == 4){
-            $option1 = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-            if($activo == 'Si'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }else if($activo == 'No'){
-                $option2 = '<option value="'.$activo.'"select>'.$activo.'</option>';
-            }
+            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
         }
     }
 }
@@ -163,7 +142,7 @@ if($result_sql == 0){
                                 ?>
                                 <select class="form-select" name="tipou" id="tipou">
                                     <?php
-                                        echo $option1;
+                                        echo $option;
                                         if($result_tipou > 0)
                                         {
                                             while ($tipou = mysqli_fetch_array($query_tipou)){
@@ -181,20 +160,6 @@ if($result_sql == 0){
                                     $query_activo = mysqli_query($conexion,"SELECT * FROM usuario");
                                     $result_activo = mysqli_num_rows($query_activo);
                                 ?>
-                                <select class="form-select" name="activo" id="activo">
-                                    <?php
-                                        echo $option2;
-                                        if($result_activo > 0)
-                                        {
-                                            if ($activo = mysqli_fetch_array($query_activo)){
-                                                ?>
-                                                <option value="Si">Si</option>
-                                                <option value="No">No</option>
-                                            <?php
-                                            }
-                                        }
-                                    ?>
-                                </select>
                             </div>
                             <div class="text-center">
                                 <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>

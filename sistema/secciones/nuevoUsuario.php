@@ -40,7 +40,7 @@ switch($decision){
                         </div>
                         ';
                     }else{
-                        $query_insert = mysqli_query($conexion,"INSERT INTO usuario(tipo,usuario,pass,activo) VALUES ('$tipou','$usuario',md5('$contra1'),'Si')");
+                        $query_insert = mysqli_query($conexion,"INSERT INTO usuario(tipo,usuario,pass,activo) VALUES ('$tipou','$usuario',md5('$contra1'),1)");
                         if($query_insert){
                             $alert='
                                 <div class="alert alert-dismissible alert-success">
