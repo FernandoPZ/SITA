@@ -8,11 +8,18 @@ include "../config/conexion.php";
 				<h1 class="display-3">Lista de usuarios</h1>
                 <hr class="my-2">
                 <div class="container-fluid">
+                    <?php
+                    $busqueda = strtolower($_REQUEST['busqueda']);
+                    if(empty($busqueda))
+                    {
+                        header("location: verUsuario.php");
+                    }
+                    ?>
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div class="container-fluid">
                             <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo usuario</button>
                             <form action="buscarUsuario.php" method="get" class="d-flex">
-                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Nombre de usuario">
+                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Nombre de usuario" value="<?php echo $busqueda; ?>">
                                 <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar">
                             </form>
                         </div>
@@ -29,7 +36,17 @@ include "../config/conexion.php";
                     </thead>
                     <?php
                         //Paginador
-                        $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario WHERE activo = 1");
+                        $tipo = '';
+                        if($busqueda == 'administrador'){
+                            $tipo = " OR u.tipo LIKE '%1%' ";
+                        }else if($busqueda == 'editor'){
+                            $tipo = " OR u.tipo LIKE '%2%' ";
+                        }else if($busqueda == 'consultor'){
+                            $tipo = " OR u.tipo LIKE '%3%' ";
+                        }else if($busqueda == 'visitante'){
+                            $tipo = " OR u.tipo LIKE '%4%' ";
+                        }
+                        $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario u WHERE (cve_usuario LIKE '%$busqueda%' OR usuario LIKE '%$busqueda%' $tipo ) AND activo = 1;");
                         $result_registro = mysqli_fetch_array($sql_registro);
                         $total_registro = $result_registro['total_registro'];
 
@@ -45,7 +62,7 @@ include "../config/conexion.php";
                         $desde = ($pagina-1) * $por_pagina;
                         $total_pagina = ceil($total_registro / $por_pagina);
 
-                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
+                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE (u.cve_usuario LIKE '%$busqueda%' OR u.usuario LIKE '%$busqueda%' OR r.tipo LIKE '%$busqueda%' ) AND u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
 
                         $result = mysqli_num_rows($query);
                         if($result > 0){
