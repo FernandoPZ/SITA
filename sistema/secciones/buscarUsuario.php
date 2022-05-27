@@ -88,31 +88,40 @@ include "../config/conexion.php";
                         }
                     ?>
                 </table>
+                <?php
+                    if($total_registro!= 0){
+                ?>
                 <div>
                     <ul class="pagination justify-content-end">
                         <?php
                             if($pagina != 1)
                             { ?>
-                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo 1; ?>">|<</a></li>
-                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo 1; ?> &busqueda=<?php echo $busqueda; ?>">|<</a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina-1; ?> &busqueda=<?php echo $busqueda; ?>"><<</a></li>
                         <?php } ?>
                         <?php
                             for ($i=1; $i <= $total_pagina; $i++){
                                 if($i == $pagina){
                                     echo '<li class="page-item active"><a class="page-link">'.$i.'</a></li>';
                                 }else{
-                                    echo '<li class="page-item"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';
+                                    echo '<li class="page-item"><a class="page-link" href="?pagina='.$i.'&busqueda='.$busqueda.'">'.$i.'</a></li>';
                                 }
                             }
                         ?>
                         <?php
                             if($pagina != $total_pagina)
                             { ?>
-                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a></li>
-                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $total_pagina; ?>">>|</a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina+1; ?> &busqueda=<?php echo $busqueda; ?>">>></a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $total_pagina; ?> &busqueda=<?php echo $busqueda; ?>">>|</a></li>
                         <?php } ?>
                     </ul>
                 </div>
+                <?php }else{ ?>
+                    <div class="alert alert-dismissible alert-warning mx-auto">
+                        <h4 class="alert-heading text-center">Oh vaya...</h4>
+                        <p class="mb-0 text-center">No se han encontrado similitudes :(</p>
+                    </div>
+                <?php } ?>
 			</div>
 
 <?php include("../template/pie.php"); ?>
