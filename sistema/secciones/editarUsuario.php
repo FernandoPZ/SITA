@@ -155,7 +155,6 @@ if($result_sql == 0){
                                 </select>
                                 <label class="form-label mt-2">Contraseña nueva</label>
                                 <input type="password" class="form-control" name="contra" id="activo" placeholder="*******">
-                                <label class="form-label mt-2">Activo</label>
                                 <?php
                                     $query_activo = mysqli_query($conexion,"SELECT * FROM usuario");
                                     $result_activo = mysqli_num_rows($query_activo);

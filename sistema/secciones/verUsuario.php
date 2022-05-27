@@ -28,7 +28,24 @@ include "../config/conexion.php";
                         </tr>
                     </thead>
                     <?php
-                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1 ORDER BY cve_usuario ASC");
+                        //Paginador
+                        $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario WHERE activo = 1");
+                        $result_registro = mysqli_fetch_array($sql_registro);
+                        $total_registro = $result_registro['total_registro'];
+
+                        $por_pagina = 5;
+
+                        if(empty($_GET['pagina']))
+                        {
+                            $pagina = 1;
+                        }else{
+                            $pagina = $_GET['pagina'];
+                        }
+
+                        $desde = ($pagina-1) * $por_pagina;
+                        $total_pagina = ceil($total_registro / $por_pagina);
+
+                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
 
                         $result = mysqli_num_rows($query);
                         if($result > 0){
@@ -55,28 +72,28 @@ include "../config/conexion.php";
                     ?>
                 </table>
                 <div>
-                    <ul class="pagination justify-content-center">
-                        <li class="page-item disabled">
-                        <a class="page-link" href="#">&laquo;</a>
-                        </li>
-                        <li class="page-item active">
-                        <a class="page-link" href="#">1</a>
-                        </li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">2</a>
-                        </li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">3</a>
-                        </li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">4</a>
-                        </li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">5</a>
-                        </li>
-                        <li class="page-item">
-                        <a class="page-link" href="#">&raquo;</a>
-                        </li>
+                    <ul class="pagination justify-content-end">
+                        <?php
+                            if($pagina != 1)
+                            { ?>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo 1; ?>">|<</a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina-1; ?>"><<</a></li>
+                        <?php } ?>
+                        <?php
+                            for ($i=1; $i <= $total_pagina; $i++){
+                                if($i == $pagina){
+                                    echo '<li class="page-item active"><a class="page-link">'.$i.'</a></li>';
+                                }else{
+                                    echo '<li class="page-item"><a class="page-link" href="?pagina='.$i.'">'.$i.'</a></li>';
+                                }
+                            }
+                        ?>
+                        <?php
+                            if($pagina != $total_pagina)
+                            { ?>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $pagina+1; ?>">>></a></li>
+                                <li class="page-item"><a class="page-link" href="?pagina=<?php echo $total_pagina; ?>">>|</a></li>
+                        <?php } ?>
                     </ul>
                 </div>
 			</div>

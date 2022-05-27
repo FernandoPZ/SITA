@@ -4,16 +4,27 @@
 
 include "../config/conexion.php"; //Conexion con la base de datos
 
-if(!empty($_POST))
-{
-    if($_POST['cve_usuario'] == 1){
-        header("location: verUsuario.php");
-        exit;
-    }
-    $iduser = $_POST['cve_usuario'];
-    //$query_delete = mysqli_query($conexion,"DELETE FROM usuario WHERE cve_usuario = $iduser");// Elimina el registro
-    $query_delete = mysqli_query($conexion,"UPDATE usuario SET activo = 0 WHERE cve_usuario = $iduser");// Desactiva el registro
-    header("location: verUsuario.php");
+$decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
+
+switch($decision){
+
+    case "eliminar":
+        if(!empty($_POST))
+        {
+            if($_POST['cve_usuario'] == 1){
+                header("location: verUsuario.php");
+                exit;
+            }
+            $iduser = $_POST['cve_usuario'];
+            //$query_delete = mysqli_query($conexion,"DELETE FROM usuario WHERE cve_usuario = $iduser");// Elimina el registro
+            $query_delete = mysqli_query($conexion,"UPDATE usuario SET activo = 0 WHERE cve_usuario = $iduser");// Desactiva el registro
+            header("location: verUsuario.php");
+        }
+    break;
+
+    case "volver":
+        header('Location:/SITA/sistema/secciones/verUsuario.php');
+    break;
 }
 
 if(empty($_REQUEST['id']))
@@ -63,8 +74,8 @@ if(empty($_REQUEST['id']))
                                     <p>Tipo: <span><?php echo $tipo; ?></span></p>
                                     <form method="post" action="">
                                         <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>">
-                                        <button type="submit" value="eliminar" class="btn btn-danger" style="float: left;">Eliminar</button>
-                                        <button class="btn btn-primary" onclick="location.href='verUsuario.php'" style="float: right;">Volver</button>
+                                        <button type="submit" name="decision" value="eliminar" class="btn btn-danger" style="float: left;">Eliminar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-primary" style="float: right;">Volver</button>
                                     </form>
                                 </div>
                             </div>
@@ -79,7 +90,7 @@ if(empty($_REQUEST['id']))
                             </div>
                         </div>
                         <div class="text-center">
-                            <button class="btn btn-primary btn-lg" onclick="location.href='verUsuario.php'">Volver</button>
+                        <button type="submit" name="decision" value="volver" class="btn btn-primary">Volver</button>
                         </div>
                     <?php } ?>
                 </div>
