@@ -2,6 +2,11 @@
 
 <?php
 
+if($_SESSION['tipo'] != 1)
+{
+    header("location: /SITA/sistema/index.php");
+}
+
 include "../config/conexion.php"; //Conexion con la base de datos
 
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision

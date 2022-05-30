@@ -1,4 +1,11 @@
+<?php include("../template/cabecera.php"); ?>
+
 <?php
+if($_SESSION['tipo'] != 1)
+{
+    header("location: /SITA/sistema/index.php");
+}
+
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 include "../config/conexion.php";
 ?>
@@ -68,7 +75,6 @@ switch($decision){
 }
 ?>
 
-<?php include("../template/cabecera.php"); ?>
 <title>SITA - Registrar usuario</title>
 
 			<div class="jumbotron">

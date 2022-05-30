@@ -26,7 +26,7 @@ if(!empty($_SESSION['active']))
                 $data = mysqli_fetch_array($query);
                 $_SESSION['active'] = true;
                 $_SESSION['cve_usuario'] = $data['cve_usuario'];
-                $_SESSION['cve_tipou'] = $data['cve_tipou'];
+                $_SESSION['tipo'] = $data['tipo'];
                 $_SESSION['usuario'] = $data['usuario'];
                 $_SESSION['activo'] = $data['activo'];
 

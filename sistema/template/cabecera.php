@@ -5,6 +5,7 @@ if(!isset($_SESSION['usuario'])){
 } else {
   if($_SESSION['active']==true){
     $usuario=$_SESSION["usuario"];
+	$tipo=$_SESSION["tipo"];
   }
 }
 ?>
@@ -49,16 +50,18 @@ if(!isset($_SESSION['usuario'])){
 				
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
+						<?php if($_SESSION['tipo'] == 1){ ?>
 						<li class="nav-item">
 							<a class="nav-link" href="/SITA/sistema/secciones/verUsuario.php">Usuarios</a>
 						</li>
+						<?php } ?>
 						<li class="nav-item">
 							<a class="nav-link" href="#">Academicos</a>
 						</li>
 					</ul>
 					<form class="d-flex">
 						<p> <?php echo fechaC(); ?> |</p>
-						<span class="user">|  <?php echo $usuario; ?>  </span>
+						<span class="user">|  <?php echo $usuario .' - '. $tipo; ?>  </span>
 						<img class="photouser" src="/SITA/sistema/img/elementos/user.png" alt="Usuario" style="width: 25px; height:25px;">
 						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/SITA/sistema/img/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
 					</form>

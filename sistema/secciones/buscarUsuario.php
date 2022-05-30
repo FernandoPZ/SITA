@@ -1,6 +1,12 @@
 <?php include("../template/cabecera.php"); ?>
 <?php
 include "../config/conexion.php";
+
+if($_SESSION['tipo'] != 1)
+{
+    header("location: /SITA/sistema/index.php");
+}
+
 ?>
 <title>SITA - Usuarios</title>
 

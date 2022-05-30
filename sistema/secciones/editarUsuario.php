@@ -1,6 +1,12 @@
 <?php
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 include "../config/conexion.php"; //Conexion con la base de datos
+
+if($_SESSION['tipo'] != 1)
+{
+    header("location: /SITA/sistema/index.php");
+}
+
 ?>
 
 <?php
@@ -54,7 +60,7 @@ switch($decision){
 
                     }else{
 
-                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou', pass = '$contra' WHERE cve_usuario = $iduser");
+                        $sql_update = mysqli_query($conexion, "UPDATE usuario SET usuario = '$usuario', tipo = '$tipou', pass = md5('$contra') WHERE cve_usuario = $iduser");
                         
                         if($sql_update){
                             $alert='
