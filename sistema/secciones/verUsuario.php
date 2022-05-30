@@ -47,6 +47,8 @@ include "../config/conexion.php";
 
                         $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
 
+                        mysqli_close($conexion);
+
                         $result = mysqli_num_rows($query);
                         if($result > 0){
                             while ($data = mysqli_fetch_array($query)){

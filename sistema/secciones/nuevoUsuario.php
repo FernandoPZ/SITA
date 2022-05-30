@@ -57,11 +57,13 @@ switch($decision){
                     }
                 }
             }
+            mysqli_close($conexion);
         }
     break;
 
     case "cancelar":
         header('Location:/SITA/sistema/secciones/verUsuario.php');
+        mysqli_close($conexion);
     break;
 }
 ?>
@@ -84,7 +86,9 @@ switch($decision){
                                 <input type="text" class="form-control" name="usuario" placeholder="usuario">
                                 <label class="form-label mt-2">Tipo de usuario</label>
                                 <?php
+                                    include "../config/conexion.php";
                                     $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
+                                    mysqli_close($conexion);
                                     $result_tipou = mysqli_num_rows($query_tipou);
                                 ?>
                                 <select class="form-select" name="tipou" id="tipou">

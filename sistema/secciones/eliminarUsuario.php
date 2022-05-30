@@ -13,23 +13,27 @@ switch($decision){
         {
             if($_POST['cve_usuario'] == 1){
                 header("location: verUsuario.php");
+                mysqli_close($conexion);
                 exit;
             }
             $iduser = $_POST['cve_usuario'];
             //$query_delete = mysqli_query($conexion,"DELETE FROM usuario WHERE cve_usuario = $iduser");// Elimina el registro
             $query_delete = mysqli_query($conexion,"UPDATE usuario SET activo = 0 WHERE cve_usuario = $iduser");// Desactiva el registro
             header("location: verUsuario.php");
+            mysqli_close($conexion);
         }
     break;
 
     case "volver":
         header('Location:/SITA/sistema/secciones/verUsuario.php');
+        mysqli_close($conexion);
     break;
 }
 
 if(empty($_REQUEST['id']))
 {
     header("location: verUsuario.php");
+    mysqli_close($conexion);
 }else{
     $iduser = $_REQUEST['id'];
     $query = mysqli_query($conexion,"SELECT u.usuario, r.tipo FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE u.cve_usuario = $iduser");
@@ -41,15 +45,11 @@ if(empty($_REQUEST['id']))
         }
     }else{
         header("location: verUsuario.php");
+        mysqli_close($conexion);
     }
 }
 ?>
 
-<?php
-
-
-
-?>
 
 <title>SITA - Eliminar usuario</title>
 

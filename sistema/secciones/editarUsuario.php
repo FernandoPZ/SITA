@@ -72,11 +72,13 @@ switch($decision){
                     }
                 }
             }
+            mysqli_close($conexion);
         }
     break;
 
     case "cancelar":
         header('Location:/SITA/sistema/secciones/verUsuario.php');
+        mysqli_close($conexion);
     break;
 }
 ?>
@@ -85,15 +87,15 @@ switch($decision){
 if(empty($_GET['id']))
 {
     header('location: verUsuario.php');
+    mysqli_close($conexion);
 }
 $iduser = $_GET['id'];
 
-$sql = mysqli_query($conexion,"SELECT u.cve_usuario, u.usuario, u.activo, (u.tipo) as idtipo, (r.tipo) as tipo
-                                FROM usuario u
-                                INNER JOIN tipo_usuario r
-                                ON u.tipo = r.cve_tipou
-                                WHERE cve_usuario = $iduser");
+include "../config/conexion.php";
+$sql = mysqli_query($conexion,"SELECT u.cve_usuario, u.usuario, u.activo, (u.tipo) as idtipo, (r.tipo) as tipo FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE cve_usuario = $iduser");
+mysqli_close($conexion);
 $result_sql = mysqli_num_rows($sql);
+
 if($result_sql == 0){
     header('Location: verUsuario.php');
 }else{
@@ -137,7 +139,9 @@ if($result_sql == 0){
                                 <input type="text" class="form-control" name="usuario" placeholder="Usuario" value="<?php echo $usuarion; ?>">
                                 <label class="form-label mt-2">Tipo de usuario</label>
                                 <?php
+                                    include "../config/conexion.php";
                                     $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
+                                    mysqli_close($conexion);
                                     $result_tipou = mysqli_num_rows($query_tipou);
                                 ?>
                                 <select class="form-select" name="tipou" id="tipou">
@@ -156,7 +160,9 @@ if($result_sql == 0){
                                 <label class="form-label mt-2">Contraseña nueva</label>
                                 <input type="password" class="form-control" name="contra" id="activo" placeholder="*******">
                                 <?php
+                                    include "../config/conexion.php";
                                     $query_activo = mysqli_query($conexion,"SELECT * FROM usuario");
+                                    mysqli_close($conexion);
                                     $result_activo = mysqli_num_rows($query_activo);
                                 ?>
                             </div>

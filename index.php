@@ -18,6 +18,7 @@ if(!empty($_SESSION['active']))
             $user = mysqli_real_escape_string($conexion,$_POST['usuario']); //protegido contra inyeccion de comandos sql
             $pass = md5(mysqli_real_escape_string($conexion,$_POST['contra'])); //protegido contra inyeccion de comandos sql y encriptado de contraseña
             $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'");
+            mysqli_close($conexion);
             $result = mysqli_num_rows($query);
 
             if($result > 0)
