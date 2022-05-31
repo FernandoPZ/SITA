@@ -41,7 +41,7 @@ if(!isset($_SESSION['usuario'])){
 </head>
 <body>
 	<header>
-		<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+		<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
 			<div class="container-fluid">
 				<a class="navbar-brand" href="../index.php">SITA</a>
 				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor02" aria-controls="navbarColor02" aria-expanded="true" aria-label="Toggle navigation">
@@ -71,3 +71,4 @@ if(!isset($_SESSION['usuario'])){
 	</header>
 	<div class="container"> <!-- Contenido de la pagina variable -->
         <div class="row">
+		<br>
