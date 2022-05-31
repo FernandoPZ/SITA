@@ -56,7 +56,7 @@ if(!isset($_SESSION['usuario'])){
 						</li>
 						<?php } ?>
 						<li class="nav-item">
-							<a class="nav-link" href="#">Academicos</a>
+							<a class="nav-link" href="/SITA/sistema/secciones/verAcademico.php">Academicos</a>
 						</li>
 					</ul>
 					<form class="d-flex">
