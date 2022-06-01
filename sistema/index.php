@@ -24,12 +24,12 @@
 
 			<div class="col-md-4 mx-auto"> <!-- divide la pantalla en 3 elementos de 4 espacios de 12, cada uno -->
 				<div class="card"> <!-- tarjetas para presentar las secciones -->
-					<h3 class="card-header col text-center">Academicos</h3>
+					<h3 class="card-header col text-center">Docentes</h3>
 					<div class="card-body">
 						<img class="card-img-top" src="img/elementos/academ.png" alt="">
 							<div class="col text-center">
 								</br>
-								<a name="" id="" class="btn btn-primary" href="secciones/verAcademico.php" role="button">Entrar</a>
+								<a name="" id="" class="btn btn-primary" href="secciones/verDocente.php" role="button">Entrar</a>
 							</div>
 					</div>
 				</div>

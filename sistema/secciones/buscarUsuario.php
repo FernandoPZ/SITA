@@ -49,7 +49,7 @@ if($_SESSION['tipo'] != 1)
                             $tipo = " OR u.tipo LIKE '%2%' ";
                         }else if($busqueda == 'consultor'){
                             $tipo = " OR u.tipo LIKE '%3%' ";
-                        }else if($busqueda == 'visitante'){
+                        }else if($busqueda == 'academico'){
                             $tipo = " OR u.tipo LIKE '%4%' ";
                         }
                         $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario u WHERE (cve_usuario LIKE '%$busqueda%' OR usuario LIKE '%$busqueda%' $tipo ) AND activo = 1;");
