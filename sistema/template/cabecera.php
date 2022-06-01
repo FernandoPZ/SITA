@@ -38,6 +38,7 @@ if(!isset($_SESSION['usuario'])){
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/SITA/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
 	<link rel="stylesheet" href="/SITA/sistema/css/style.css"/> <!-- hoja de estilos propia -->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script><!-- JavaScript Bundle with Popper -->
 </head>
 <body>
 	<header>
@@ -51,12 +52,22 @@ if(!isset($_SESSION['usuario'])){
 				<div class="collapse navbar-collapse" id="navbarColor02">
 					<ul class="navbar-nav me-auto">
 						<?php if($_SESSION['tipo'] == 1){ ?>
-						<li class="nav-item">
-							<a class="nav-link" href="/SITA/sistema/secciones/verUsuario.php">Usuarios</a>
-						</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a>
+								<div class="dropdown-menu">
+									<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoUsuario.php">Nuevo usuario</a>
+									<a class="dropdown-item" href="/SITA/sistema/secciones/verUsuario.php">Ver usuarios</a>
+									<div class="dropdown-divider"></div>
+									<a class="dropdown-item" href="#">Mi usuario</a>
+								</div>
+							</li>
 						<?php } ?>
-						<li class="nav-item">
-							<a class="nav-link" href="/SITA/sistema/secciones/verDocente.php">Docentes</a>
+						<li class="nav-item dropdown">
+							<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Docentes</a>
+							<div class="dropdown-menu">
+								<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoDocente.php">Nuevo registro</a>
+								<a class="dropdown-item" href="/SITA/sistema/secciones/verDocente.php">Ver registros</a>
+							</div>
 						</li>
 					</ul>
 					<form class="d-flex">
