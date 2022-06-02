@@ -14,6 +14,33 @@ include "../config/conexion.php";
 switch($decision){
 
     case "guardar":
+
+        $tipou = (isset($_POST['tipou']))?$_POST['tipou']:"";
+        $nombre = (isset($_POST['nombre']))?$_POST['nombre']:"";
+        $apellido1 = (isset($_POST['apellido1']))?$_POST['apellido1']:"";
+        $apellido2 = (isset($_POST['apellido2']))?$_POST['apellido2']:"";
+        $foto = (isset($_FILES['foto']))?$_FILES['foto']:"";
+        $numEmpleado = (isset($_POST['numEmpleado']))?$_POST['numEmpleado']:"";
+        $instiActual = (isset($_POST['instiActual']))?$_POST['instiActual']:"";
+        $numEmpleado = (isset($_POST['puesto']))?$_POST['puesto']:"";
+        // Asignacion de nombre unico a la foto
+        $fecha= new DateTime();
+        $nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$_FILES["foto"]["name"]:"imagen.jpg";
+        //$archivoFoto=$_FILES['foto']["tmp_name"];
+        //
+        //Mover imagen
+        $archivoFoto=(isset($_FILES['foto']['tmp_name']))?$_FILES['foto']['tmp_name']:"";
+
+        if($archivoFoto!=""){
+            move_uploaded_file($archivoFoto,"../../img/".$nombreFoto);
+        }
+        //
+        
+        echo "Tipo de usuario:_ $tipou _";
+        echo "Nombre:_ $nombre _";
+        echo "Foto:_ $nombreFoto _";
+        break;
+
         if(!empty($_POST))
         {
             $alert='';
@@ -32,6 +59,23 @@ switch($decision){
 
                 $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$usuario'");
                 $result = mysqli_fetch_array($query);
+                
+                //
+                $sentenciaSQL= $conexion->prepare("INSERT INTO elementos(nombre,imagen) VALUES (:nombre,:imagen);");
+                $sentenciaSQL->bindParam(':nombre',$txtNombre);
+                
+                $fecha= new DateTime();
+                $nombreArchivo=($txtImagen!="")?$fecha->getTimestamp()."_".$_FILES["txtImagen"]["name"]:"imagen.jpg";
+        
+                $tmpImagen=$_FILES["txtImagen"]["tmp_name"];
+        
+                if($tmpImagen!=""){
+                    move_uploaded_file($tmpImagen,"../../img/".$nombreArchivo);
+                }
+        
+                $sentenciaSQL->bindParam(':imagen',$nombreArchivo);
+                $sentenciaSQL->execute();
+                //
 
                 if($result > 0){
                     $alert='
@@ -69,7 +113,7 @@ switch($decision){
     break;
 
     case "cancelar":
-        header('Location:/SITA/sistema/secciones/verUsuario.php');
+        header('Location:/SITA/sistema/secciones/verDocente.php');
         mysqli_close($conexion);
     break;
 }
@@ -85,39 +129,39 @@ switch($decision){
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
-                            <a class="nav-link active" data-bs-toggle="tab" href="#docente">Docente</a>
+                            <a class="nav-link active" data-bs-toggle="tab" href="#docente">Docente</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#generales">Generales</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#generales">Generales</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#personales">Personales</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#personales">Personales</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#experiencias">Experiencias</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#experiencias">Experiencias</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#formacion">Formacion</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#formacion">Formacion</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#logros">Logros</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#logros">Logros</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#premios">Premios</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#premios">Premios</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#publicaciones">Publicaciones</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#publicaciones">Publicaciones</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#documentos">Documentos</a>
+                            <a class="nav-link" data-bs-toggle="tab" href="#documentos">Documentos</a> <!-- boton del tab -->
                         </li>
                     </ul>
-                    <div id="myTabContent" class="tab-content">
-                        <p></P>
-                        <div class="tab-pane fade active show" id="docente">
+                    <div id="myTabContent" class="tab-content"> <!-- Tablas de contenido -->
+                        <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                        <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos primcipales -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Llene el siguiente formulario
+                                    No deje campos vacios
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -142,89 +186,168 @@ switch($decision){
                                             ?>
                                         </select>
                                         <label class="form-label mt-2">Nombre o nombres</label>
-                                        <input type="text" class="form-control" name="nombre" placeholder="Nombre(s)">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre(s)">
                                         <label class="form-label mt-2">Primer apellido</label>
-                                        <input type="text" class="form-control" name="apellido1" placeholder="Primer apellido">
+                                        <input type="text" class="form-control" name="apellido1" id="apellido1" placeholder="Primer apellido">
                                         <label class="form-label mt-2">Segundo apellido</label>
-                                        <input type="text" class="form-control" name="apellido2" placeholder="Segundo apellido">
-                                        <label class="form-label mt-2">Escriba su contraseña</label>
-                                        <input type="password" class="form-control" name="contra01" placeholder="*******">
-                                        <label class="form-label mt-2">Escriba de nuevo su contraseña</label>
-                                        <input type="text" class="form-control" name="contra02" placeholder="contraseña">
+                                        <input type="text" class="form-control" name="apellido2" id="apellido2" placeholder="Segundo apellido">
+                                        <label class="form-label mt-2" for="foto">Fotografia</label>
+                                        <input type="file" class="form-control" name="foto" id="foto">
+                                        <label class="form-label mt-2">Numero de empleado</label>
+                                        <input type="text" class="form-control" name="numEmpleado" placeholder="xxxxxxxxx">
+                                        <label class="form-label mt-2">Institucion actual</label>
+                                        <input type="text" class="form-control" name="instiActual" placeholder="Nombre de la institucion">
+                                        <label class="form-label mt-2">Puesto</label>
+                                        <input type="text" class="form-control" name="puesto" placeholder="Nombre del puesto">
                                     </div>
                                     <div class="text-center">
-                                        <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-                                        <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: left;">Guardar</button>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: right;">Cancelar</button>
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="tab-pane fade" id="generales">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="personales">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="experiencias">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="formacion">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="logros">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="premios">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="publicaciones">
                             <p>Contenido pendiente.</p>
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    No deje campos vacios
+                                </div>
+                                <div class="card-body">
+                                    <div class = "form-group">
+                                        <label class="form-label mt-2">Campo</label>
+                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                    </div>
+                                    <div class="text-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="tab-pane fade" id="documentos">
-                            <p></P>
                             <div class="tab-pane fade active show" id="docente">
                                 <div class="card">
                                     <div class="card-header text-center">
-                                        Llene el siguiente formulario
+                                        No deje campos vacios
                                     </div>
                                     <div class="card-body">
                                         <div class = "form-group">
-                                            <label class="form-label mt-2">Tipo</label>
-                                            <?php
-                                                include "../config/conexion.php";
-                                                $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
-                                                mysqli_close($conexion);
-                                                $result_tipou = mysqli_num_rows($query_tipou);
-                                            ?>
-                                            <select class="form-select" name="tipou" id="tipou">
-                                                <?php
-                                                    if($result_tipou > 0)
-                                                    {
-                                                        while ($tipou = mysqli_fetch_array($query_tipou)){
-                                                            ?>
-                                                            <option value="" hidden>Selecciona una opción</option>
-                                                            <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["tipo"]; ?></option>
-                                                            <?php
-                                                        }
-                                                    }
-                                                ?>
-                                            </select>
-                                            <label class="form-label mt-2">Nombre o nombres</label>
-                                            <input type="text" class="form-control" name="nombre" placeholder="Nombre(s)">
-                                            <label class="form-label mt-2">Primer apellido</label>
-                                            <input type="text" class="form-control" name="apellido1" placeholder="Primer apellido">
-                                            <label class="form-label mt-2">Segundo apellido</label>
-                                            <input type="text" class="form-control" name="apellido2" placeholder="Segundo apellido">
-                                            <label class="form-label mt-2">Escriba su contraseña</label>
-                                            <input type="password" class="form-control" name="contra01" placeholder="*******">
-                                            <label class="form-label mt-2">Escriba de nuevo su contraseña</label>
-                                            <input type="text" class="form-control" name="contra02" placeholder="contraseña">
+                                            <label class="form-label mt-2">Campo</label>
+                                            <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
                                         </div>
                                         <div class="text-center">
-                                            <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-                                            <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: left;">Guardar</button>
-                                            <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: right;">Cancelar</button>
+                                            <br>
+                                            <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: right;">Guardar</button>
+                                            <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: left;">Cancelar</button>
                                         </div>
                                     </div>
                                 </div>
