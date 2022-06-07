@@ -21,10 +21,19 @@ $puesto=(isset($_POST['puesto']))?$_POST['puesto']:""; //Puesto
 //Seccion Generales
 $email=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
 $fecha_nac=(isset($_POST['fecha_nac']))?$_POST['fecha_nac']:""; //Fecha de nacimiento
-$estado_civil=(isset($_POST['estado_civil']))?$_POST['estado_civil']:""; //Correo electronico
-$genero=(isset($_POST['genero']))?$_POST['genero']:""; //Correo electronico
-$email=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
-$curp=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
+$estado_civil=(isset($_POST['estado_civil']))?$_POST['estado_civil']:""; //Estado civil
+$genero=(isset($_POST['genero']))?$_POST['genero']:""; //Genero
+$curp=(isset($_POST['curp']))?$_POST['curp']:""; //Curp
+$curp_doc=(isset($_FILES['curp_doc']['name']))?$_FILES['curp_doc']['name']:""; //Documento del curp
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$rfc_doc=(isset($_FILES['rfc_doc']['name']))?$_FILES['rfc_doc']['name']:""; //Documento del rfc
+$iste=(isset($_POST['iste']))?$_POST['iste']:""; //Numero de seguridad social
+$num_infonavit=(isset($_POST['num_infonavit']))?$_POST['num_infonavit']:""; //Numero de infonavit
+$disponibilidad=(isset($_POST['disponibilidad']))?$_POST['disponibilidad']:""; //Disponibilidad
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$fecha_vig_pas=(isset($_POST['fecha_vig_pas']))?$_POST['fecha_vig_pas']:""; //Fecha de vigencia del pasaporte
+//Personales
+
 
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 
@@ -265,8 +274,17 @@ switch($decision){
                                             <option value="masculino">Masculino</option>
                                             <option value="otro">Otro</option>
                                         </select>
-                                        <label class="form-label mt-2">Institucion actual</label>
-                                        <input type="text" class="form-control" name="instiActual" placeholder="Nombre de la institucion">
+                                        <label class="form-label mt-2">CURP</label>
+                                        <input type="text" class="form-control" name="curp" id="curp" placeholder="18 caracteres">
+                                        <label class="form-label mt-2">Documento del Curp</label>
+                                        <input type="file" class="form-control" name="curp_doc" id="curp_doc">
+                                        <label class="form-label mt-2">RFC</label>
+                                        <input type="text" class="form-control" name="rfc" id="rfc" placeholder="10 caracteres">
+                                        <label class="form-label mt-2">Documento del RFC</label>
+                                        <input type="file" class="form-control" name="rfc_doc" id="rfc_doc">
+                                        <label class="form-label mt-2">Numero de seguro social</label>
+                                        <input type="text" class="form-control" name="iste" id="iste" placeholder="10 caracteres">
+
                                     </div>
                                     <div class="text-center">
                                         <br>
