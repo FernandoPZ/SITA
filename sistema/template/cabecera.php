@@ -58,7 +58,7 @@ if(!isset($_SESSION['usuario'])){
 									<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoUsuario.php">Nuevo usuario</a>
 									<a class="dropdown-item" href="/SITA/sistema/secciones/verUsuario.php">Ver usuarios</a>
 									<div class="dropdown-divider"></div>
-									<a class="dropdown-item" href="#">Mi usuario</a>
+									<a class="dropdown-item" href="/SITA/sistema/secciones/imagenes.php">Mi usuario</a>
 								</div>
 							</li>
 						<?php } ?>

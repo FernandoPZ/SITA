@@ -1,13 +1,33 @@
-<?php include("../template/cabecera.php"); ?>
+<?php include("../template/cabecera.php"); ?> <!-- Cabecera de la pagina -->
 
 <?php
-if($_SESSION['tipo'] == 4)
+if($_SESSION['tipo'] == 4) //Validacion de tipo de usuario
 {
-    header("location: /SITA/sistema/index.php");
+    header("location: /SITA/sistema/index.php"); //Regresa a la pagina principal
 }
 
+include "../config/conexion.php"; //Conexion a la base de datos
+
+//Validacion de las variables
+//Seccion Docente
+$tipou=(isset($_POST['tipou']))?$_POST['tipou']:""; //tipo de usuario
+$nombre=(isset($_POST['nombre']))?$_POST['nombre']:""; //Nombre
+$apellido1=(isset($_POST['apellido1']))?$_POST['apellido1']:""; //Primer apellido
+$apellido2=(isset($_POST['apellido2']))?$_POST['apellido2']:""; //Segundo apellido
+$foto=(isset($_FILES['foto']['name']))?$_FILES['foto']['name']:""; //Foto
+$numEmpleado=(isset($_POST['numEmpleado']))?$_POST['numEmpleado']:""; //Numero de empleado
+$instiActual=(isset($_POST['instiActual']))?$_POST['instiActual']:""; //Instituto
+$puesto=(isset($_POST['puesto']))?$_POST['puesto']:""; //Puesto
+//Seccion Generales
+$email=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
+$fecha_nac=(isset($_POST['fecha_nac']))?$_POST['fecha_nac']:""; //Fecha de nacimiento
+$estado_civil=(isset($_POST['estado_civil']))?$_POST['estado_civil']:""; //Correo electronico
+$genero=(isset($_POST['genero']))?$_POST['genero']:""; //Correo electronico
+$email=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
+$curp=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
+
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
-include "../config/conexion.php";
+
 ?>
 
 <?php
@@ -15,29 +35,21 @@ switch($decision){
 
     case "guardar":
 
-        $tipou = $_POST['tipou'];
-        $nombre = $_POST['nombre'];
-        $apellido1 = $_POST['apellido1'];
-        $apellido2 = $_POST['apellido2'];
-        $txtImagen = $_POST['txtImagen']; //Imagen
-        $numEmpleado = $_POST['numEmpleado'];
-        $instiActual = $_POST['instiActual'];
-        $numEmpleado = $_POST['puesto'];
         // Asignacion de nombre unico a la foto
         $fecha= new DateTime();
-        $nombreArchivo=($txtImagen!="")?$fecha->getTimestamp()."_".$_POST["txtImagen"]:"imagen.jpg";
+        //$nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$_FILES["foto"]["name"]:"default.png";
+        $nombreFoto=($foto!="")?$numEmpleado."_".$fecha->getTimestamp()."_".$foto:"default.png";
 
-        //$tmpImagen=$_FILES["txtImagen"]["tmp_name"];
+        $archivoFoto=$_FILES["foto"]["tmp_name"];
 
-        //if($tmpImagen!=""){
-        //    move_uploaded_file($tmpImagen,"../../img/".$nombreArchivo);
-        //}
+        if($archivoFoto!=""){
+            move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto);
+        }
         
-        echo "Tipo de usuario:( $tipou )";
-        echo "Nombre:( $nombre )";
-        echo "Foto:( $nombreArchivo )";
-        echo "Foto:( $txtImagen )";
-        //echo "Foto:( $tmpImagen )";
+        echo "-Tipo de usuario:( $tipou )-";
+        echo "-Nombre:( $nombre )-";
+        echo "-Foto:( $nombreFoto )-";
+        echo "-Foto:( $foto )-";
 
         break;
 
@@ -65,15 +77,15 @@ switch($decision){
                 $sentenciaSQL->bindParam(':nombre',$txtNombre);
                 
                 $fecha= new DateTime();
-                $nombreArchivo=($txtImagen!="")?$fecha->getTimestamp()."_".$_FILES["txtImagen"]["name"]:"imagen.jpg";
+                $nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$_FILES["foto"]["name"]:"imagen.jpg";
         
-                $tmpImagen=$_FILES["txtImagen"]["tmp_name"];
+                $archivoFoto=$_FILES["foto"]["tmp_name"];
         
-                if($tmpImagen!=""){
-                    move_uploaded_file($tmpImagen,"../../img/".$nombreArchivo);
+                if($archivoFoto!=""){
+                    move_uploaded_file($archivoFoto,"../../img/".$nombreFoto);
                 }
         
-                $sentenciaSQL->bindParam(':imagen',$nombreArchivo);
+                $sentenciaSQL->bindParam(':imagen',$nombreFoto);
                 $sentenciaSQL->execute();
                 //
 
@@ -125,7 +137,7 @@ switch($decision){
 				<h1 class="display-3">Registrar nuevo docente</h1>
                 <hr class="my-2">
                 <br>
-                <form action="" method="POST">
+                <form action="" method="POST" enctype="multipart/form-data">
 
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
@@ -191,12 +203,29 @@ switch($decision){
                                         <input type="text" class="form-control" name="apellido1" id="apellido1" placeholder="Primer apellido">
                                         <label class="form-label mt-2">Segundo apellido</label>
                                         <input type="text" class="form-control" name="apellido2" id="apellido2" placeholder="Segundo apellido">
-                                        <!-- <label class="form-label mt-2" for="txtImagen">Fotografia</label>
-                                        <input type="file" class="form-control" name="txtImagen" id="txtImagen"> -->
-                                        <label for="txtImagen">Imagen</label>
-                                        <input type="file" class="form-control" value="<?php echo $txtImagen; ?>" name="txtImagen" id="txtImagen" placeholder="imagen">
+                                        <label class="form-label mt-2">Fotografia</label>
+                                        <input type="file" class="form-control" name="foto" id="foto">
+                                        <output id="previsual"></output>
+                                        <script>
+                                            function archivo(evt) {
+                                                var foto = evt.target.files; // Espacio donde se sube la imagen
+                                                for (var i = 0, f; f = foto[i]; i++) { // Obtenemos la imagen del campo "foto"
+                                                if (!f.type.match('image.*')) { //Solo admitimos imágenes.
+                                                    continue;
+                                                }
+                                                var reader = new FileReader();
+                                                reader.onload = (function(theFile) {
+                                                    return function(e) {
+                                                    document.getElementById("previsual").innerHTML = ['<img class="img-rounded" height=100px src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''); // Insertamos la imagen
+                                                    };
+                                                })(f);
+                                                reader.readAsDataURL(f);
+                                                }
+                                            }
+                                            document.getElementById('foto').addEventListener('change', archivo, false);
+                                        </script>
                                         <label class="form-label mt-2">Numero de empleado</label>
-                                        <input type="text" class="form-control" name="numEmpleado" placeholder="xxxxxxxxx">
+                                        <input type="text" class="form-control" name="numEmpleado" id="numEmpleado" placeholder="xxxxxxxxx">
                                         <label class="form-label mt-2">Institucion actual</label>
                                         <input type="text" class="form-control" name="instiActual" placeholder="Nombre de la institucion">
                                         <label class="form-label mt-2">Puesto</label>
@@ -217,8 +246,27 @@ switch($decision){
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Correo electronico</label>
+                                        <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@correo.com">
+                                        <label class="form-label mt-2">fecha de nacimiento</label>
+                                        <input type="date" class="form-control" name="fecha_nac" id="fecha_nac">
+                                        <label class="form-label mt-2">Estado civil</label>
+                                        <select class="form-select" name="estado_civil" id="estado_civil">
+                                            <option value="" hidden>Selecciona una opción</option>
+                                            <option value="soltero">Soltero</option>
+                                            <option value="casado">Casado</option>
+                                            <option value="divorciado">Divorciado</option>
+                                            <option value="union_libre">Union libre</option>
+                                        </select>
+                                        <label class="form-label mt-2">Genero</label>
+                                        <select class="form-select" name="genero" id="genero">
+                                            <option value="" hidden>Selecciona una opción</option>
+                                            <option value="femenino">Femenino</option>
+                                            <option value="masculino">Masculino</option>
+                                            <option value="otro">Otro</option>
+                                        </select>
+                                        <label class="form-label mt-2">Institucion actual</label>
+                                        <input type="text" class="form-control" name="instiActual" placeholder="Nombre de la institucion">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -344,7 +392,7 @@ switch($decision){
                                     <div class="card-body">
                                         <div class = "form-group">
                                             <label class="form-label mt-2">Campo</label>
-                                            <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                            <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo" required>
                                         </div>
                                         <div class="text-center">
                                             <br>
