@@ -34,6 +34,11 @@ $rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
 $fecha_vig_pas=(isset($_POST['fecha_vig_pas']))?$_POST['fecha_vig_pas']:""; //Fecha de vigencia del pasaporte
 //Personales
 
+//Experiencias
+$act_puesto=(isset($_POST['act_puesto']))?$_POST['act_puesto']:""; //Puesto actual
+$institucion=(isset($_POST['institucion']))?$_POST['institucion']:""; //Intitucion
+$periodo=(isset($_POST['periodo']))?$_POST['periodo']:""; //Periodo
+$intereses=(isset($_POST['intereses']))?$_POST['intereses']:""; //Intereses
 
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 
@@ -248,7 +253,6 @@ switch($decision){
                             </div>
                         </div>
                         <div class="tab-pane fade" id="generales">
-                            <p>Contenido pendiente.</p>
                             <div class="card">
                                 <div class="card-header text-center">
                                     No deje campos vacios
@@ -284,7 +288,6 @@ switch($decision){
                                         <input type="file" class="form-control" name="rfc_doc" id="rfc_doc">
                                         <label class="form-label mt-2">Numero de seguro social</label>
                                         <input type="text" class="form-control" name="iste" id="iste" placeholder="10 caracteres">
-
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -302,7 +305,7 @@ switch($decision){
                                 <div class="card-body">
                                     <div class = "form-group">
                                         <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <input type="text" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de campo">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -312,15 +315,20 @@ switch($decision){
                             </div>
                         </div>
                         <div class="tab-pane fade" id="experiencias">
-                            <p>Contenido pendiente.</p>
                             <div class="card">
                                 <div class="card-header text-center">
                                     No deje campos vacios
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Puesto actual</label>
+                                        <input type="text" class="form-control" name="act_puesto" id="act_puesto" placeholder="El puesto actual que ejerce">
+                                        <label class="form-label mt-2">Nombre del instituto</label>
+                                        <input type="text" class="form-control" name="institucion" id="institucion" placeholder="El nombre de la institucion">
+                                        <label class="form-label mt-2">Periodo</label>
+                                        <input type="text" class="form-control" name="periodo" id="periodo" placeholder="El periodo que curza">
+                                        <label class="form-label mt-2">Intereses</label>
+                                        <input type="text" class="form-control" name="intereses" id="intereses" placeholder="Mencione que intereses tiene">
                                     </div>
                                     <div class="text-center">
                                         <br>
