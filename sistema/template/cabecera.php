@@ -6,6 +6,7 @@ if(!isset($_SESSION['usuario'])){
   if($_SESSION['active']==true){
     $usuario=$_SESSION["usuario"];
 	$tipo=$_SESSION["tipo"];
+	$foto=$_SESSION["foto"];
   }
 }
 ?>
@@ -72,8 +73,8 @@ if(!isset($_SESSION['usuario'])){
 					</ul>
 					<form class="d-flex">
 						<p> <?php echo fechaC(); ?> |</p>
-						<span class="user">|  <?php echo $usuario .' - '. $tipo; ?>  </span>
-						<img class="photouser" src="/SITA/sistema/img/elementos/user.png" alt="Usuario" style="width: 25px; height:25px;">
+						<span class="user">|  <?php echo $usuario .' - '. $tipo ?>  </span>
+						<img class="photouser" src="/SITA/sistema/files/upload/fotos/<?php echo $foto; ?>" alt="Usuario" style="width: 25px; height:25px;">
 						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/SITA/sistema/img/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a>
 					</form>
 				</div>

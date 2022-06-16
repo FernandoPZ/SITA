@@ -1,3 +1,5 @@
+<?php include("../template/cabecera.php"); ?>
+
 <?php
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 include "../config/conexion.php"; //Conexion con la base de datos
@@ -126,7 +128,6 @@ if($result_sql == 0){
 
 ?>
 
-<?php include("../template/cabecera.php"); ?>
 <title>SITA - Editar usuario</title>
 
 			<div class="jumbotron">

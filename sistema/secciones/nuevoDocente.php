@@ -30,15 +30,37 @@ $rfc_doc=(isset($_FILES['rfc_doc']['name']))?$_FILES['rfc_doc']['name']:""; //Do
 $iste=(isset($_POST['iste']))?$_POST['iste']:""; //Numero de seguridad social
 $num_infonavit=(isset($_POST['num_infonavit']))?$_POST['num_infonavit']:""; //Numero de infonavit
 $disponibilidad=(isset($_POST['disponibilidad']))?$_POST['disponibilidad']:""; //Disponibilidad
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
 $fecha_vig_pas=(isset($_POST['fecha_vig_pas']))?$_POST['fecha_vig_pas']:""; //Fecha de vigencia del pasaporte
 //Personales
-
+$tipoc=(isset($_POST['tipoc']))?$_POST['tipoc']:""; //Tipo de calle
+$calle=(isset($_POST['calle']))?$_POST['calle']:""; //Nombre de calle
+$num_ext=(isset($_POST['num_ext']))?$_POST['num_ext']:""; //Numero exterior
+$num_int=(isset($_POST['num_int']))?$_POST['num_int']:""; //Numero interior
+$edificio=(isset($_POST['edificio']))?$_POST['edificio']:""; //Nombre o numero de edificio
+$colonia=(isset($_POST['colonia']))?$_POST['colonia']:""; //Nombre de colonia
+$codigo_postal=(isset($_POST['codigo_postal']))?$_POST['codigo_postal']:""; //Codigo postal
+$tipo_linea=(isset($_POST['tipo_linea']))?$_POST['tipo_linea']:""; //Tipo de linea telefonica
+$telefono=(isset($_POST['telefono']))?$_POST['telefono']:""; //Numero de telefono
 //Experiencias
 $act_puesto=(isset($_POST['act_puesto']))?$_POST['act_puesto']:""; //Puesto actual
 $institucion=(isset($_POST['institucion']))?$_POST['institucion']:""; //Intitucion
 $periodo=(isset($_POST['periodo']))?$_POST['periodo']:""; //Periodo
 $intereses=(isset($_POST['intereses']))?$_POST['intereses']:""; //Intereses
+//Formacion
+$asignaturas=(isset($_POST['asignaturas']))?$_POST['asignaturas']:""; //Lista de asignaturas
+$periodo_estudio=(isset($_POST['periodo_estudio']))?$_POST['periodo_estudio']:""; //Periodo de estudio
+$hras_teoricas=(isset($_POST['hras_teoricas']))?$_POST['hras_teoricas']:""; //Horas teoricas impartidas
+$hras_practicas=(isset($_POST['hras_practicas']))?$_POST['hras_practicas']:""; //rfc
+$periodo_impartido=(isset($_POST['periodo_impartido']))?$_POST['periodo_impartido']:""; //Periodo impartido
+//Logros
+$nombre_logro=(isset($_POST['nombre_logro']))?$_POST['nombre_logro']:""; //Nombre del logro
+$fecha_logro=(isset($_POST['fecha_logro']))?$_POST['fecha_logro']:""; //Fecha del logro
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
+
 
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 
@@ -288,6 +310,12 @@ switch($decision){
                                         <input type="file" class="form-control" name="rfc_doc" id="rfc_doc">
                                         <label class="form-label mt-2">Numero de seguro social</label>
                                         <input type="text" class="form-control" name="iste" id="iste" placeholder="10 caracteres">
+                                        <label class="form-label mt-2">Numero de infonavit</label>
+                                        <input type="text" class="form-control" name="num_infonavit" id="num_infonavit" placeholder="10 caracteres">
+                                        <label class="form-label mt-2">disponibilidad</label>
+                                        <input type="text" class="form-control" name="disponibilidad" id="disponibilidad" placeholder="pendiente">
+                                        <label class="form-label mt-2">fecha de vigencial del pasaporte</label>
+                                        <input type="date" class="form-control" name="fecha_vig_pas" id="fecha_vig_pas">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -297,15 +325,48 @@ switch($decision){
                             </div>
                         </div>
                         <div class="tab-pane fade" id="personales">
-                            <p>Contenido pendiente.</p>
                             <div class="card">
                                 <div class="card-header text-center">
                                     No deje campos vacios
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Tipo de calle</label>
+                                        <?php
+                                            include "../config/conexion.php";
+                                            $query_tipoc = mysqli_query($conexion,"SELECT * FROM tipo_calle");
+                                            mysqli_close($conexion);
+                                            $result_tipoc = mysqli_num_rows($query_tipoc);
+                                        ?>
+                                        <select class="form-select" name="tipoc" id="tipoc">
+                                            <?php
+                                                if($result_tipoc > 0)
+                                                {
+                                                    while ($tipoc = mysqli_fetch_array($query_tipoc)){
+                                                        ?>
+                                                        <option value="" hidden>Selecciona una opción</option>
+                                                        <option value="<?php echo $tipou["cve_tipoc"]; ?>"><?php echo $tipoc["nombre"]; ?></option>
+                                                        <?php
+                                                    }
+                                                }
+                                            ?>
+                                        </select>
+                                        <label class="form-label mt-2">Calle</label>
+                                        <input type="text" class="form-control" name="calle" id="calle" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Numero exterior</label>
+                                        <input type="text" class="form-control" name="num_ext" id="num_ext" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Numero interior</label>
+                                        <input type="text" class="form-control" name="num_int" id="num_int" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Edificio</label>
+                                        <input type="text" class="form-control" name="edificio" id="edificio" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Colonia</label>
+                                        <input type="text" class="form-control" name="colonia" id="colonia" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Codigo postal</label>
+                                        <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Tipo de linea telefonica</label>
+                                        <input type="text" class="form-control" name="tipo_linea" id="tipo_linea" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Telefono</label>
+                                        <input type="text" class="form-control" name="telefono" id="telefono" placeholder="10 digitos">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -338,15 +399,22 @@ switch($decision){
                             </div>
                         </div>
                         <div class="tab-pane fade" id="formacion">
-                            <p>Contenido pendiente.</p>
                             <div class="card">
                                 <div class="card-header text-center">
                                     No deje campos vacios
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Asignaturas</label>
+                                        <input type="text" class="form-control" name="asignaturas" id="asignaturas" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Periodo de estudio</label>
+                                        <input type="text" class="form-control" name="periodo_estudio" id="periodo_estudio" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Horas teoricas</label>
+                                        <input type="text" class="form-control" name="hras_teoricas" id="hras_teoricas" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Horas practicas</label>
+                                        <input type="text" class="form-control" name="hras_practicas" id="hras_practicas" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Periodo impartido</label>
+                                        <input type="text" class="form-control" name="periodo_impartido" id="periodo_impartido" placeholder="ejemplo de campo">
                                     </div>
                                     <div class="text-center">
                                         <br>

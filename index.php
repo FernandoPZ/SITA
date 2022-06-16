@@ -28,6 +28,7 @@ if(!empty($_SESSION['active']))
                 $_SESSION['cve_usuario'] = $data['cve_usuario'];
                 $_SESSION['tipo'] = $data['tipo'];
                 $_SESSION['usuario'] = $data['usuario'];
+                $_SESSION['foto'] = $data['foto'];
                 $_SESSION['activo'] = $data['activo'];
 
                 header('location: sistema/index.php');

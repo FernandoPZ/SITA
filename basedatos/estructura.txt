@@ -1,0 +1,80 @@
+usuario
+>cve_usuario (PK)
+>cve_tipo_usu (FK)
+>nombre
+>apellido1
+>apellido2
+>usuario
+>fotou
+>correo
+>activo
+
+tipo_usuario
+>cve_tipo_usu (PK)
+>nombre
+>activo
+
+docente
+>cve_docente (PK)
+>cve_puesto (FK)
+>cve_tipo_con (FK)
+>nombre
+>apellido1
+>apellido2
+>foto
+>institucion
+>num_empleado
+>fecha_ingreso
+>activo
+
+puesto
+>cve_puesto (PK)
+>nombre
+>activo
+
+tipo_contratacion
+>cve_tipo_con (PK)
+>nombre
+>activo
+
+general
+>cve_general (PK)
+>correo_ins
+>fecha_nac
+>acta_nac
+>genero
+>estado_civil
+>nacionalidad
+>curp
+>doc_curp
+>rfc
+>doc_rfc
+>nss
+>disponivilidad_via
+>num_pasaporte
+>fecha_ven_pas
+>cve_docente (FK)
+
+personal
+>cve_personal (PK)
+>cve_tipo_cal (FK)
+>correo_per
+>calle
+>num_ext
+>num_int
+>edificio
+>cp
+>colonia
+>ciudad
+>municipip
+>estado
+>pais
+>doc_dom
+
+telefono
+>cve_telefono 
+>numero
+>tipo
+>activo
+>cve_docente
+
