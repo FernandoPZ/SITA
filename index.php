@@ -84,4 +84,4 @@ if(!empty($_SESSION['active']))
         </div>
     </form>
 </body>
-</html>
+</html> <!-- Listo -->
