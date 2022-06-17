@@ -1,3 +1,0 @@
-//Codigo para respaldar la database//
-
-mysqldump -u root -p sita > sita_respaldo.sql
