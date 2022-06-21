@@ -32,7 +32,8 @@ include "../config/conexion.php";
                         <th scope="col">1er apellido</th>
                         <th scope="col">2do apellido</th>
                         <th scope="col">Fotografia</th>
-                        <th scope="col">Numero de empleado</th>
+                        <th scope="col">Numero</th>
+                        <th scope="col">Puesto</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -54,7 +55,7 @@ include "../config/conexion.php";
                         $desde = ($pagina-1) * $por_pagina;
                         $total_pagina = ceil($total_registro / $por_pagina);
 
-                        $query = mysqli_query($conexion, "SELECT cve_docente, nombre, apellido1, apellido1, foto, num_empleado FROM docente WHERE activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
+                        $query = mysqli_query($conexion, "SELECT d.cve_docente, p.puesto, d.nombre, d.apellido1, d.apellido2, d.foto, d.num_empleado FROM docente d INNER JOIN puesto p ON d.puesto = p.cve_puesto WHERE d.activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
 
                         mysqli_close($conexion);
 
@@ -65,12 +66,11 @@ include "../config/conexion.php";
                                 <tbody>
                                     <tr class="table-active">
                                     <th scope="row"><?php echo $data ['cve_docente']; ?></th>
-                                    <td><?php echo $data ['tipo']; ?></td>
                                     <td><?php echo $data ['nombre']; ?></td>
-                                    <td><?php echo $data ['apellido_uno']; ?></td>
-                                    <td><?php echo $data ['apellido_dos']; ?></td>
+                                    <td><?php echo $data ['apellido1']; ?></td>
+                                    <td><?php echo $data ['apellido2']; ?></td>
+                                    <td><img src="/SITA/sistema/files/upload/fotos/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"></td>
                                     <td><?php echo $data ['num_empleado']; ?></td>
-                                    <td><?php echo $data ['institucion_actual']; ?></td>
                                     <td><?php echo $data ['puesto']; ?></td>
                                     <td>
                                         <form method="post">
