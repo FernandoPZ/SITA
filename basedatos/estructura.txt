@@ -136,3 +136,5 @@ publicaciones
 > fecha_add (DATETIME)
 > user_cve (INT) [FK]
 > activo (INT-1)
+
+Ultima version (21/06/2022)
