@@ -234,11 +234,12 @@ switch($decision){
                                     <div class = "form-group col-md-5">
                                         <label class="form-label mt-2">Fotografia</label>
                                         <input type="file" class="form-control" name="foto" id="foto">
+                                        <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografia</p>
                                         <label class="form-label mt-2">Correo electronico</label>
                                         <input type="text" class="form-control" name="correo" value="<?php echo $correo; ?>" placeholder="ejemplo@correo.com">
                                         <label class="form-label mt-2">Escriba su nueva contraseña</label>
                                         <input type="password" class="form-control" name="pass" placeholder="*******">
-                                        <p class="text-primary">Dejar en blanco si no quiere cambiar de contraseña</p>
+                                        <p class="text-secondary">Dejar en blanco si no quiere cambiar de contraseña</p>
                                     </div>
                                     <div class = "form-group col-md-2 mx-auto">
                                         <div class="m-0 vh-50 row justify-content-center align-items-center">
@@ -268,60 +269,5 @@ switch($decision){
                 </form>
             </div>
 <!-- fin nuevo -->
-
-<title>SITA - Editar usuario</title>
-
-			<div class="jumbotron">
-				<h1 class="display-3">Editar informacion del usuario</h1>
-                <hr class="my-2">
-                <br>
-                <form action="" method="POST">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            No deje campos vacíos
-                        </div>
-                        <div class="card-body">
-                            <div class = "form-group">
-                                <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>">
-                                <label class="form-label mt-2">Nombre de usuario</label>
-                                <input type="text" class="form-control" name="usuario" placeholder="Usuario" value="<?php echo $usuarion; ?>">
-                                <label class="form-label mt-2">Tipo de usuario</label>
-                                <?php
-                                    include "../config/conexion.php";
-                                    $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
-                                    mysqli_close($conexion);
-                                    $result_tipou = mysqli_num_rows($query_tipou);
-                                ?>
-                                <select class="form-select" name="tipou" id="tipou">
-                                    <?php
-                                        echo $option;
-                                        if($result_tipou > 0)
-                                        {
-                                            while ($tipou = mysqli_fetch_array($query_tipou)){
-                                                ?>
-                                                <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["tipo"]; ?></option>
-                                                <?php
-                                            }
-                                        }
-                                    ?>
-                                </select>
-                                <label class="form-label mt-2">Contraseña nueva</label>
-                                <input type="password" class="form-control" name="contra" id="activo" placeholder="*******">
-                                <?php
-                                    include "../config/conexion.php";
-                                    $query_activo = mysqli_query($conexion,"SELECT * FROM usuario");
-                                    mysqli_close($conexion);
-                                    $result_activo = mysqli_num_rows($query_activo);
-                                ?>
-                            </div>
-                            <div class="text-center">
-                                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-                                <button type="submit" name="decision" value="actualizar" class="btn btn-primary" style="float: left;">Actualizar</button>
-                                <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: right;">Cancelar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
-            </div>
 
 <?php include("../template/pie.php"); ?>

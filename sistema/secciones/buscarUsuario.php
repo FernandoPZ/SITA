@@ -34,9 +34,14 @@ if($_SESSION['tipo'] != 1)
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                        <th scope="col">Clave del usuario</th>
-                        <th scope="col">Tipo de usuario</th>
-                        <th scope="col">Nombre del usuario</th>
+                        <th scope="col">Clave</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">1er apellido</th>
+                        <th scope="col">2do apellido</th>
+                        <th scope="col">Foto</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Correo</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -49,10 +54,14 @@ if($_SESSION['tipo'] != 1)
                             $tipo = " OR u.tipo LIKE '%2%' ";
                         }else if($busqueda == 'consultor'){
                             $tipo = " OR u.tipo LIKE '%3%' ";
-                        }else if($busqueda == 'academico'){
-                            $tipo = " OR u.tipo LIKE '%4%' ";
                         }
-                        $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario u WHERE (cve_usuario LIKE '%$busqueda%' OR usuario LIKE '%$busqueda%' $tipo ) AND activo = 1;");
+                        $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM usuario u WHERE (cve_usuario LIKE '%$busqueda%'
+                                                                                                                        OR nombre LIKE '%$busqueda%'
+                                                                                                                        OR apellido1 LIKE '%$busqueda%'
+                                                                                                                        OR apellido2 LIKE '%$busqueda%'
+                                                                                                                        OR usuario LIKE '%$busqueda%'
+                                                                                                                        OR correo LIKE '%$busqueda%'
+                                                                                                                        $tipo ) AND activo = 1;");
                         $result_registro = mysqli_fetch_array($sql_registro);
                         $total_registro = $result_registro['total_registro'];
 
@@ -68,7 +77,21 @@ if($_SESSION['tipo'] != 1)
                         $desde = ($pagina-1) * $por_pagina;
                         $total_pagina = ceil($total_registro / $por_pagina);
 
-                        $query = mysqli_query($conexion, "SELECT u.cve_usuario, r.tipo, u.usuario FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipou WHERE (u.cve_usuario LIKE '%$busqueda%' OR u.usuario LIKE '%$busqueda%' OR r.tipo LIKE '%$busqueda%' ) AND u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
+                        $query = mysqli_query($conexion, "SELECT u.cve_usuario,
+                                                                 r.tipo,
+                                                                 u.nombre,
+                                                                 u.apellido1,
+                                                                 u.apellido2,
+                                                                 u.foto,
+                                                                 u.usuario,
+                                                                 u.correo
+                                                                 FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipo_usu WHERE (u.cve_usuario LIKE '%$busqueda%'
+                                                                                                                                            OR u.nombre LIKE '%$busqueda%'
+                                                                                                                                            OR u.apellido1 LIKE '%$busqueda%'
+                                                                                                                                            OR u.apellido2 LIKE '%$busqueda%'
+                                                                                                                                            OR u.usuario LIKE '%$busqueda%'
+                                                                                                                                            OR u.correo LIKE '%$busqueda%'
+                                                                                                                                            OR r.tipo LIKE '%$busqueda%') AND u.activo = 1 ORDER BY cve_usuario ASC LIMIT $desde,$por_pagina;");
 
                         mysqli_close($conexion);
                         
@@ -80,7 +103,12 @@ if($_SESSION['tipo'] != 1)
                                     <tr class="table-active">
                                     <th scope="row"><?php echo $data ['cve_usuario']; ?></th>
                                     <td><?php echo $data ['tipo']; ?></td>
+                                    <td><?php echo $data ['nombre']; ?></td>
+                                    <td><?php echo $data ['apellido1']; ?></td>
+                                    <td><?php echo $data ['apellido2']; ?></td>
+                                    <td> <img src="/SITA/sistema/files/upload/fotos/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td>
                                     <td><?php echo $data ['usuario']; ?></td>
+                                    <td><?php echo $data ['correo']; ?></td>
                                     <td>
                                         <form method="post">
                                             <a role="button" class="btn btn-outline-warning" href="editarUsuario.php?id=<?php echo $data ['cve_usuario']; ?>">Editar</a>

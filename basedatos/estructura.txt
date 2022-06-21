@@ -32,8 +32,8 @@ docente
 
 contacto
 > cve_contacto (INT) [PK]
-> correo_ins (VARCHAR-200)
-> correo_per (VARCHAR-200)
+> correo_ins (VARCHAR-100)
+> correo_per (VARCHAR-100)
 > telefono (VARCHAR-10)
 > cve_docente (INT) [FK]
 

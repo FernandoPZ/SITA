@@ -2,10 +2,10 @@
 <?php
 include "../config/conexion.php";
 
-if($_SESSION['tipo'] == 4)
-{
-    header("location: /SITA/sistema/index.php");
-}
+// if($_SESSION['tipo'] == 4)
+// {
+//     header("location: /SITA/sistema/index.php");
+// }
 
 ?>
 <title>SITA - Docentes</title>
@@ -27,14 +27,12 @@ if($_SESSION['tipo'] == 4)
                 <table class="table table-hover">
                     <thead>
                         <tr>
-                        <th scope="col">Clave del docente</th>
-                        <th scope="col">Tipo</th>
+                        <th scope="col">Clave</th>
                         <th scope="col">Nombre</th>
-                        <th scope="col">Primer apellido</th>
-                        <th scope="col">Segundo apellido</th>
-                        <th scope="col">Numero</th>
-                        <th scope="col">Institucion</th>
-                        <th scope="col">Puesto</th>
+                        <th scope="col">1er apellido</th>
+                        <th scope="col">2do apellido</th>
+                        <th scope="col">Fotografia</th>
+                        <th scope="col">Numero de empleado</th>
                         <th scope="col">Acciones</th>
                         </tr>
                     </thead>
@@ -56,7 +54,7 @@ if($_SESSION['tipo'] == 4)
                         $desde = ($pagina-1) * $por_pagina;
                         $total_pagina = ceil($total_registro / $por_pagina);
 
-                        $query = mysqli_query($conexion, "SELECT d.cve_docente, r.tipo, d.nombre, d.apellido_uno, d.apellido_dos, d.num_empleado, d.institucion_actual, d.puesto FROM docente d INNER JOIN tipo_usuario r ON d.tipo = r.cve_tipou WHERE d.activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
+                        $query = mysqli_query($conexion, "SELECT cve_docente, nombre, apellido1, apellido1, foto, num_empleado FROM docente WHERE activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
 
                         mysqli_close($conexion);
 
@@ -89,6 +87,9 @@ if($_SESSION['tipo'] == 4)
                         }
                     ?>
                 </table>
+                <?php
+                    if($total_registro!= 0){
+                ?>
                 <div>
                     <ul class="pagination justify-content-end">
                         <?php
@@ -114,6 +115,16 @@ if($_SESSION['tipo'] == 4)
                         <?php } ?>
                     </ul>
                 </div>
+                <?php }else{ ?>
+                    <div class="alert alert-dismissible alert-light mx-auto">
+                        <h4 class="alert-heading text-center">No hay docentes registrados, aun...</h4>
+                        <p class="mb-0 text-center">Agrega al primer registro :D</p>
+                        <br>
+                        <div class="text-center">
+                            <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary mx-auto">Nuevo Registro</button>
+                        </div>
+                    </div>
+                <?php } ?>
 			</div>
 
 <?php include("../template/pie.php"); ?>

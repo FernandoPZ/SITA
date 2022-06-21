@@ -86,6 +86,9 @@ if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
                         }
                     ?>
                 </table>
+                <?php
+                    if($total_registro!= 0){
+                ?>
                 <div>
                     <ul class="pagination justify-content-end">
                         <?php
@@ -111,6 +114,12 @@ if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
                         <?php } ?>
                     </ul>
                 </div>
+                <?php }else{ ?>
+                    <div class="alert alert-dismissible alert-light mx-auto">
+                        <h4 class="alert-heading text-center">¡No hay usuarios!</h4>
+                        <p class="mb-0 text-center">Que raro, no deberias ver esto, contacta a un tecnico.</p>
+                    </div>
+                <?php } ?>
 			</div>
 
 <?php include("../template/pie.php"); ?>
