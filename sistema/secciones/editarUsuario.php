@@ -1,47 +1,54 @@
-<?php include("../template/cabecera.php"); ?>
+<?php include("../template/cabecera.php"); ?> <!-- Llama al encabezado -->
 
 <?php
-if($_SESSION['tipo'] != 1)
+if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 {
-    header("location: /SITA/sistema/index.php");
+    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal
 }
-
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 include "../config/conexion.php"; //Conexion con la base de datos
 ?>
 
 <?php
-if(empty($_GET['id']))
+if(empty($_GET['id'])) // Valida si la clave del usuario no esta vacia
 {
-    header('location: verUsuario.php');
-    mysqli_close($conexion);
+    header('location: verUsuario.php'); // Redirecciona a la lista de usuarios
+    mysqli_close($conexion); // Cierra la conexion con la bd
 }
-$iduser = $_GET['id'];
+$iduser = $_GET['id']; // Almacena la clave del usuario
 
-include "../config/conexion.php";
-$sql = mysqli_query($conexion,"SELECT u.cve_usuario, u.nombre, u.apellido1, u.apellido2, u.foto, u.usuario, u.pass, u.correo, (u.tipo) as idtipo, (r.tipo) as tipo FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipo_usu WHERE cve_usuario = $iduser");
-//mysqli_close($conexion);
-$result_sql = mysqli_num_rows($sql);
-
-if($result_sql == 0){
-    header('Location: verUsuario.php');
+include "../config/conexion.php"; //Realiza la conexion con la bd
+// Consulta todos los datos de la clave del usuario
+$sql = mysqli_query($conexion,"SELECT u.cve_usuario,
+                                      u.nombre,
+                                      u.apellido1,
+                                      u.apellido2,
+                                      u.foto,
+                                      u.usuario,
+                                      u.pass,
+                                      u.correo,
+                                      (u.tipo) as idtipo,
+                                      (r.tipo) as tipo
+                                      FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipo_usu WHERE cve_usuario = $iduser");
+$result_sql = mysqli_num_rows($sql); // Almacena la cantidad todal de registros
+if($result_sql == 0){ // Verifica que la cantidad no este vacia
+    header('Location: verUsuario.php'); // Redirecciona a la lista de usuarios
 }else{
     while ($data = mysqli_fetch_array($sql)){
-        $iduser = $data['cve_usuario'];
-        $idtipo = $data['idtipo'];
-        $tipo = $data['tipo'];
-        $nombre = $data['nombre'];
-        $apellido1 = $data['apellido1'];
-        $apellido2 = $data['apellido2'];
-        $fotoa = $data['foto'];
-        $usuario = $data['usuario'];
-        $correo = $data['correo'];
-
-        if($idtipo == 1){
+        $iduser = $data['cve_usuario']; // Guarda la clave del usuario
+        $idtipo = $data['idtipo']; // Guarda la clave del tipo de usuario
+        $tipo = $data['tipo']; // Guarda el nombre del tipo de usuario
+        $nombre = $data['nombre']; // Guarda el nombre del usuario
+        $apellido1 = $data['apellido1']; // Guarda el primer apellido del usuario
+        $apellido2 = $data['apellido2']; // Guarda el segundo apellido del usuario
+        $fotoa = $data['foto']; // Guarda el nombre de la fotografia del usuario
+        $usuario = $data['usuario']; // Guarda el ID del usuario
+        $correo = $data['correo']; // Guarda el correo del usuario
+        if($idtipo == 1){ // Si la clave del tipo de usuario es 1 entonces es administrador
             $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }else if($idtipo == 2){
+        }else if($idtipo == 2){ // Si la clave del tipo de usuario es 2 entonces es editor
             $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }else if($idtipo == 3){
+        }else if($idtipo == 3){ // Si la clave del tipo de usuario es 3 entonces es consultor
             $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
         }
     }
@@ -50,60 +57,55 @@ if($result_sql == 0){
 
 <?php
 switch($decision){
-
-    case "actualizar":
-        if(!empty($_POST))
+    case "actualizar": // Actualizar
+        if(!empty($_POST)) // Verifica que ningun campo este vacio
         {
-            $alert='';
-            if(empty($_POST['tipo'])
-            || empty($_POST['nombre'])
-            || empty($_POST['apellido1'])
-            || empty($_POST['apellido2'])
-            || empty($_POST['usuario'])
-            || empty($_POST['correo']))
+            $alert=''; // Alerta en blanco
+            if(empty($_POST['tipo']) // Tipo de usuario
+            || empty($_POST['nombre']) // Nombre del usuario
+            || empty($_POST['apellido1']) // Primer apellido del usuario
+            || empty($_POST['apellido2']) // Segundo apellido del usuario
+            || empty($_POST['usuario']) // ID del usuario
+            || empty($_POST['correo'])) // Correo del usuario
             {
                 $alert='
                 <div class="alert alert-dismissible alert-warning">
                     <strong>Se te olvida algo...</strong> debes de llenar los campos necesarios.
                 </div>
-                ';
+                '; // Alerta de que algun campo esta vacio
             }else{
-                $iduser = $_POST['cve_usuario'];
-                $tipo = $_POST['tipo'];
-                $nombre = $_POST['nombre'];
-                $apellido1 = $_POST['apellido1'];
-                $apellido2 = $_POST['apellido2'];
-                $foto = $_FILES['foto']['name']; //Foto
-                $usuario = $_POST['usuario'];
-                $pass = $_POST['pass'];
-                $correo = $_POST['correo'];
-
+                $iduser = $_POST['cve_usuario']; // Guarda la clave del usuario
+                $tipo = $_POST['tipo']; // Guarda el tipo de usuario
+                $nombre = $_POST['nombre']; // Guarda el nombre del usuario
+                $apellido1 = $_POST['apellido1']; // Guarda el primer apellido del usuario
+                $apellido2 = $_POST['apellido2']; // Guarda el segundo apellido del usuario
+                $foto = $_FILES['foto']['name']; // Guarda la fotografia del usuario
+                $usuario = $_POST['usuario']; // Guarda el ID del usuario
+                $pass = $_POST['pass']; // Guarda la contraseña del usuario
+                $correo = $_POST['correo']; // Guarda el correo del usuairo
                 // Asignacion de nombre unico a la foto
-                $fecha= new DateTime();
-                $nombreFoto=($foto!="")?$usuario."_".$fecha->getTimestamp()."_".$foto:"$fotoa";
-
-                $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE (usuario = '$usuario' AND cve_usuario != $iduser)");
-                $result_usu = mysqli_fetch_array($query);
-
-                $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE (correo = '$correo' AND cve_usuario != $iduser)");
-                $result_cor = mysqli_fetch_array($query);
-
-                if($result_usu > 0){
+                $fecha= new DateTime(); // Identifica la fecha actual
+                $nombreFoto=($foto!="")?$usuario."_".$fecha->getTimestamp()."_".$foto:"$fotoa"; // Cambio de nombre
+                $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE (usuario = '$usuario' AND cve_usuario != $iduser)"); // Verifica si el ID del usuario no coincide con su clave
+                $result_usu = mysqli_fetch_array($query); // Almacena los resultados totales
+                $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE (correo = '$correo' AND cve_usuario != $iduser)"); // Verifica si el correo del usuario no coincide con su clave
+                $result_cor = mysqli_fetch_array($query); // Almacena los resultados totales
+                if($result_usu > 0){ // Verifica que no haya coincidencias en el ID del usuario
                     $alert='
                     <div class="alert alert-dismissible alert-warning">
                         <strong>Oh vaya...</strong> el nombre de usuario introducido ya esta ocupado, escoge otro.
                     </div>
-                    ';
+                    '; // Alerta de que el ID del usuario esta en uso
                 }else{
-                    if($result_cor > 0){
+                    if($result_cor > 0){ // Verifica que no haya coincidencias en el correo del usuario
                         $alert='
                         <div class="alert alert-dismissible alert-warning">
                             <strong>Oh vaya...</strong> el correo introducido ya esta registrado, escoge otro.
                         </div>
-                        ';
+                        '; // Alerta de que el correo del usuario esta en uso
                     }else{
-                        if(empty($_POST['contra'])){
-                        
+                        if(empty($_POST['contra'])){ // Verifica si el campo de contraseña esta vacia
+                            // Actualiza cada campo, excepto la contraseña
                             $sql_update = mysqli_query($conexion, "UPDATE usuario SET tipo = '$tipo',
                                                                                       nombre = '$nombre',
                                                                                       apellido1 = '$apellido1',
@@ -117,20 +119,20 @@ switch($decision){
                                     <div class="alert alert-dismissible alert-success">
                                         <strong>Listo!</strong> El usuario se actualizó correctamente.
                                     </div>
-                                ';
-                                $archivoFoto=$_FILES["foto"]["tmp_name"];
+                                '; // Alerta que el usuario se actualizo correctamente
+                                $archivoFoto=$_FILES["foto"]["tmp_name"]; // Prepara el archivo subido
                                     if($archivoFoto!=""){
-                                        move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto);
+                                        move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la foto subida dentro del sistema
                                     }
                             }else{
                                 $alert='
                                     <div class="alert alert-dismissible alert-danger">
                                         <strong>Algo salio mal...</strong> El usuario no se pudo actualizar.
                                     </div>
-                                ';
+                                '; // Alerta que no se pudo actualizar al usuario
                             }
                         }else{
-
+                            // Actualiza todos los campos con la contraseña
                             $sql_update = mysqli_query($conexion, "UPDATE usuario SET tipo = '$tipo',
                                                                                       nombre = '$nombre',
                                                                                       apellido1 = '$apellido1',
@@ -140,13 +142,12 @@ switch($decision){
                                                                                       pass = md5('$contra'),
                                                                                       correo = '$correo'
                                                                                       WHERE cve_usuario = $iduser");
-                        
                             if($sql_update){
                                 $alert='
                                     <div class="alert alert-dismissible alert-success">
                                         <strong>Listo!</strong> El usuario se actualizó correctamente.
                                     </div>
-                                ';
+                                '; // Alerta que el usuario se actualizo correctamente
                                 $archivoFoto=$_FILES["foto"]["tmp_name"];
                                     if($archivoFoto!=""){
                                         move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto);
@@ -156,118 +157,59 @@ switch($decision){
                                     <div class="alert alert-dismissible alert-danger">
                                         <strong>Algo salio mal...</strong> El usuario no se pudo actualizar.
                                     </div>
-                                ';
+                                '; // Alerta que no se pudo actualizar al usuario
                             }
                         }
                     }
                 }
-                mysqli_close($conexion);
+                mysqli_close($conexion); // Cierra la conexion con la bd
             }
         }
     break;
-
-    case "cancelar":
-        header('Location:/SITA/sistema/secciones/verUsuario.php');
-        mysqli_close($conexion);
+    case "cancelar":  // Cancelar
+        header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de usuarios
+        mysqli_close($conexion); // Cierra la conexion con la bd
     break;
 }
 ?>
 
-<!-- inicio nuevo -->
-<title>SITA - Editar usuario</title>
+<?php
+if($iduser == 1) // Valida si el usuario a editar sea el master
+{
+    $restriccion = 'disabled=""'; // Desactiva el selector de tipo de usuario
+}else{
+    $restriccion = ''; // Activa el selector de tipo de usuario
+}
+?>
 
-			<div class="jumbotron">
-				<h1 class="display-3">Editar informacion del usuario</h1>
+<title>SITA - Editar usuario</title> <!-- Titulo de la pagina -->
+
+            <div class="jumbotron">
+                <h1 class="display-3">Editar informacion del usuario</h1>
                 <hr class="my-2">
                 <br>
-                <form action="" method="POST" enctype="multipart/form-data">
-                    <div class="card">
-                        <div class="card-header text-center">
-                            Llene el siguiente formulario
+                <?php
+                if($iduser == 1)
+                {
+                    if($_SESSION['cve_usuario'] == $iduser)
+                    {
+                        include "../config/edit_user_form.php";
+                    }else{ ?>
+                        <div class="alert alert-dismissible alert-warning mx-auto">
+                            <h4 class="alert-heading text-center">Oh, vaya...</h4>
+                            <p class="mb-0 text-center">No tienes permiso de editar este usuario</p>
                         </div>
-                        <div class="card-body">
-                                <div class="row">
-                                    <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>">
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" value="<?php echo $nombre; ?>" placeholder="Nombre(s)">
-                                    </div>
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Primer apellido</label>
-                                        <input type="text" class="form-control" name="apellido1" value="<?php echo $apellido1; ?>" placeholder="Primer apellido">
-                                    </div>
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Segundo apellido</label>
-                                        <input type="text" class="form-control" name="apellido2" value="<?php echo $apellido2; ?>" placeholder="Segundo apellido">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class = "form-group col-md-6 mb-3">
-                                        <label class="form-label mt-2">Usuario</label>
-                                        <input type="text" class="form-control" name="usuario" value="<?php echo $usuario; ?>" placeholder="usuario">
-                                    </div>
-                                    <div class = "form-group col-md-6 mb-3">
-                                        <label class="form-label mt-2">Tipo de usuario</label>
-                                        <?php
-                                            include "../config/conexion.php";
-                                            $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
-                                            mysqli_close($conexion);
-                                            $result_tipou = mysqli_num_rows($query_tipou);
-                                        ?>
-                                        <select class="form-select" name="tipo" id="tipo">
-                                            <?php
-                                                echo $option;
-                                                if($result_tipou > 0)
-                                                {
-                                                    while ($tipou = mysqli_fetch_array($query_tipou)){
-                                                        ?>
-                                                        <option value="" hidden>Selecciona una opción</option>
-                                                        <option value="<?php echo $tipou["cve_tipo_usu"]; ?>"><?php echo $tipou["tipo"]; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class = "form-group col-md-5">
-                                        <label class="form-label mt-2">Fotografia</label>
-                                        <input type="file" class="form-control" name="foto" id="foto">
-                                        <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografia</p>
-                                        <label class="form-label mt-2">Correo electronico</label>
-                                        <input type="text" class="form-control" name="correo" value="<?php echo $correo; ?>" placeholder="ejemplo@correo.com">
-                                        <label class="form-label mt-2">Escriba su nueva contraseña</label>
-                                        <input type="password" class="form-control" name="pass" placeholder="*******">
-                                        <p class="text-secondary">Dejar en blanco si no quiere cambiar de contraseña</p>
-                                    </div>
-                                    <div class = "form-group col-md-2 mx-auto">
-                                        <div class="m-0 vh-50 row justify-content-center align-items-center">
-                                            <div class="col-auto">
-                                                <p>Foto actual: </p>
-                                                <output><img src="/SITA/sistema/files/upload/fotos/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></output>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class = "form-group col-md-2 mx-auto">
-                                        <div class="m-0 vh-50 row justify-content-center align-items-center">
-                                            <div class="col-auto">
-                                                <p>Nueva foto: </p>
-                                                <output id="previsual"></output>
-                                                <script> <?php include("../js/scripts.js"); ?> </script>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <div class="text-center">
-                                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div>
-                                <button type="submit" name="decision" value="actualizar" class="btn btn-primary" style="float: left;">Actualizar</button>
-                                <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: right;">Cancelar</button>
-                            </div>
-                        </div>
-                    </div>
-                </form>
+                    <?php }
+                }else{
+                    include "../config/edit_user_form.php";
+                }
+                ?>
             </div>
-<!-- fin nuevo -->
 
 <?php include("../template/pie.php"); ?>
+
+<!--
+--- Pagina[verUsuarios] (Prototipo) ---
+Codificacion final -- [21/06/2022 (10:20 hrs)]
+Comentario final ---- [21/06/2022 (10:20 hrs)]
+-->
