@@ -30,7 +30,10 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
                 $_SESSION['usuario'] = $data['usuario']; // Id del usuario
                 $_SESSION['foto'] = $data['foto']; // El nombre de la fotografia
                 $_SESSION['activo'] = $data['activo']; // Identificador del estado de la cuenta (Activo o desactivado[Borrado])
-
+                if($_SESSION['activo'] == 0){
+                    $alert2 = "El usuario y/o la contraseña son incorrectos"; // Alerta de usuario y/o contraseña incorrectos
+                    session_destroy(); // Destruye la sesion creada para iniciar una nueva
+                }
                 header('location: sistema/index.php'); // Redirecciona a la pagina principal del sistema
             } else {
                 $alert2 = "El usuario y/o la contraseña son incorrectos"; // Alerta de usuario y/o contraseña incorrectos
