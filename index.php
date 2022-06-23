@@ -24,17 +24,18 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
             if($result > 0) // Valida si hay coincidencias
             {
                 $data = mysqli_fetch_array($query); // Guarda la informacion dentro de un arreglo para futuras consultas
-                $_SESSION['active'] = true; // Validacion de la sesion activa
-                $_SESSION['cve_usuario'] = $data['cve_usuario']; // Clave principal del usuario
-                $_SESSION['tipo'] = $data['tipo']; // Tipo del usuario
-                $_SESSION['usuario'] = $data['usuario']; // Id del usuario
-                $_SESSION['foto'] = $data['foto']; // El nombre de la fotografia
-                $_SESSION['activo'] = $data['activo']; // Identificador del estado de la cuenta (Activo o desactivado[Borrado])
-                if($_SESSION['activo'] == 0){
+                if($data['activo'] != 0){ // Valida si el usuario este activo
+                    $_SESSION['active'] = true; // Validacion de la sesion activa
+                    $_SESSION['cve_usuario'] = $data['cve_usuario']; // Clave principal del usuario
+                    $_SESSION['tipo'] = $data['tipo']; // Tipo del usuario
+                    $_SESSION['usuario'] = $data['usuario']; // Id del usuario
+                    $_SESSION['foto'] = $data['foto']; // El nombre de la fotografia
+                    $_SESSION['activo'] = $data['activo']; // Identificador del estado de la cuenta (Activo o desactivado[Borrado])
+                    header('location: sistema/index.php'); // Redirecciona a la pagina principal del sistema
+                }else{
                     $alert2 = "El usuario y/o la contraseña son incorrectos"; // Alerta de usuario y/o contraseña incorrectos
                     session_destroy(); // Destruye la sesion creada para iniciar una nueva
                 }
-                header('location: sistema/index.php'); // Redirecciona a la pagina principal del sistema
             } else {
                 $alert2 = "El usuario y/o la contraseña son incorrectos"; // Alerta de usuario y/o contraseña incorrectos
                 session_destroy(); // Destruye la sesion creada para iniciar una nueva
@@ -91,6 +92,6 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
 
 <!--
 --- Login (Prototipo) ---
-Codificacion final -- [21/06/2022 (13:16 hrs)]
-Comentario final ---- [21/06/2022 (13:16 hrs)]
+Codificacion final -- [23/06/2022 (12:47 hrs)]
+Comentario final ---- [23/06/2022 (12:47 hrs)]
 -->
