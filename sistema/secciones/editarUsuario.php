@@ -209,7 +209,7 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
 <?php include("../template/pie.php"); ?>
 
 <!--
---- Pagina[verUsuarios] (Prototipo) ---
-Codificacion final -- [21/06/2022 (10:20 hrs)]
-Comentario final ---- [21/06/2022 (10:20 hrs)]
+--- Pagina[editarUsuarios] (Prototipo) ---
+Codificacion final -- [21/06/2022 (13:50 hrs)]
+Comentario final ---- [21/06/2022 (13:50 hrs)]
 -->
