@@ -1,103 +1,54 @@
-<?php
-include("../template/cabecera.php");
-include ("../config/conexion.php");
-?>
-<?php $zip=(isset($_POST['zip']))?$_POST['zip']:""; ?>
+<?php include("../template/cabecera.php"); ?>
 
-<form action="" method="POST" class="needs-validation" novalidate>
-  <div class="row">
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom01">First name</label>
-      <input type="text" class="form-control" id="validationCustom01" placeholder="First name" value="Mark" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationCustom02">Last name</label>
-      <input type="text" class="form-control" id="validationCustom02" placeholder="Last name" value="Otto" required>
-      <div class="valid-feedback">
-        Looks good!
-      </div>
-    </div>
-    <div class="col-md-4 mb-3">
-      <label for="validationCustomUsername">Username</label>
-      <div class="input-group">
-        <div class="input-group-prepend">
-          <span class="input-group-text" id="inputGroupPrepend">👤</span>
-        </div>
-        <input type="text" class="form-control" id="validationCustomUsername" placeholder="Username" aria-describedby="inputGroupPrepend" required>
-        <div class="invalid-feedback">
-          Please choose a username.
-        </div>
-      </div>
-    </div>
-  </div>
-  <div class="form-row">
-    <div class="col-md-6 mb-3">
-      <label for="validationCustom03">City</label>
-      <input type="text" class="form-control" id="validationCustom03" placeholder="City" required>
-      <div class="invalid-feedback">
-        Please provide a valid city.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom04">State</label>
-      <input type="text" class="form-control" id="validationCustom04" placeholder="State" required>
-      <div class="invalid-feedback">
-        Please provide a valid state.
-      </div>
-    </div>
-    <div class="col-md-3 mb-3">
-      <label for="validationCustom05">Zip</label>
-      <input type="text" class="form-control" id="zip" name="zip" placeholder="Zip" value="<?php echo isset($_POST['zip']) ? $_POST['zip'] : '';?>" required>
-      <?php if($zip == 123){ ?>
-        <div class="invalid-feedback">
-          El zip se repite
-        </div>
-      <?php } ?>
-      <div class="invalid-feedback">
-        Please provide a valid zip.
-      </div>
-    </div>
-  </div>
-  <div class="form-group">
-    <div class="form-check">
-      <input class="form-check-input" type="checkbox" value="" id="invalidCheck" required>
-      <label class="form-check-label" for="invalidCheck">
-        Agree to terms and conditions
-      </label>
-      <div class="invalid-feedback">
-        You must agree before submitting.
-      </div>
-    </div>
-  </div>
-  <button class="btn btn-primary" type="submit">Submit form</button>
-</form>
-<?php echo 'valor de zip: '; ?>
-<?php echo $zip; ?>
-<script>
-// Example starter JavaScript for disabling form submissions if there are invalid fields
-(function() {
-  'use strict';
-  window.addEventListener('load', function() {
-    // Fetch all the forms we want to apply custom Bootstrap validation styles to
-    var forms = document.getElementsByClassName('needs-validation');
-    // Loop over them and prevent submission
-    var validation = Array.prototype.filter.call(forms, function(form) {
-      form.addEventListener('submit', function(event) {
-        if (form.checkValidity() === false) {
-          event.preventDefault();
-          event.stopPropagation();
-        }
-        form.classList.add('was-validated');
-      }, false);
-    });
-  }, false);
-})();
-</script>
-                </P>
-	</div>
-</div>
+<?php include ("../config/conexion.php"); ?>
+
+++++++ Este apartado esta pendiente ++++++
+
+<title>SITA - Mi cuenta</title> <!-- Nombre de la pagina -->
+
+			<div class="jumbotron">
+				<h1 class="display-3">Mi cuenta</h1>
+				<hr class="my-2">
+			</div>
+            <div class="container">
+                <div class="row">
+                    <?php
+                    if($iduser != 1) // Valida que no se intente eliminar el master
+                    {?>
+                    <div class="col-md-7 mx-auto">
+                        <br>
+                        <div class="card">
+                            <div class="card-header text-center">
+                                ¿Esta seguro de eliminar este usuario?
+                            </div>
+                            <div class="card-body">
+                                <div class="text-center">
+                                    <div><?php echo $alert; ?></div> <!-- Advertencia de auto-eliminacion -->
+                                    <p><img src="/SITA/sistema/files/upload/fotos/<?php echo $foto; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
+                                    <p><strong>Usuario: </strong>[<span><em><?php echo $usuario; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
+                                    <p><strong>Tipo: </strong>[<span><em><?php echo $tipo; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
+                                    <form method="post" action="">
+                                        <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>"> <!-- Verificacion de la clave del usuario -->
+                                        <button type="submit" name="decision" value="eliminar" class="btn btn-danger" style="float: left;">Eliminar</button> <!-- Desactiva al usuario -->
+                                        <button type="submit" name="decision" value="volver" class="btn btn-primary" style="float: right;">Volver</button> <!-- Regresa a la lista de usuarios -->
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php }else{ ?>
+                        <div class="col-md-5 mx-auto">
+                        </br>
+                            <div class="alert alert-dismissible alert-warning"> <!-- Alerta de que el usuario no se puede eliminar -->
+                                <h4 class="alert-heading">Lo sentimos</h4>
+                                <p class="mb-0"> Este usuario no se puede eliminar </p>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                        <button type="submit" name="decision" value="volver" class="btn btn-primary">Volver</button>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
 
 <?php include("../template/pie.php"); ?>

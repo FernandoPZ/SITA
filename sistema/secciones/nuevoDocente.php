@@ -1,238 +1,156 @@
 <?php include("../template/cabecera.php"); ?> <!-- Cabecera de la pagina -->
 
 <?php
-if($_SESSION['tipo'] == 4) //Validacion de tipo de usuario
+if($_SESSION['tipo'] == 3) // Validacion de tipo de usuario
 {
     header("location: /SITA/sistema/index.php"); //Regresa a la pagina principal
 }
-
-include "../config/conexion.php"; //Conexion a la base de datos
-
-//Validacion de las variables
-//Seccion Docente
-$tipou=(isset($_POST['tipou']))?$_POST['tipou']:""; //tipo de usuario
-$nombre=(isset($_POST['nombre']))?$_POST['nombre']:""; //Nombre
-$apellido1=(isset($_POST['apellido1']))?$_POST['apellido1']:""; //Primer apellido
-$apellido2=(isset($_POST['apellido2']))?$_POST['apellido2']:""; //Segundo apellido
-$foto=(isset($_FILES['foto']['name']))?$_FILES['foto']['name']:""; //Foto
-$numEmpleado=(isset($_POST['numEmpleado']))?$_POST['numEmpleado']:""; //Numero de empleado
-$instiActual=(isset($_POST['instiActual']))?$_POST['instiActual']:""; //Instituto
-$puesto=(isset($_POST['puesto']))?$_POST['puesto']:""; //Puesto
-//Seccion Generales
-$email=(isset($_POST['email']))?$_POST['email']:""; //Correo electronico
-$fecha_nac=(isset($_POST['fecha_nac']))?$_POST['fecha_nac']:""; //Fecha de nacimiento
-$estado_civil=(isset($_POST['estado_civil']))?$_POST['estado_civil']:""; //Estado civil
-$genero=(isset($_POST['genero']))?$_POST['genero']:""; //Genero
-$curp=(isset($_POST['curp']))?$_POST['curp']:""; //Curp
-$curp_doc=(isset($_FILES['curp_doc']['name']))?$_FILES['curp_doc']['name']:""; //Documento del curp
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-$rfc_doc=(isset($_FILES['rfc_doc']['name']))?$_FILES['rfc_doc']['name']:""; //Documento del rfc
-$iste=(isset($_POST['iste']))?$_POST['iste']:""; //Numero de seguridad social
-$num_infonavit=(isset($_POST['num_infonavit']))?$_POST['num_infonavit']:""; //Numero de infonavit
-$disponibilidad=(isset($_POST['disponibilidad']))?$_POST['disponibilidad']:""; //Disponibilidad
-$fecha_vig_pas=(isset($_POST['fecha_vig_pas']))?$_POST['fecha_vig_pas']:""; //Fecha de vigencia del pasaporte
-//Personales
-$tipoc=(isset($_POST['tipoc']))?$_POST['tipoc']:""; //Tipo de calle
-$calle=(isset($_POST['calle']))?$_POST['calle']:""; //Nombre de calle
-$num_ext=(isset($_POST['num_ext']))?$_POST['num_ext']:""; //Numero exterior
-$num_int=(isset($_POST['num_int']))?$_POST['num_int']:""; //Numero interior
-$edificio=(isset($_POST['edificio']))?$_POST['edificio']:""; //Nombre o numero de edificio
-$colonia=(isset($_POST['colonia']))?$_POST['colonia']:""; //Nombre de colonia
-$codigo_postal=(isset($_POST['codigo_postal']))?$_POST['codigo_postal']:""; //Codigo postal
-$tipo_linea=(isset($_POST['tipo_linea']))?$_POST['tipo_linea']:""; //Tipo de linea telefonica
-$telefono=(isset($_POST['telefono']))?$_POST['telefono']:""; //Numero de telefono
-//Experiencias
-$act_puesto=(isset($_POST['act_puesto']))?$_POST['act_puesto']:""; //Puesto actual
-$institucion=(isset($_POST['institucion']))?$_POST['institucion']:""; //Intitucion
-$periodo=(isset($_POST['periodo']))?$_POST['periodo']:""; //Periodo
-$intereses=(isset($_POST['intereses']))?$_POST['intereses']:""; //Intereses
-//Formacion
-$asignaturas=(isset($_POST['asignaturas']))?$_POST['asignaturas']:""; //Lista de asignaturas
-$periodo_estudio=(isset($_POST['periodo_estudio']))?$_POST['periodo_estudio']:""; //Periodo de estudio
-$hras_teoricas=(isset($_POST['hras_teoricas']))?$_POST['hras_teoricas']:""; //Horas teoricas impartidas
-$hras_practicas=(isset($_POST['hras_practicas']))?$_POST['hras_practicas']:""; //rfc
-$periodo_impartido=(isset($_POST['periodo_impartido']))?$_POST['periodo_impartido']:""; //Periodo impartido
-//Logros
-$nombre_logro=(isset($_POST['nombre_logro']))?$_POST['nombre_logro']:""; //Nombre del logro
-$fecha_logro=(isset($_POST['fecha_logro']))?$_POST['fecha_logro']:""; //Fecha del logro
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-$rfc=(isset($_POST['rfc']))?$_POST['rfc']:""; //rfc
-
-
-$decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
-
+$decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
+include "../config/conexion.php"; // Realiza la coneccion de la bd
 ?>
 
 <?php
 switch($decision){
-
-    case "guardar":
-
-        // Asignacion de nombre unico a la foto
-        $fecha= new DateTime();
-        //$nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$_FILES["foto"]["name"]:"default.png";
-        $nombreFoto=($foto!="")?$numEmpleado."_".$fecha->getTimestamp()."_".$foto:"default.png";
-
-        $archivoFoto=$_FILES["foto"]["tmp_name"];
-
-        if($archivoFoto!=""){
-            move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto);
-        }
-        
-        echo "-Tipo de usuario:( $tipou )-";
-        echo "-Nombre:( $nombre )-";
-        echo "-Foto:( $nombreFoto )-";
-        echo "-Foto:( $foto )-";
-
-        break;
-
-        if(!empty($_POST))
+    case "guardar": // Guargar
+        if(!empty($_POST)) // Valida si los campos no esten vacios
         {
             $alert='';
-            if(empty($_POST['usuario']) || empty($_POST['tipou']) || empty($_POST['contra01']) || empty($_POST['contra02']))
+            // Tabla docente
+            if(empty($_POST['puesto']) // puesto del docente
+            || empty($_POST['nombre']) // Nombre del docente
+            || empty($_POST['apellido1']) // Primer apellido del docente
+            || empty($_POST['apellido2']) // Segundo apellido del docente
+            || empty($_FILES['foto']) // Foto del docente
+            || empty($_POST['institucion']) // Nombre de la institucion
+            || empty($_POST['tipo_contratacion']) // Tipo de contratacion
+            || empty($_POST['fecha_ingreso']) // Fecha de ingreso a la institucion
+            || empty($_POST['num_empleado']) // Numero de empleado asignado
+            // Tabla informacion
+            || empty($_POST['fecha_nac']) // Fecha de nacimiento
+            || empty($_FILES['doc_nac']) // Acta de nacimiento
+            || empty($_POST['genero']) // Genero
+            || empty($_POST['estado_civil']) // Estado civil
+            || empty($_POST['nacionalidad']) // Nacionalidad
+            || empty($_POST['curp']) // Curp
+            || empty($_FILES['doc_curp']) // Documento del curp
+            || empty($_POST['rfc']) // RFC
+            || empty($_FILES['doc_rfc']) // Documento del rfc
+            || empty($_POST['nss']) // Numero de seguridad social
+            // Tabla contacto
+            || empty($_POST['correo_ins']) // Correo institucional
+            || empty($_POST['correo_per']) // Correo personal
+            || empty($_POST['telefono']) // Numero de telefono
+            // Tabla domicilio
+            || empty($_POST['calle']) // Nombre del docente
+            || empty($_POST['num_ext']) // Primer apellido del docente
+            || empty($_POST['num_int']) // Segundo apellido del docente
+            || empty($_POST['codigo_postal']) // Nombre de la institucion
+            || empty($_POST['colonia']) // Tipo de contratacion
+            || empty($_POST['municipio']) // Fecha de ingreso a la institucion
+            || empty($_POST['ciudad']) // Numero de empleado asignado
+            || empty($_POST['estado']) // Numero de empleado asignado
+            || empty($_POST['pais']) // Numero de empleado asignado
+            || empty($_FILES['doc_dom']) // Foto del docente
+            // Tabla viaje
+            || empty($_POST['disp_viaje']) // Correo institucional
+            || empty($_POST['num_pasaporte']) // Correo personal
+            || empty($_POST['fecha_ven_pas'])) // Numero de telefono
             {
-                $alert='
+                $alert=' 
                 <div class="alert alert-dismissible alert-warning">
                     <strong>Se te olvida algo...</strong> debes de llenar todos los campos.
                 </div>
-                ';
+                '; // Alerta de algun campo vacio
             }else{
-                $usuario = $_POST['usuario'];
-                $tipou = $_POST['tipou'];
-                $contra1 = $_POST['contra01'];
-                $contra2 = $_POST['contra02'];
-
-                $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$usuario'");
-                $result = mysqli_fetch_array($query);
-                
-                //
-                $sentenciaSQL= $conexion->prepare("INSERT INTO elementos(nombre,imagen) VALUES (:nombre,:imagen);");
-                $sentenciaSQL->bindParam(':nombre',$txtNombre);
-                
-                $fecha= new DateTime();
-                $nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$_FILES["foto"]["name"]:"imagen.jpg";
-        
-                $archivoFoto=$_FILES["foto"]["tmp_name"];
-        
-                if($archivoFoto!=""){
-                    move_uploaded_file($archivoFoto,"../../img/".$nombreFoto);
-                }
-        
-                $sentenciaSQL->bindParam(':imagen',$nombreFoto);
-                $sentenciaSQL->execute();
-                //
-
-                if($result > 0){
+                //Tabla docente
+                $puesto = $_POST['puesto']; // Guarda el tipo de usuario
+                $nombre = $_POST['nombre']; // Guarda el nombre del usuario
+                $apellido1 = $_POST['apellido1']; // Guarda el primer apellido del usuario
+                $apellido2 = $_POST['apellido2']; // Guarda el segundo apellido del usuario
+                $foto = $_FILES['foto']['name']; // Guarda la foto del usuario
+                $institucion = $_POST['institucion']; // Guarda el nombre de la institucion
+                $tipo_contratacion = $_POST['tipo_contratacion']; // Guarda el tipo de contratacion
+                $fecha_ingreso = $_POST['fecha_ingreso']; // Guarda la fecha de ingreso
+                $num_empleado = $_POST['num_empleado']; // Guarda el numero de empleado
+                // Tabla domicilio
+                // Asignacion de nombre unico a la foto
+                $fecha= new DateTime(); // Determina la fecha actual
+                $nombreFoto=($foto!="")?$num_empleado."_".$fecha->getTimestamp()."_".$foto:"default.png"; // Nuevo nombre
+                $query = mysqli_query($conexion,"SELECT * FROM docente WHERE num_empleado = '$num_empleado'"); // Verifica que el usuario introducido este en la bd
+                $result = mysqli_fetch_array($query); // Almacena cuantas coincidencias existen
+                if($result > 0){ // Si hay alguna coincidencia con el numero de empleado, muestra la alerta
                     $alert='
                     <div class="alert alert-dismissible alert-warning">
-                        <strong>Oh vaya...</strong> el nombre de usuario introducido ya esta ocupado, escoge otro.
+                        <strong>Oh vaya...</strong> el numero de empleado introducido ya esta registrado.
                     </div>
-                    ';
+                    '; // Alerta de coincidencia de usuario
                 }else{
-                    if($contra1 != $contra2){
+                    //$query_insert = mysqli_query($conexion,"INSERT INTO docente(puesto,nombre,apellido1,apellido2,foto,institucion,tipo_contratacion,fecha_ingreso,num_empleado)
+                    //                                                    VALUES ('$puesto','$nombre','$apellido1','$apellido2','$nombreFoto','$institucion','$tipo_contratacion','$fecha_ingreso','$num_empleado')");
+                    if($query_insert){
                         $alert='
-                        <div class="alert alert-dismissible alert-danger">
-                            <strong>Oh vaya...</strong> las contraseñas no coinciden.
-                        </div>
-                        ';
+                            <div class="alert alert-dismissible alert-success">
+                                <strong>Listo!</strong> El usuario se guardo correctamente.
+                            </div>
+                        '; // Alerta de que se guardo correctamente
+                        //$archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
+                        //if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                        //    move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
+                        //}
                     }else{
-                        $query_insert = mysqli_query($conexion,"INSERT INTO usuario(tipo,usuario,pass,activo) VALUES ('$tipou','$usuario',md5('$contra1'),1)");
-                        if($query_insert){
-                            $alert='
-                                <div class="alert alert-dismissible alert-success">
-                                    <strong>Listo!</strong> El usuario se guardo correctamente.
-                                </div>
-                            ';
-                        }else{
-                            $alert='
-                                <div class="alert alert-dismissible alert-danger">
-                                    <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
-                                </div>
-                            ';
-                        }
+                        $alert='
+                            <div class="alert alert-dismissible alert-danger">
+                                <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                            </div>
+                        '; // Alerta de algun problema al guardar el registro
                     }
                 }
             }
-            mysqli_close($conexion);
         }
+        mysqli_close($conexion); // Cierra conexion con la bd
     break;
-
-    case "cancelar":
-        header('Location:/SITA/sistema/secciones/verDocente.php');
-        mysqli_close($conexion);
+    case "cancelar": // Cancelar
+        header('Location:/SITA/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
+        mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
 ?>
 
-<title>SITA - Registrar docente</title>
+<title>SITA - Registrar docente</title> <!-- Nombre de la pagina --> 
 
-			<div class="jumbotron">
-				<h1 class="display-3">Registrar nuevo docente</h1>
+            <div class="jumbotron">
+                <h1 class="display-3">Registrar nuevo docente</h1>
                 <hr class="my-2">
-                <br>
-                <form action="" method="POST" enctype="multipart/form-data">
-
+                <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <ul class="nav nav-tabs">
                         <li class="nav-item">
                             <a class="nav-link active" data-bs-toggle="tab" href="#docente">Docente</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#generales">Generales</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#informacion">Informacion</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#personales">Personales</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#contacto">Contacto</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#experiencias">Experiencias</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#domicilio">Domicilio</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#formacion">Formacion</a> <!-- boton del tab -->
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#logros">Logros</a> <!-- boton del tab -->
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#premios">Premios</a> <!-- boton del tab -->
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#publicaciones">Publicaciones</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#viaje">Viaje</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#documentos">Documentos</a> <!-- boton del tab -->
                         </li>
                     </ul>
                     <div id="myTabContent" class="tab-content"> <!-- Tablas de contenido -->
-                        <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
-                        <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos primcipales -->
+                        <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
+                        <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos principales -->
                             <div class="card">
                                 <div class="card-header text-center">
                                     No deje campos vacios
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Tipo</label>
-                                        <?php
-                                            include "../config/conexion.php";
-                                            $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario");
-                                            mysqli_close($conexion);
-                                            $result_tipou = mysqli_num_rows($query_tipou);
-                                        ?>
-                                        <select class="form-select" name="tipou" id="tipou">
-                                            <?php
-                                                if($result_tipou > 0)
-                                                {
-                                                    while ($tipou = mysqli_fetch_array($query_tipou)){
-                                                        ?>
-                                                        <option value="" hidden>Selecciona una opción</option>
-                                                        <option value="<?php echo $tipou["cve_tipou"]; ?>"><?php echo $tipou["tipo"]; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                            ?>
-                                        </select>
                                         <label class="form-label mt-2">Nombre o nombres</label>
                                         <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre(s)">
                                         <label class="form-label mt-2">Primer apellido</label>
@@ -242,131 +160,35 @@ switch($decision){
                                         <label class="form-label mt-2">Fotografia</label>
                                         <input type="file" class="form-control" name="foto" id="foto">
                                         <output id="previsual"></output>
-                                        <script>
-                                            function archivo(evt) {
-                                                var foto = evt.target.files; // Espacio donde se sube la imagen
-                                                for (var i = 0, f; f = foto[i]; i++) { // Obtenemos la imagen del campo "foto"
-                                                if (!f.type.match('image.*')) { //Solo admitimos imágenes.
-                                                    continue;
-                                                }
-                                                var reader = new FileReader();
-                                                reader.onload = (function(theFile) {
-                                                    return function(e) {
-                                                    document.getElementById("previsual").innerHTML = ['<img class="img-rounded" height=100px src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''); // Insertamos la imagen
-                                                    };
-                                                })(f);
-                                                reader.readAsDataURL(f);
-                                                }
-                                            }
-                                            document.getElementById('foto').addEventListener('change', archivo, false);
-                                        </script>
+                                        <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
+                                        <label class="form-label mt-2">Institucion</label>
+                                        <input type="text" class="form-control" name="institucion" id="institucion" placeholder="Nombre de la institucion">
+                                        <label class="form-label mt-2">Tipo de contratacion</label>
+                                        <input type="text" class="form-control" name="tipo_contratacion" id="tipo_contratacion" placeholder="Nombre de la institucion">
+                                        <label class="form-label mt-2">Fecha de ingreso</label>
+                                        <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso">
                                         <label class="form-label mt-2">Numero de empleado</label>
-                                        <input type="text" class="form-control" name="numEmpleado" id="numEmpleado" placeholder="xxxxxxxxx">
-                                        <label class="form-label mt-2">Institucion actual</label>
-                                        <input type="text" class="form-control" name="instiActual" placeholder="Nombre de la institucion">
+                                        <input type="text" class="form-control" name="num_empleado" id="num_empleado" placeholder="Numero de 10 digitos">
                                         <label class="form-label mt-2">Puesto</label>
-                                        <input type="text" class="form-control" name="puesto" placeholder="Nombre del puesto">
-                                    </div>
-                                    <div class="text-center">
-                                        <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="generales">
-                            <div class="card">
-                                <div class="card-header text-center">
-                                    No deje campos vacios
-                                </div>
-                                <div class="card-body">
-                                    <div class = "form-group">
-                                        <label class="form-label mt-2">Correo electronico</label>
-                                        <input type="email" class="form-control" name="email" id="email" placeholder="ejemplo@correo.com">
-                                        <label class="form-label mt-2">fecha de nacimiento</label>
-                                        <input type="date" class="form-control" name="fecha_nac" id="fecha_nac">
-                                        <label class="form-label mt-2">Estado civil</label>
-                                        <select class="form-select" name="estado_civil" id="estado_civil">
-                                            <option value="" hidden>Selecciona una opción</option>
-                                            <option value="soltero">Soltero</option>
-                                            <option value="casado">Casado</option>
-                                            <option value="divorciado">Divorciado</option>
-                                            <option value="union_libre">Union libre</option>
-                                        </select>
-                                        <label class="form-label mt-2">Genero</label>
-                                        <select class="form-select" name="genero" id="genero">
-                                            <option value="" hidden>Selecciona una opción</option>
-                                            <option value="femenino">Femenino</option>
-                                            <option value="masculino">Masculino</option>
-                                            <option value="otro">Otro</option>
-                                        </select>
-                                        <label class="form-label mt-2">CURP</label>
-                                        <input type="text" class="form-control" name="curp" id="curp" placeholder="18 caracteres">
-                                        <label class="form-label mt-2">Documento del Curp</label>
-                                        <input type="file" class="form-control" name="curp_doc" id="curp_doc">
-                                        <label class="form-label mt-2">RFC</label>
-                                        <input type="text" class="form-control" name="rfc" id="rfc" placeholder="10 caracteres">
-                                        <label class="form-label mt-2">Documento del RFC</label>
-                                        <input type="file" class="form-control" name="rfc_doc" id="rfc_doc">
-                                        <label class="form-label mt-2">Numero de seguro social</label>
-                                        <input type="text" class="form-control" name="iste" id="iste" placeholder="10 caracteres">
-                                        <label class="form-label mt-2">Numero de infonavit</label>
-                                        <input type="text" class="form-control" name="num_infonavit" id="num_infonavit" placeholder="10 caracteres">
-                                        <label class="form-label mt-2">disponibilidad</label>
-                                        <input type="text" class="form-control" name="disponibilidad" id="disponibilidad" placeholder="pendiente">
-                                        <label class="form-label mt-2">fecha de vigencial del pasaporte</label>
-                                        <input type="date" class="form-control" name="fecha_vig_pas" id="fecha_vig_pas">
-                                    </div>
-                                    <div class="text-center">
-                                        <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="personales">
-                            <div class="card">
-                                <div class="card-header text-center">
-                                    No deje campos vacios
-                                </div>
-                                <div class="card-body">
-                                    <div class = "form-group">
-                                        <label class="form-label mt-2">Tipo de calle</label>
                                         <?php
                                             include "../config/conexion.php";
-                                            $query_tipoc = mysqli_query($conexion,"SELECT * FROM tipo_calle");
+                                            $query_puesto = mysqli_query($conexion,"SELECT * FROM puesto");
                                             mysqli_close($conexion);
-                                            $result_tipoc = mysqli_num_rows($query_tipoc);
+                                            $result_puesto = mysqli_num_rows($query_puesto);
                                         ?>
-                                        <select class="form-select" name="tipoc" id="tipoc">
+                                        <select class="form-select" name="puesto" id="puesto">
                                             <?php
-                                                if($result_tipoc > 0)
+                                                if($result_puesto > 0)
                                                 {
-                                                    while ($tipoc = mysqli_fetch_array($query_tipoc)){
+                                                    while ($puesto = mysqli_fetch_array($query_puesto)){
                                                         ?>
                                                         <option value="" hidden>Selecciona una opción</option>
-                                                        <option value="<?php echo $tipou["cve_tipoc"]; ?>"><?php echo $tipoc["nombre"]; ?></option>
+                                                        <option value="<?php echo $puesto["cve_puesto"]; ?>"><?php echo $puesto["puesto"]; ?></option>
                                                         <?php
                                                     }
                                                 }
                                             ?>
                                         </select>
-                                        <label class="form-label mt-2">Calle</label>
-                                        <input type="text" class="form-control" name="calle" id="calle" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Numero exterior</label>
-                                        <input type="text" class="form-control" name="num_ext" id="num_ext" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Numero interior</label>
-                                        <input type="text" class="form-control" name="num_int" id="num_int" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Edificio</label>
-                                        <input type="text" class="form-control" name="edificio" id="edificio" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Colonia</label>
-                                        <input type="text" class="form-control" name="colonia" id="colonia" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Codigo postal</label>
-                                        <input type="text" class="form-control" name="codigo_postal" id="codigo_postal" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Tipo de linea telefonica</label>
-                                        <input type="text" class="form-control" name="tipo_linea" id="tipo_linea" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Telefono</label>
-                                        <input type="text" class="form-control" name="telefono" id="telefono" placeholder="10 digitos">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -375,21 +197,15 @@ switch($decision){
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="experiencias">
+                        <div class="tab-pane fade" id="informacion"> <!-- Tabla de Informacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Formulario pendiente
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Puesto actual</label>
-                                        <input type="text" class="form-control" name="act_puesto" id="act_puesto" placeholder="El puesto actual que ejerce">
-                                        <label class="form-label mt-2">Nombre del instituto</label>
-                                        <input type="text" class="form-control" name="institucion" id="institucion" placeholder="El nombre de la institucion">
-                                        <label class="form-label mt-2">Periodo</label>
-                                        <input type="text" class="form-control" name="periodo" id="periodo" placeholder="El periodo que curza">
-                                        <label class="form-label mt-2">Intereses</label>
-                                        <input type="text" class="form-control" name="intereses" id="intereses" placeholder="Mencione que intereses tiene">
+                                        <label class="form-label mt-2">Nombre del campo</label>
+                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -398,23 +214,15 @@ switch($decision){
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="formacion">
+                        <div class="tab-pane fade" id="contacto"> <!-- Tabla de Contacto -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Formulario pendiente
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Asignaturas</label>
-                                        <input type="text" class="form-control" name="asignaturas" id="asignaturas" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Periodo de estudio</label>
-                                        <input type="text" class="form-control" name="periodo_estudio" id="periodo_estudio" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Horas teoricas</label>
-                                        <input type="text" class="form-control" name="hras_teoricas" id="hras_teoricas" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Horas practicas</label>
-                                        <input type="text" class="form-control" name="hras_practicas" id="hras_practicas" placeholder="ejemplo de campo">
-                                        <label class="form-label mt-2">Periodo impartido</label>
-                                        <input type="text" class="form-control" name="periodo_impartido" id="periodo_impartido" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Nombre del campo</label>
+                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -423,16 +231,15 @@ switch($decision){
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="logros">
-                            <p>Contenido pendiente.</p>
+                        <div class="tab-pane fade" id="domicilio"> <!-- Tabla de Domicilio -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Formulario pendiente
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Nombre del campo</label>
+                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -441,16 +248,15 @@ switch($decision){
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="premios">
-                            <p>Contenido pendiente.</p>
+                        <div class="tab-pane fade" id="viaje"> <!-- Tabla de Viaje -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Formulario pendiente
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Nombre del campo</label>
+                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -459,40 +265,20 @@ switch($decision){
                                 </div>
                             </div>
                         </div>
-                        <div class="tab-pane fade" id="publicaciones">
-                            <p>Contenido pendiente.</p>
+                        <div class="tab-pane fade" id="documentos"> <!-- Apartado donde se muestran los documentos subidos -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Formulario pendiente
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Campo</label>
-                                        <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo">
+                                        <label class="form-label mt-2">Nombre del campo</label>
+                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
                                     </div>
                                     <div class="text-center">
                                         <br>
                                         <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="documentos">
-                            <div class="tab-pane fade active show" id="docente">
-                                <div class="card">
-                                    <div class="card-header text-center">
-                                        No deje campos vacios
-                                    </div>
-                                    <div class="card-body">
-                                        <div class = "form-group">
-                                            <label class="form-label mt-2">Campo</label>
-                                            <input type="text" class="form-control" name="ejemplo" placeholder="ejemplo de campo" required>
-                                        </div>
-                                        <div class="text-center">
-                                            <br>
-                                            <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: right;">Guardar</button>
-                                            <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: left;">Cancelar</button>
-                                        </div>
+                                        <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: center;">Guardar</button>
                                     </div>
                                 </div>
                             </div>
@@ -501,4 +287,4 @@ switch($decision){
                 </form>
             </div>
 
-<?php include("../template/pie.php"); ?>
+<?php include("../template/pie.php"); ?> <!-- Llama al pie de pagina -->

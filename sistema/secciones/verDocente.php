@@ -1,6 +1,7 @@
-<?php include("../template/cabecera.php"); ?>
+<?php include("../template/cabecera.php"); ?> <!-- Llama al encabezado de pagina -->
+
 <?php
-include "../config/conexion.php";
+include "../config/conexion.php"; // Inicia la conexion con la bd
 
 // if($_SESSION['tipo'] == 4)
 // {
@@ -8,10 +9,10 @@ include "../config/conexion.php";
 // }
 
 ?>
-<title>SITA - Docentes</title>
+<title>SITA - Docentes</title> <!-- Titulo de la pagina -->
 
-			<div class="jumbotron">
-				<h1 class="display-3">Lista de Docentes</h1>
+            <div class="jumbotron">
+                <h1 class="display-3">Lista de Docentes</h1>
                 <hr class="my-2">
                 <div class="container-fluid">
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -26,15 +27,15 @@ include "../config/conexion.php";
                 </div>
                 <table class="table table-hover">
                     <thead>
-                        <tr>
-                        <th scope="col">Clave</th>
-                        <th scope="col">Nombre</th>
-                        <th scope="col">1er apellido</th>
-                        <th scope="col">2do apellido</th>
-                        <th scope="col">Fotografia</th>
-                        <th scope="col">Numero</th>
-                        <th scope="col">Puesto</th>
-                        <th scope="col">Acciones</th>
+                        <tr class="text-center">
+                            <th scope="col">Clave</th>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">1er apellido</th>
+                            <th scope="col">2do apellido</th>
+                            <th scope="col">Fotografia</th>
+                            <th scope="col">Numero</th>
+                            <th scope="col">Puesto</th>
+                            <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <?php
@@ -63,7 +64,7 @@ include "../config/conexion.php";
                         if($result > 0){
                             while ($data = mysqli_fetch_array($query)){
                                 ?>
-                                <tbody>
+                                <tbody class="text-center">
                                     <tr class="table-active">
                                     <th scope="row"><?php echo $data ['cve_docente']; ?></th>
                                     <td><?php echo $data ['nombre']; ?></td>
@@ -74,10 +75,9 @@ include "../config/conexion.php";
                                     <td><?php echo $data ['puesto']; ?></td>
                                     <td>
                                         <form method="post">
+                                            <a role="button" class="btn btn-outline-info" href="infDocente.php?id=<?php echo $data ['cve_docente']; ?>">Ver</a>
                                             <a role="button" class="btn btn-outline-warning" href="editarDocente.php?id=<?php echo $data ['cve_docente']; ?>">Editar</a>
-                                            <?php// if($data['cve_docente'] != 1){ ?>
                                             <a role="button" class="btn btn-outline-danger" href="eliminarDocente.php?id=<?php echo $data ['cve_docente']; ?>" >Borrar</a>
-                                            <?php //} ?>
                                         </form>
                                     </td>
                                     </tr>
@@ -128,3 +128,9 @@ include "../config/conexion.php";
 			</div>
 
 <?php include("../template/pie.php"); ?>
+
+<!--
+--- Pagina[verDocente] (Prototipo) ---
+Codificacion final -- [23/06/2022 (12:47 hrs)]
+Comentario final ---- [23/06/2022 (12:47 hrs)]
+-->
