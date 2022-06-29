@@ -74,7 +74,7 @@ if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
                                         <td><?php echo $data ['nombre']; ?></td> <!-- El nombre del usuario -->
                                         <td><?php echo $data ['apellido1']; ?></td> <!-- El primer apellido del usuario -->
                                         <td><?php echo $data ['apellido2']; ?></td> <!-- El segundo apellido del usuario -->
-                                        <td> <img src="/SITA/sistema/files/upload/fotos/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
+                                        <td> <img src="/SITA/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
                                         <td><?php echo $data ['usuario']; ?></td> <!-- El ID del usuario -->
                                         <td><?php echo $data ['correo']; ?></td> <!-- El correo del usuario -->
                                         <td>
@@ -132,6 +132,5 @@ if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
 
 <!--
 --- Pagina[verUsuarios] (Prototipo) ---
-Codificacion final -- [21/06/2022 (08:52 hrs)]
-Comentario final ---- [21/06/2022 (08:52 hrs)]
+Ultima modificacion -- [21/06/2022 (14:35 hrs)]
 -->
