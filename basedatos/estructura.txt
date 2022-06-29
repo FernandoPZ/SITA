@@ -1,0 +1,140 @@
+usuario
+> cve_usuario (INT-11) [PK]
+> tipo (INT-11) [FK]
+> nombre (VARCHAR-50)
+> apellido1 (VARCHAR-50)
+> apellido2 (VARCHAR-50)
+> usuario (VARCHAR-50)
+> pass (VARCHAR-255)
+> foto (VARCHAR-255)
+> correo (VARCHAR-200)
+> activo (INT-1)
+
+tipo_usuario
+> cve_tipo_usu (INT) [PK]
+> tipo (VARCHAR-20)
+> activo (INT-1)
+
+docente
+> cve_docente (INT) [PK]
+> puesto (INT) [FK]
+> nombre (VARCHAR-50)
+> apellido1 (VARCHAR-50)
+> apellido2 (VARCHAR-50)
+> foto (VARCHAR-255)
+> institucion (VARCHAR-100)
+> tipo_contratacion (VARCHAR-50)
+> fecha_ingreso (DATE)
+> num_empleado (INT-10)
+> fecha_add (DATETIME)
+> user_cve (INT) [FK]
+> activo (INT-1)
+
+contacto
+> cve_contacto (INT) [PK]
+> correo_ins (VARCHAR-100)
+> correo_per (VARCHAR-100)
+> telefono (VARCHAR-10)
+> cve_docente (INT) [FK]
+
+domicilio
+> cve_domicilio (INT) [PK]
+> calle (VARCHAR-50)
+> num_ext (VARCHAR-5)
+> num_int (VARCHAR-5)
+> codigo_postal (INT-5)
+> colonia (VARCHAR-50)
+> municipio (VARCHAR-50)
+> ciudad (VARCHAR-50)
+> estado (VARCHAR-50)
+> pais (VARCHAR-50)
+> doc_dom (VARCHAR-255)
+> cve_docente (INT) [FK]
+
+viaje
+> cve_viaje (INT) [PK]
+> disp_viaje (VARCHAR-20)
+> num_pasaporte (VARCHAR-11)
+> fecha_ven_pas (DATE)
+> cve_docente (INT) [FK]
+
+informacion
+> cve_info (INT) [PK]
+> fecha_nac (DATE)
+> doc_nac (VARCHAR-255)
+> genero (VARCHAR-20)
+> estado_civil (VARCHAR-20)
+> nacionalidad (VARCHAR-50)
+> curp (VARCHAR-18)
+> doc_curp (VARCHAR-255)
+> rfc (VARCHAR-13)
+> doc_rfc (VARCHAR-255)
+> nss (INT-11)
+> cve_docente (INT) [FK]
+
+puesto
+> cve_puesto (INT) [PK]
+> puesto (VARCHAR-20)
+> activo (INT-1)
+
+experiencia
+> cve_experiencia (INT-11) [PK]
+> actividad (VARCHAR-50)
+> institucion (VARCHAR-100)
+> periodo (VARCHAR-10)
+> intereses (TEXT)
+> cve_docente (INT) [FK]
+> fecha_add (DATETIME)
+> user_cve (INT) [FK]
+> activo (INT-1)
+
+formacion
+> cve_formacion (INT-11) [PK]
+> nivel_estudio (VARCHAR-50)
+> siglas_estudio (VARCHAR-20)
+> institucion (VARCHAR-100)
+> area (VARCHAR-100)
+> disciplina (VARCHAR-100)
+> pais (VARCHAR-50)
+> fecha_inicio (DATE)
+> fecha_fin (DATE)
+> fecha_titulacion (DATE)
+> habilidades (TEXT)
+> cve_docente (INT) [FK]
+> fecha_add (DATETIME)
+> user_cve (INT) [FK]
+> activo (INT-1)
+
+premios
+> cve_premio (INT-11) [PK]
+> nombre (VARCHAR-100)
+> fecha (DATE)
+> institucion (VARCHAR-100)
+> motivo (VARCHAR-100)
+> descripcion (TEXT)
+> cve_docente (INT) [FK]
+> fecha_add (DATETIME)
+> user_cve (INT) [FK]
+> activo (INT-1)
+
+publicaciones
+> cve_publicacion (INT-11) [PK]
+> tipo (VARCHAR-100)
+> autor (VARCHAR-100)
+> titulo_articulo (VARCHAR-100)
+> titulo_revista (VARCHAR-100)
+> pagina_inicio (INT-11)
+> pagina_fin (INT-11)
+> país (VARCHAR-50)
+> editorial (VARCHAR-50)
+> volumen (VARCHAR-50)
+> issp (VARCHAR-50)
+> fecha_publicacion (DATE)
+> propósito (VARCHAR-50)
+> estado (VARCHAR-50)
+> cve_docente (INT) [FK]
+> fecha_add (DATETIME)
+> user_cve (INT) [FK]
+> activo (INT-1)
+
+Ultima version (21/06/2022)
