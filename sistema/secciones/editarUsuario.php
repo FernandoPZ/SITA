@@ -122,7 +122,7 @@ switch($decision){
                                 '; // Alerta que el usuario se actualizo correctamente
                                 $archivoFoto=$_FILES["foto"]["tmp_name"]; // Prepara el archivo subido
                                     if($archivoFoto!=""){
-                                        move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la foto subida dentro del sistema
+                                        move_uploaded_file($archivoFoto,"../files/usuario/".$nombreFoto); // Mueve la foto subida dentro del sistema
                                     }
                             }else{
                                 $alert='
@@ -149,9 +149,9 @@ switch($decision){
                                     </div>
                                 '; // Alerta que el usuario se actualizo correctamente
                                 $archivoFoto=$_FILES["foto"]["tmp_name"];
-                                    if($archivoFoto!=""){
-                                        move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto);
-                                    }
+                                if($archivoFoto!=""){
+                                    move_uploaded_file($archivoFoto,"../files/usuario/".$nombreFoto);
+                                }
                             }else{
                                 $alert='
                                     <div class="alert alert-dismissible alert-danger">
@@ -210,6 +210,5 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
 
 <!--
 --- Pagina[editarUsuarios] (Prototipo) ---
-Codificacion final -- [21/06/2022 (13:50 hrs)]
-Comentario final ---- [21/06/2022 (13:50 hrs)]
+Ultima modificacion -- [21/06/2022 (13:50 hrs)]
 -->
