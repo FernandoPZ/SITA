@@ -137,4 +137,4 @@ publicaciones
 > user_cve (INT) [FK]
 > activo (INT-1)
 
-Ultima version (21/06/2022)
+Ultima version (20/06/2022)
