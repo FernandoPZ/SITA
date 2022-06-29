@@ -7,14 +7,14 @@ if($_SESSION['tipo'] == 3) // Validacion de tipo de usuario
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 include "../config/conexion.php"; // Realiza la coneccion de la bd
+$user = $_SESSION['cve_usuario'] // Guarda la clave de usuario con la que entra
 ?>
 
 <?php
-switch($decision){
+switch($decision){ // Apartado de deciciones
     case "guardar": // Guargar
-        if(!empty($_POST)) // Valida si los campos no esten vacios
-        {
-            $alert='';
+        if(!empty($_POST)){ // Valida si los campos no esten vacios
+            $alert=''; // Validacion de la alerta
             // Tabla docente
             if(empty($_POST['puesto']) // puesto del docente
             || empty($_POST['nombre']) // Nombre del docente
@@ -41,62 +41,170 @@ switch($decision){
             || empty($_POST['correo_per']) // Correo personal
             || empty($_POST['telefono']) // Numero de telefono
             // Tabla domicilio
-            || empty($_POST['calle']) // Nombre del docente
-            || empty($_POST['num_ext']) // Primer apellido del docente
-            || empty($_POST['num_int']) // Segundo apellido del docente
-            || empty($_POST['codigo_postal']) // Nombre de la institucion
-            || empty($_POST['colonia']) // Tipo de contratacion
-            || empty($_POST['municipio']) // Fecha de ingreso a la institucion
-            || empty($_POST['ciudad']) // Numero de empleado asignado
-            || empty($_POST['estado']) // Numero de empleado asignado
-            || empty($_POST['pais']) // Numero de empleado asignado
-            || empty($_FILES['doc_dom']) // Foto del docente
+            || empty($_POST['calle']) // Nombre de la calle
+            || empty($_POST['num_ext']) // Numero exterior
+            || empty($_POST['num_int']) // Numero interior
+            || empty($_POST['codigo_postal']) // Codigo postal
+            || empty($_POST['colonia']) // Nombre de la colonia
+            || empty($_POST['municipio']) // Nombre del municipio
+            || empty($_POST['ciudad']) // Nombre de la ciudad
+            || empty($_POST['estado']) // Nombre del estado
+            || empty($_POST['pais']) // Nombre del pais
+            || empty($_FILES['doc_dom']) // Comprobante de domicilio
             // Tabla viaje
-            || empty($_POST['disp_viaje']) // Correo institucional
-            || empty($_POST['num_pasaporte']) // Correo personal
-            || empty($_POST['fecha_ven_pas'])) // Numero de telefono
-            {
+            || empty($_POST['disp_viaje']) // Disponibilidad de viajar
+            || empty($_POST['num_pasaporte']) // Numero de pasaporte
+            || empty($_POST['fecha_ven_pas'])){ // Fecha de vencimiento del pasaporte
                 $alert=' 
                 <div class="alert alert-dismissible alert-warning">
                     <strong>Se te olvida algo...</strong> debes de llenar todos los campos.
                 </div>
                 '; // Alerta de algun campo vacio
             }else{
-                //Tabla docente
-                $puesto = $_POST['puesto']; // Guarda el tipo de usuario
-                $nombre = $_POST['nombre']; // Guarda el nombre del usuario
-                $apellido1 = $_POST['apellido1']; // Guarda el primer apellido del usuario
-                $apellido2 = $_POST['apellido2']; // Guarda el segundo apellido del usuario
-                $foto = $_FILES['foto']['name']; // Guarda la foto del usuario
+                $fecha= new DateTime(); // Determina la fecha actual
+                // Tabla docente
+                $puesto = $_POST['puesto']; // Guarda el puesto del docente
+                $nombre = $_POST['nombre']; // Guarda el nombre del docente
+                $apellido1 = $_POST['apellido1']; // Guarda el primer apellido del docente
+                $apellido2 = $_POST['apellido2']; // Guarda el segundo apellido del docente
+                $foto = $_FILES['foto']['name']; // Guarda la foto del docente
+                $nombreFoto=($foto!="")?$fecha->getTimestamp()."_".$foto:"default.png"; // Asignacion de nombre unico a la foto
                 $institucion = $_POST['institucion']; // Guarda el nombre de la institucion
                 $tipo_contratacion = $_POST['tipo_contratacion']; // Guarda el tipo de contratacion
                 $fecha_ingreso = $_POST['fecha_ingreso']; // Guarda la fecha de ingreso
                 $num_empleado = $_POST['num_empleado']; // Guarda el numero de empleado
+                // Tabla informacion
+                $fecha_nac = $_POST['fecha_nac']; // Guarda la fecha de nacimiento
+                $doc_nac = $_FILES['doc_nac']['name']; // Guarda el acta de nacimiento del docente
+                $nombre_doc_nac=($doc_nac!="")?$fecha->getTimestamp()."_".$doc_nac:"NO_DISPONIBLE"; // Asignacion de nombre unico al acta de nacimiento
+                $genero = $_POST['genero']; // Guarda el genero del docente
+                $estado_civil = $_POST['estado_civil']; // Guarda el estado civil del docente
+                $nacionalidad = $_POST['nacionalidad']; // Guarda la nacionalidad del docente
+                $curp = $_POST['curp']; // Guarda el curp del docente
+                $doc_curp = $_FILES['doc_curp']['name']; // Guarda el documento curp del docente
+                $nombre_doc_curp=($doc_curp!="")?$fecha->getTimestamp()."_".$doc_curp:"NO_DISPONIBLE"; // Asignacion de nombre unico al curp
+                $rfc = $_POST['rfc']; // Guarda el RFC del docente
+                $doc_rfc = $_FILES['doc_rfc']['name']; // Guarda el documento rfc del docente
+                $nombre_doc_rfc=($doc_rfc!="")?$fecha->getTimestamp()."_".$doc_rfc:"NO_DISPONIBLE"; // Asignacion de nombre unico al rfc
+                $nss = $_POST['nss']; // Guarda el numero de seguridad social del docente
+                // Tabla contacto
+                $correo_ins = $_POST['correo_ins']; //Guarda el correo institucional del docente
+                $correo_per = $_POST['correo_per']; // Guarda el correo personal del docente
+                $telefono = $_POST['telefono']; // Guarda el numero de telefono del docente
                 // Tabla domicilio
-                // Asignacion de nombre unico a la foto
-                $fecha= new DateTime(); // Determina la fecha actual
-                $nombreFoto=($foto!="")?$num_empleado."_".$fecha->getTimestamp()."_".$foto:"default.png"; // Nuevo nombre
-                $query = mysqli_query($conexion,"SELECT * FROM docente WHERE num_empleado = '$num_empleado'"); // Verifica que el usuario introducido este en la bd
+                $calle = $_POST['calle']; // Guarda el nombre de la calle
+                $num_ext = $_POST['num_ext']; // Guarda el numero exterior
+                $num_int = $_POST['num_int']; // Guarda el numero interior
+                $codigo_postal = $_POST['codigo_postal']; // Guarda el codigo postal
+                $colonia = $_POST['colonia']; // Guarda el nombre de la colonia
+                $municipio = $_POST['municipio']; // Guarda el nombre del municipio
+                $ciudad = $_POST['ciudad']; // Guarda el nombre de la ciudad
+                $estado = $_POST['estado']; // Guarda el nombre del estado
+                $pais = $_POST['pais']; // Guarda el nombre del pais
+                $doc_dom = $_FILES['doc_dom']['name']; // Guarda el comprobante de domicilio
+                $nombre_doc_dom=($doc_dom!="")?$fecha->getTimestamp()."_".$doc_dom:"NO_DISPONIBLE"; // Asignacion de nombre unico al comprobante de domicilio
+                // Tabla viaje
+                $disp_viaje = $_POST['disp_viaje']; // Guarda la disponibilidad de viaje
+                $num_pasaporte = $_POST['num_pasaporte']; // Guarda el numero del pasaporte
+                $fecha_ven_pas = $_POST['fecha_ven_pas']; // Guarda la fecha de vencimiento del pasaporte
+                // Sentencias de sql
+                $query = mysqli_query($conexion,"SELECT * FROM docente WHERE num_empleado = '$num_empleado'"); // Verifica que el numero de empleado introducido este en la bd
                 $result = mysqli_fetch_array($query); // Almacena cuantas coincidencias existen
                 if($result > 0){ // Si hay alguna coincidencia con el numero de empleado, muestra la alerta
                     $alert='
                     <div class="alert alert-dismissible alert-warning">
                         <strong>Oh vaya...</strong> el numero de empleado introducido ya esta registrado.
                     </div>
-                    '; // Alerta de coincidencia de usuario
+                    '; // Alerta de coincidencia de numero de empleado
                 }else{
-                    //$query_insert = mysqli_query($conexion,"INSERT INTO docente(puesto,nombre,apellido1,apellido2,foto,institucion,tipo_contratacion,fecha_ingreso,num_empleado)
-                    //                                                    VALUES ('$puesto','$nombre','$apellido1','$apellido2','$nombreFoto','$institucion','$tipo_contratacion','$fecha_ingreso','$num_empleado')");
-                    if($query_insert){
-                        $alert='
-                            <div class="alert alert-dismissible alert-success">
-                                <strong>Listo!</strong> El usuario se guardo correctamente.
-                            </div>
-                        '; // Alerta de que se guardo correctamente
-                        //$archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
-                        //if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                        //    move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
-                        //}
+                    // Guardar en la tabla docente
+                    $query_insert_docente = mysqli_query($conexion,"INSERT INTO docente(puesto,nombre,apellido1,apellido2,foto,institucion,tipo_contratacion,fecha_ingreso,num_empleado,user_cve)
+                                                                        VALUES ('$puesto','$nombre','$apellido1','$apellido2','$nombreFoto','$institucion','$tipo_contratacion','$fecha_ingreso','$num_empleado','$user')");
+                    if($query_insert_docente){ // Valida si se realizo la insercion en la tabla docentes
+                        $queryDocente = mysqli_query($conexion, "SELECT * FROM docente ORDER BY cve_docente DESC LIMIT 1"); // Consulta el registro apenas creado
+                        while ($data = mysqli_fetch_array($queryDocente)) // Alamcena los datos de ese registro
+                        {
+                            $idDoc = $data['cve_docente']; // Guardamos la clave del docente
+                        }
+                         // Guardar en la tabla informacion
+                        $query_insert_informacion = mysqli_query($conexion,"INSERT INTO informacion(fecha_nac, doc_nac, genero, estado_civil, nacionalidad, curp, doc_curp, rfc, doc_rfc, nss, cve_docente)
+                                                                                            VALUES ('$fecha_nac','$nombre_doc_nac','$genero','$estado_civil','$nacionalidad','$curp','$nombre_doc_curp','$rfc','$nombre_doc_rfc','$nss','$idDoc')");
+                        if($query_insert_informacion){ // Valida si se realizo la insercion en la tabla informacion
+                            // Guardar en la tabla contacto
+                            $query_insert_contacto = mysqli_query($conexion,"INSERT INTO contacto(correo_ins, correo_per, telefono, cve_docente)
+                                                                                 VALUES ('$correo_ins','$correo_per','$telefono','$idDoc')");
+                            if($query_insert_contacto){ // Valida si se realizo la insercion en la tabla contacto
+                                // Guardar en la tabla domicilio
+                                $query_insert_domicilio = mysqli_query($conexion,"INSERT INTO domicilio(calle, num_ext, num_int, codigo_postal, colonia, municipio, ciudad, estado, pais, doc_dom, cve_docente)
+                                                                                      VALUES ('$calle','$num_ext','$num_int','$codigo_postal','$colonia','$municipio','$ciudad','$estado','$pais','$nombre_doc_dom','$idDoc')");
+                                if($query_insert_domicilio){ // Valida si se realizo la insercion en la tabla domicilio
+                                    // Guardar en la tabla viaje
+                                    $query_insert_viaje = mysqli_query($conexion,"INSERT INTO viaje(disp_viaje, num_pasaporte, fecha_ven_pas, cve_docente	)
+                                                                                      VALUES ('$disp_viaje','$num_pasaporte','$fecha_ven_pas','$idDoc')");
+                                    if($query_insert_viaje){ // Valida si se realizo la insercion en la tabla viaje
+                                        $alert='
+                                            <div class="alert alert-dismissible alert-success">
+                                                <strong>Listo!</strong> El docente se guardo correctamente.
+                                            </div>
+                                        '; // Alerta de que se guardo correctamente
+                                        $archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
+                                        if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                                            move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
+                                        }
+                                        $archivo_doc_nac=$_FILES["doc_nac"]["tmp_name"]; // Almacena el acta de nacimiento subida
+                                        if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                                            move_uploaded_file($archivo_doc_nac,"../files/upload/act_nac/".$nombre_doc_nac); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                        }
+                                        $archivo_doc_curp=$_FILES["doc_curp"]["tmp_name"]; // Almacena la imagen subida
+                                        if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                                            move_uploaded_file($archivo_doc_curp,"../files/upload/curp/".$nombre_doc_curp); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                        }
+                                        $archivo_doc_rfc=$_FILES["doc_rfc"]["tmp_name"]; // Almacena la imagen subida
+                                        if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                                            move_uploaded_file($archivo_doc_rfc,"../files/upload/rfc/".$nombre_doc_rfc); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                        }
+                                        $archivo_doc_dom=$_FILES["doc_dom"]["tmp_name"]; // Almacena la imagen subida
+                                        if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
+                                            move_uploaded_file($archivo_doc_dom,"../files/upload/com_dom/".$nombre_doc_dom); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                        }
+                                    }else{
+                                        $query_delete_domicilio = mysqli_query($conexion,"DELETE FROM domicilio where cve_docente='$idDoc'"); // Elimina el registro creado
+                                        $query_delete_contacto = mysqli_query($conexion,"DELETE FROM contacto where cve_docente='$idDoc'"); // Elimina el registro creado
+                                        $query_delete_informacion = mysqli_query($conexion,"DELETE FROM informacion where cve_docente='$idDoc'"); // Elimina el registro creado
+                                        $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
+                                        $alert='
+                                            <div class="alert alert-dismissible alert-danger">
+                                                <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                            </div>
+                                        '; // Alerta de algun problema al guardar el registro
+                                    }
+                                }else{
+                                    $query_delete_contacto = mysqli_query($conexion,"DELETE FROM contacto where cve_docente='$idDoc'"); // Elimina el registro creado
+                                    $query_delete_informacion = mysqli_query($conexion,"DELETE FROM informacion where cve_docente='$idDoc'"); // Elimina el registro creado
+                                    $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
+                                    $alert='
+                                        <div class="alert alert-dismissible alert-danger">
+                                            <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                        </div>
+                                    '; // Alerta de algun problema al guardar el registro
+                                }
+                            }else{
+                                $query_delete_informacion = mysqli_query($conexion,"DELETE FROM informacion where cve_docente='$idDoc'"); // Elimina el registro creado
+                                $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
+                                $alert='
+                                    <div class="alert alert-dismissible alert-danger">
+                                        <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                    </div>
+                                '; // Alerta de algun problema al guardar el registro
+                            }
+                        }else{
+                            $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
+                            $alert='
+                                <div class="alert alert-dismissible alert-danger">
+                                    <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                </div>
+                            '; // Alerta de algun problema al guardar el registro
+                        }
                     }else{
                         $alert='
                             <div class="alert alert-dismissible alert-danger">
@@ -138,37 +246,38 @@ switch($decision){
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#viaje">Viaje</a> <!-- boton del tab -->
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#documentos">Documentos</a> <!-- boton del tab -->
-                        </li>
                     </ul>
                     <div id="myTabContent" class="tab-content"> <!-- Tablas de contenido -->
                         <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                         <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos principales -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    No deje campos vacios
+                                    Informacion general
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
                                         <label class="form-label mt-2">Nombre o nombres</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre" placeholder="Nombre(s)">
+                                        <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Nombre(s)">
                                         <label class="form-label mt-2">Primer apellido</label>
-                                        <input type="text" class="form-control" name="apellido1" id="apellido1" placeholder="Primer apellido">
+                                        <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo isset($_POST['apellido1']) ? $_POST['apellido1'] : '';?>" placeholder="Primer apellido">
                                         <label class="form-label mt-2">Segundo apellido</label>
-                                        <input type="text" class="form-control" name="apellido2" id="apellido2" placeholder="Segundo apellido">
+                                        <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo isset($_POST['apellido2']) ? $_POST['apellido2'] : '';?>" placeholder="Segundo apellido">
                                         <label class="form-label mt-2">Fotografia</label>
                                         <input type="file" class="form-control" name="foto" id="foto">
                                         <output id="previsual"></output>
                                         <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
                                         <label class="form-label mt-2">Institucion</label>
-                                        <input type="text" class="form-control" name="institucion" id="institucion" placeholder="Nombre de la institucion">
+                                        <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion">
                                         <label class="form-label mt-2">Tipo de contratacion</label>
-                                        <input type="text" class="form-control" name="tipo_contratacion" id="tipo_contratacion" placeholder="Nombre de la institucion">
+                                        <select class="form-select" name="tipo_contratacion" id="tipo_contratacion">
+                                            <option value="" hidden>Selecciona una opción</option>
+                                            <option value="Tiempo completo">Tiempo completo</option>
+                                            <option value="Medio tiempo">Medio tiempo</option>
+                                        </select>
                                         <label class="form-label mt-2">Fecha de ingreso</label>
-                                        <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso">
+                                        <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="<?php echo isset($_POST['fecha_ingreso']) ? $_POST['fecha_ingreso'] : '';?>">
                                         <label class="form-label mt-2">Numero de empleado</label>
-                                        <input type="text" class="form-control" name="num_empleado" id="num_empleado" placeholder="Numero de 10 digitos">
+                                        <input type="number" class="form-control" name="num_empleado" id="num_empleado" value="<?php echo isset($_POST['num_empleado']) ? $_POST['num_empleado'] : '';?>" placeholder="Numero de 10 digitos">
                                         <label class="form-label mt-2">Puesto</label>
                                         <?php
                                             include "../config/conexion.php";
@@ -200,12 +309,38 @@ switch($decision){
                         <div class="tab-pane fade" id="informacion"> <!-- Tabla de Informacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Formulario pendiente
+                                    Informacion especifica
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre del campo</label>
-                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
+                                        <label class="form-label mt-2">Fecha de nacimiento</label>
+                                        <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="<?php echo isset($_POST['fecha_nac']) ? $_POST['fecha_nac'] : '';?>">
+                                        <label class="form-label mt-2">Acta de nacimiento</label>
+                                        <input type="file" class="form-control" name="doc_nac" id="doc_nac">
+                                        <label class="form-label mt-2">Genero</label><br>
+                                        <input type="radio" name="genero" value="Femenino">Femenino<br>
+                                        <input type="radio" name="genero" value="Masculino">Masculino<br>
+                                        <label class="form-label mt-2">Estado civil</label>
+                                        <select class="form-select" name="estado_civil" id="estado_civil">
+                                            <option value="" hidden>Selecciona una opción</option>
+                                            <option value="Soltero">Soltero</option>
+                                            <option value="Casado">Casado</option>
+                                            <option value="Divorciado">Divorciado</option>
+                                            <option value="Union libre">Union libre</option>
+                                        </select>
+                                        <label class="form-label mt-2">Genero</label><br>
+                                        <input type="radio" name="nacionalidad" value="Mexicana">Mexicana<br>
+                                        <input type="radio" name="nacionalidad" value="Extranjera">Extranjera<br>
+                                        <label class="form-label mt-2">CURP</label>
+                                        <input type="text" class="form-control" name="curp" id="curp" value="<?php echo isset($_POST['curp']) ? $_POST['curp'] : '';?>" placeholder="18 caracteres">
+                                        <label class="form-label mt-2">Documento CURP</label>
+                                        <input type="file" class="form-control" name="doc_curp" id="doc_curp">
+                                        <label class="form-label mt-2">RFC</label>
+                                        <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo isset($_POST['rfc']) ? $_POST['rfc'] : '';?>" placeholder="13 caracteres">
+                                        <label class="form-label mt-2">Documento RFC</label>
+                                        <input type="file" class="form-control" name="doc_rfc" id="doc_rfc">
+                                        <label class="form-label mt-2">Numero de seguridad social</label>
+                                        <input type="number" class="form-control" name="nss" id="nss" value="<?php echo isset($_POST['nss']) ? $_POST['nss'] : '';?>" placeholder="10 caracteres">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -217,12 +352,16 @@ switch($decision){
                         <div class="tab-pane fade" id="contacto"> <!-- Tabla de Contacto -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Formulario pendiente
+                                    Informacion de contacto
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre del campo</label>
-                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
+                                        <label class="form-label mt-2">Correo institucional</label>
+                                        <input type="email" class="form-control" name="correo_ins" id="correo_ins" value="<?php echo isset($_POST['correo_ins']) ? $_POST['correo_ins'] : '';?>" placeholder="correo@ejemplo.com">
+                                        <label class="form-label mt-2">Correo personal</label>
+                                        <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo isset($_POST['correo_per']) ? $_POST['correo_per'] : '';?>" placeholder="correo@ejemplo.com">
+                                        <label class="form-label mt-2">Numero telefonico</label>
+                                        <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : '';?>" placeholder="10 digitos">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -234,12 +373,30 @@ switch($decision){
                         <div class="tab-pane fade" id="domicilio"> <!-- Tabla de Domicilio -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Formulario pendiente
+                                    Domicilio
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre del campo</label>
-                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
+                                        <label class="form-label mt-2">Calle</label>
+                                        <input type="text" class="form-control" name="calle" id="calle" value="<?php echo isset($_POST['calle']) ? $_POST['calle'] : '';?>" placeholder="Nombre de la calle">
+                                        <label class="form-label mt-2">Numero exterior</label>
+                                        <input type="text" class="form-control" name="num_ext" id="num_ext" value="<?php echo isset($_POST['num_ext']) ? $_POST['num_ext'] : '';?>" placeholder="Numero exterior">
+                                        <label class="form-label mt-2">Numero interior</label>
+                                        <input type="text" class="form-control" name="num_int" id="num_int" value="<?php echo isset($_POST['num_int']) ? $_POST['num_int'] : '';?>" placeholder="Numero interior">
+                                        <label class="form-label mt-2">Codigo Postal</label>
+                                        <input type="number" class="form-control" name="codigo_postal" value="<?php echo isset($_POST['codigo_postal']) ? $_POST['codigo_postal'] : '';?>" id="codigo_postal" placeholder="xxxxx">
+                                        <label class="form-label mt-2">Colonia</label>
+                                        <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo isset($_POST['colonia']) ? $_POST['colonia'] : '';?>" placeholder="Nombre de la colonia">
+                                        <label class="form-label mt-2">Municipio</label>
+                                        <input type="text" class="form-control" name="municipio" id="municipio" value="<?php echo isset($_POST['municipio']) ? $_POST['municipio'] : '';?>" placeholder="Nombre del municipio">
+                                        <label class="form-label mt-2">Ciudad</label>
+                                        <input type="text" class="form-control" name="ciudad" id="ciudad" value="<?php echo isset($_POST['ciudad']) ? $_POST['ciudad'] : '';?>" placeholder="Nombre de la ciudad">
+                                        <label class="form-label mt-2">Estado</label>
+                                        <input type="text" class="form-control" name="estado" id="estado" value="<?php echo isset($_POST['estado']) ? $_POST['estado'] : '';?>" placeholder="Nombre del estado">
+                                        <label class="form-label mt-2">Pais</label>
+                                        <input type="text" class="form-control" name="pais" id="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Nombre del pais">
+                                        <label class="form-label mt-2">Comprobante de domicilio</label>
+                                        <input type="file" class="form-control" name="doc_dom" id="doc_dom">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -251,29 +408,17 @@ switch($decision){
                         <div class="tab-pane fade" id="viaje"> <!-- Tabla de Viaje -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Formulario pendiente
+                                    Viaje
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre del campo</label>
-                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
-                                    </div>
-                                    <div class="text-center">
-                                        <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="tab-pane fade" id="documentos"> <!-- Apartado donde se muestran los documentos subidos -->
-                            <div class="card">
-                                <div class="card-header text-center">
-                                    Formulario pendiente
-                                </div>
-                                <div class="card-body">
-                                    <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre del campo</label>
-                                        <input type="email" class="form-control" name="ejemplo" id="ejemplo" placeholder="ejemplo de texto">
+                                        <label class="form-label mt-2">Disponibilidad de viajar</label><br>
+                                        <input type="radio" name="disp_viaje" value="Si">Si<br>
+                                        <input type="radio" name="disp_viaje" value="No">No<br>
+                                        <label class="form-label mt-2">Numero de pasaporte</label>
+                                        <input type="number" class="form-control" name="num_pasaporte" id="num_pasaporte" value="<?php echo isset($_POST['num_pasaporte']) ? $_POST['num_pasaporte'] : '';?>" placeholder="xxxxxxxxxx">
+                                        <label class="form-label mt-2">Fecha de vencimiento del pasaporte</label>
+                                        <input type="date" class="form-control" name="fecha_ven_pas" id="fecha_ven_pas" value="<?php echo isset($_POST['fecha_ven_pas']) ? $_POST['fecha_ven_pas'] : '';?>">
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -288,3 +433,9 @@ switch($decision){
             </div>
 
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de pagina -->
+
+<!--
+--- Pagina[nuevoDocente] (Prototipo) ---
+Codificacion final -- [29/06/2022 (11:55 hrs)]
+Comentario final ---- [29/06/2022 (11:55 hrs)]
+-->
