@@ -79,7 +79,7 @@ switch($decision){
                                 '; // Alerta de que se guardo correctamente
                                 $archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
                                 if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                    move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
+                                    move_uploaded_file($archivoFoto,"../files/usuario/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
                                 }
                             }else{
                                 $alert='
@@ -191,7 +191,6 @@ switch($decision){
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de la pagina -->
 
 <!--
---- Pagina[verUsuarios] (Prototipo) ---
-Codificacion final -- [21/06/2022 (10:20 hrs)]
-Comentario final ---- [21/06/2022 (10:20 hrs)]
+--- Pagina[nuevoUsuarios] (Prototipo) ---
+Ultima modificacion -- [29/06/2022 (14:45 hrs)]
 -->
