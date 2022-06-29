@@ -18,7 +18,7 @@
 				<div class="card">
 					<h3 class="card-header col text-center">Usuarios</h3>
 					<div class="card-body">
-						<img class="card-img-top" src="img/elementos/recuhum.png" alt="">
+						<img class="card-img-top" src="elementos/recuhum.png" alt="">
 							<div class="col text-center">
 								</br>
 								<a name="" id="" class="btn btn-primary" href="secciones/verUsuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de ususarios -->
@@ -32,7 +32,7 @@
 				<div class="card">
 					<h3 class="card-header col text-center">Docentes</h3>
 					<div class="card-body">
-						<img class="card-img-top" src="img/elementos/academ.png" alt="">
+						<img class="card-img-top" src="elementos/academ.png" alt="">
 							<div class="col text-center">
 								</br>
 								<a name="" id="" class="btn btn-primary" href="secciones/verDocente.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de docentes -->
@@ -45,6 +45,5 @@
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Codificacion final -- [22/06/2022 (08:10 hrs)]
-Comentario final ---- [22/06/2022 (08:10 hrs)]
+Ultima modificacion -- [29/06/2022 (14:01 hrs)]
 -->
