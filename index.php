@@ -43,7 +43,6 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
         }
     }
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -63,9 +62,9 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
                     <br>
                     <div class="card">
                         <div class="card-header text-center">
-                            <img src="sistema/img/elementos/avatar.png" alt="Login" style="width: 100px; height: 100px;"> <!-- Imagen default de usuario -->
+                            <img src="sistema/elementos/avatar.png" alt="Login" style="width: 100px; height: 100px;"> <!-- Imagen default de usuario -->
                             </br>
-                            <h1> Iniciar sesion </h1> <!-- Titulo -->
+                            <h1> Iniciar sesión </h1> <!-- Titulo -->
                         </div>
                         <div class="card-body">
                             <div class = "form-group">
@@ -92,6 +91,5 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
 
 <!--
 --- Login (Prototipo) ---
-Codificacion final -- [23/06/2022 (12:47 hrs)]
-Comentario final ---- [23/06/2022 (12:47 hrs)]
+Ultima modificacion -- [29/06/2022 (12:42 hrs)]
 -->
