@@ -426,3 +426,5 @@ UNLOCK TABLES;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
 -- Dump completed on 2022-06-29 12:23:25
+
+-- Ultima version del respaldo [29-06-2022(12:52)]
