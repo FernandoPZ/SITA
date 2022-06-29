@@ -88,5 +88,5 @@
 
 <!--
 --- Formulario de editar usuario (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (13:01 hrs)]
+Ultima modificacion -- [29/06/2022 (15:04 hrs)]
 -->
