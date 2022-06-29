@@ -15,3 +15,8 @@ function archivo(evt) {
     }
 }
 document.getElementById('foto').addEventListener('change', archivo, false);
+
+/*
+--- Scripts en JavaScript ---
+Ultima modificacion -- [29/06/2022 (13:14 hrs)]
+*/
