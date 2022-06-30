@@ -58,7 +58,7 @@ if(empty($_REQUEST['id'])) // Verifica que la clave del usuario no este vacio
 if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario acrual se elimina a si mismo
     $alert = '
     <div class="alert alert-dismissible alert-danger">
-        <strong>Atencion</strong>
+        <strong>¡Atencion!</strong>
         <br>
         <a>Estas a punto de eliminar tu propia cuenta.</a>
     </div>
@@ -89,7 +89,7 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                             <div class="card-body">
                                 <div class="text-center">
                                     <div><?php echo $alert; ?></div> <!-- Advertencia de auto-eliminacion -->
-                                    <p><img src="/SITA/sistema/files/upload/fotos/<?php echo $foto; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
+                                    <p><img src="/SITA/sistema/files/usuario/<?php echo $foto; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
                                     <p><strong>Usuario: </strong>[<span><em><?php echo $usuario; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
                                     <p><strong>Tipo: </strong>[<span><em><?php echo $tipo; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
                                     <form method="post" action="">
@@ -120,6 +120,5 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
 
 <!--
 --- Pagina[eliminarUsuario] (Prototipo) ---
-Codificacion final -- [23/06/2022 (12:28 hrs)]
-Comentario final ---- [23/06/2022 (12:28 hrs)]
+Ultima modificacion -- [30/06/2022 (08:54 hrs)]
 -->
