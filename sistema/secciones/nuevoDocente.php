@@ -149,23 +149,23 @@ switch($decision){ // Apartado de deciciones
                                         '; // Alerta de que se guardo correctamente
                                         $archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
                                         if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                            move_uploaded_file($archivoFoto,"../files/upload/fotos/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
+                                            move_uploaded_file($archivoFoto,"../files/docente/foto/".$nombreFoto); // Mueve la imagen subida a otra carpeta dentro del sistema
                                         }
                                         $archivo_doc_nac=$_FILES["doc_nac"]["tmp_name"]; // Almacena el acta de nacimiento subida
                                         if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                            move_uploaded_file($archivo_doc_nac,"../files/upload/act_nac/".$nombre_doc_nac); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                            move_uploaded_file($archivo_doc_nac,"../files/docente/naci/".$nombre_doc_nac); // Mueve el archivo subida a otra carpeta dentro del sistema
                                         }
                                         $archivo_doc_curp=$_FILES["doc_curp"]["tmp_name"]; // Almacena la imagen subida
                                         if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                            move_uploaded_file($archivo_doc_curp,"../files/upload/curp/".$nombre_doc_curp); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                            move_uploaded_file($archivo_doc_curp,"../files/docente/curp/".$nombre_doc_curp); // Mueve el archivo subida a otra carpeta dentro del sistema
                                         }
                                         $archivo_doc_rfc=$_FILES["doc_rfc"]["tmp_name"]; // Almacena la imagen subida
                                         if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                            move_uploaded_file($archivo_doc_rfc,"../files/upload/rfc/".$nombre_doc_rfc); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                            move_uploaded_file($archivo_doc_rfc,"../files/docente/rfc/".$nombre_doc_rfc); // Mueve el archivo subida a otra carpeta dentro del sistema
                                         }
                                         $archivo_doc_dom=$_FILES["doc_dom"]["tmp_name"]; // Almacena la imagen subida
                                         if($archivoFoto!=""){ // Verifica que el campo de subida no este vacio
-                                            move_uploaded_file($archivo_doc_dom,"../files/upload/com_dom/".$nombre_doc_dom); // Mueve el archivo subida a otra carpeta dentro del sistema
+                                            move_uploaded_file($archivo_doc_dom,"../files/docente/domi/".$nombre_doc_dom); // Mueve el archivo subida a otra carpeta dentro del sistema
                                         }
                                     }else{
                                         $query_delete_domicilio = mysqli_query($conexion,"DELETE FROM domicilio where cve_docente='$idDoc'"); // Elimina el registro creado
@@ -174,7 +174,7 @@ switch($decision){ // Apartado de deciciones
                                         $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
                                         $alert='
                                             <div class="alert alert-dismissible alert-danger">
-                                                <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                                <strong>Algo salio mal en el apartado Viaje...</strong> El usuario no se pudo guardar.
                                             </div>
                                         '; // Alerta de algun problema al guardar el registro
                                     }
@@ -184,7 +184,7 @@ switch($decision){ // Apartado de deciciones
                                     $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
                                     $alert='
                                         <div class="alert alert-dismissible alert-danger">
-                                            <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                            <strong>Algo salio mal en el apartado Domicilio...</strong> El usuario no se pudo guardar.
                                         </div>
                                     '; // Alerta de algun problema al guardar el registro
                                 }
@@ -193,7 +193,7 @@ switch($decision){ // Apartado de deciciones
                                 $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
                                 $alert='
                                     <div class="alert alert-dismissible alert-danger">
-                                        <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                        <strong>Algo salio mal en el apartado Contacto...</strong> El usuario no se pudo guardar.
                                     </div>
                                 '; // Alerta de algun problema al guardar el registro
                             }
@@ -201,14 +201,14 @@ switch($decision){ // Apartado de deciciones
                             $query_delete_docente = mysqli_query($conexion,"DELETE FROM docente where cve_docente='$idDoc'"); // Elimina el registro creado
                             $alert='
                                 <div class="alert alert-dismissible alert-danger">
-                                    <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                    <strong>Algo salio mal en el apartado Informacion...</strong> El usuario no se pudo guardar.
                                 </div>
                             '; // Alerta de algun problema al guardar el registro
                         }
                     }else{
                         $alert='
                             <div class="alert alert-dismissible alert-danger">
-                                <strong>Algo salio mal...</strong> El usuario no se pudo guardar.
+                                <strong>Algo salio mal en el apartado Docente...</strong> El usuario no se pudo guardar.
                             </div>
                         '; // Alerta de algun problema al guardar el registro
                     }
@@ -255,49 +255,68 @@ switch($decision){ // Apartado de deciciones
                                     Informacion general
                                 </div>
                                 <div class="card-body">
-                                    <div class = "form-group">
-                                        <label class="form-label mt-2">Nombre o nombres</label>
-                                        <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Nombre(s)">
-                                        <label class="form-label mt-2">Primer apellido</label>
-                                        <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo isset($_POST['apellido1']) ? $_POST['apellido1'] : '';?>" placeholder="Primer apellido">
-                                        <label class="form-label mt-2">Segundo apellido</label>
-                                        <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo isset($_POST['apellido2']) ? $_POST['apellido2'] : '';?>" placeholder="Segundo apellido">
-                                        <label class="form-label mt-2">Fotografia</label>
-                                        <input type="file" class="form-control" name="foto" id="foto">
-                                        <output id="previsual"></output>
-                                        <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
-                                        <label class="form-label mt-2">Institucion</label>
-                                        <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion">
-                                        <label class="form-label mt-2">Tipo de contratacion</label>
-                                        <select class="form-select" name="tipo_contratacion" id="tipo_contratacion">
-                                            <option value="" hidden>Selecciona una opción</option>
-                                            <option value="Tiempo completo">Tiempo completo</option>
-                                            <option value="Medio tiempo">Medio tiempo</option>
-                                        </select>
-                                        <label class="form-label mt-2">Fecha de ingreso</label>
-                                        <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="<?php echo isset($_POST['fecha_ingreso']) ? $_POST['fecha_ingreso'] : '';?>">
-                                        <label class="form-label mt-2">Numero de empleado</label>
-                                        <input type="number" class="form-control" name="num_empleado" id="num_empleado" value="<?php echo isset($_POST['num_empleado']) ? $_POST['num_empleado'] : '';?>" placeholder="Numero de 10 digitos">
-                                        <label class="form-label mt-2">Puesto</label>
-                                        <?php
-                                            include "../config/conexion.php";
-                                            $query_puesto = mysqli_query($conexion,"SELECT * FROM puesto");
-                                            mysqli_close($conexion);
-                                            $result_puesto = mysqli_num_rows($query_puesto);
-                                        ?>
-                                        <select class="form-select" name="puesto" id="puesto">
+                                    <div class="row">
+                                        <div class = "form-group col-md-8">
+                                            <label class="form-label mt-2">Nombre o nombres</label>
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Nombre(s)">
+                                            <label class="form-label mt-2">Primer apellido</label>
+                                            <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo isset($_POST['apellido1']) ? $_POST['apellido1'] : '';?>" placeholder="Primer apellido">
+                                            <label class="form-label mt-2">Segundo apellido</label>
+                                            <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo isset($_POST['apellido2']) ? $_POST['apellido2'] : '';?>" placeholder="Segundo apellido">
+                                            <label class="form-label mt-2">Institucion</label>
+                                            <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion">
+                                        </div>
+                                        <div class = "form-group col-md-4 mx-auto">
+                                            <label class="form-label mt-2">Fotografia</label>
+                                            <input type="file" class="form-control" name="foto" id="foto">
+                                            <div class="m-0 vh-50 row justify-content-center align-items-center">
+                                                <div class="col-auto">
+                                                    <br>
+                                                    <output id="previsual"></output> <!-- Espacio para previsualizar la foto subida -->
+                                                    <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Tipo de contratacion</label>
+                                            <select class="form-select" name="tipo_contratacion" id="tipo_contratacion">
+                                                <option value="" hidden>Selecciona una opción</option>
+                                                <option value="Tiempo completo">Tiempo completo</option>
+                                                <option value="Medio tiempo">Medio tiempo</option>
+                                            </select>
+                                        </div>
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Fecha de ingreso</label>
+                                            <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="<?php echo isset($_POST['fecha_ingreso']) ? $_POST['fecha_ingreso'] : '';?>">
+                                        </div>
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Numero de empleado</label>
+                                            <input type="number" class="form-control" name="num_empleado" id="num_empleado" value="<?php echo isset($_POST['num_empleado']) ? $_POST['num_empleado'] : '';?>" placeholder="10 digitos">
+                                        </div>
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Puesto</label>
                                             <?php
-                                                if($result_puesto > 0)
-                                                {
-                                                    while ($puesto = mysqli_fetch_array($query_puesto)){
-                                                        ?>
-                                                        <option value="" hidden>Selecciona una opción</option>
-                                                        <option value="<?php echo $puesto["cve_puesto"]; ?>"><?php echo $puesto["puesto"]; ?></option>
-                                                        <?php
-                                                    }
-                                                }
+                                                include "../config/conexion.php";
+                                                $query_puesto = mysqli_query($conexion,"SELECT * FROM puesto");
+                                                mysqli_close($conexion);
+                                                $result_puesto = mysqli_num_rows($query_puesto);
                                             ?>
-                                        </select>
+                                            <select class="form-select" name="puesto" id="puesto">
+                                                <?php
+                                                    if($result_puesto > 0)
+                                                    {
+                                                        while ($puesto = mysqli_fetch_array($query_puesto)){
+                                                            ?>
+                                                            <option value="" hidden>Selecciona una opción</option>
+                                                            <option value="<?php echo $puesto["cve_puesto"]; ?>"><?php echo $puesto["puesto"]; ?></option>
+                                                            <?php
+                                                        }
+                                                    }
+                                                ?>
+                                            </select>
+                                        </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
@@ -309,7 +328,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="informacion"> <!-- Tabla de Informacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion especifica
+                                    Informacion especifica <!-- Nombre de la seccion -->
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -436,6 +455,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[nuevoDocente] (Prototipo) ---
-Codificacion final -- [29/06/2022 (11:55 hrs)]
-Comentario final ---- [29/06/2022 (11:55 hrs)]
+Ultima modificacion -- [30/06/2022 (09:19 hrs)]
 -->
