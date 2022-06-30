@@ -217,7 +217,7 @@ switch($decision){ // Apartado de deciciones
         }
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
-    case "cancelar": // Cancelar
+    case "volver": // Cancelar
         header('Location:/SITA/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
@@ -320,7 +320,7 @@ switch($decision){ // Apartado de deciciones
                                     </div>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                     </div>
                                 </div>
                             </div>
@@ -332,38 +332,78 @@ switch($decision){ // Apartado de deciciones
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Fecha de nacimiento</label>
-                                        <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="<?php echo isset($_POST['fecha_nac']) ? $_POST['fecha_nac'] : '';?>">
-                                        <label class="form-label mt-2">Acta de nacimiento</label>
-                                        <input type="file" class="form-control" name="doc_nac" id="doc_nac">
-                                        <label class="form-label mt-2">Genero</label><br>
-                                        <input type="radio" name="genero" value="Femenino">Femenino<br>
-                                        <input type="radio" name="genero" value="Masculino">Masculino<br>
-                                        <label class="form-label mt-2">Estado civil</label>
-                                        <select class="form-select" name="estado_civil" id="estado_civil">
-                                            <option value="" hidden>Selecciona una opción</option>
-                                            <option value="Soltero">Soltero</option>
-                                            <option value="Casado">Casado</option>
-                                            <option value="Divorciado">Divorciado</option>
-                                            <option value="Union libre">Union libre</option>
-                                        </select>
-                                        <label class="form-label mt-2">Genero</label><br>
-                                        <input type="radio" name="nacionalidad" value="Mexicana">Mexicana<br>
-                                        <input type="radio" name="nacionalidad" value="Extranjera">Extranjera<br>
-                                        <label class="form-label mt-2">CURP</label>
-                                        <input type="text" class="form-control" name="curp" id="curp" value="<?php echo isset($_POST['curp']) ? $_POST['curp'] : '';?>" placeholder="18 caracteres">
-                                        <label class="form-label mt-2">Documento CURP</label>
-                                        <input type="file" class="form-control" name="doc_curp" id="doc_curp">
-                                        <label class="form-label mt-2">RFC</label>
-                                        <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo isset($_POST['rfc']) ? $_POST['rfc'] : '';?>" placeholder="13 caracteres">
-                                        <label class="form-label mt-2">Documento RFC</label>
-                                        <input type="file" class="form-control" name="doc_rfc" id="doc_rfc">
-                                        <label class="form-label mt-2">Numero de seguridad social</label>
-                                        <input type="number" class="form-control" name="nss" id="nss" value="<?php echo isset($_POST['nss']) ? $_POST['nss'] : '';?>" placeholder="10 caracteres">
+                                        <div class="row">
+                                            <div class = "form-group col-md-3">
+                                                <label class="form-label mt-2">Fecha de nacimiento</label>
+                                                <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="<?php echo isset($_POST['fecha_nac']) ? $_POST['fecha_nac'] : '';?>">
+                                            </div>
+                                            <div class = "form-group col-md-3">
+                                                <label class="form-label mt-2">Genero</label>
+                                                <select class="form-select" name="genero" id="genero">
+                                                    <option value="" hidden>Selecciona una opción</option>
+                                                    <option value="Masculino">Masculino</option>
+                                                    <option value="Femenino">Femenino</option>
+                                                    <option value="Otro">Otro</option>
+                                                </select>
+                                            </div>
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Acta de nacimiento</label>
+                                                <input type="file" class="form-control" name="doc_nac" id="doc_nac">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Nacionalidad</label><br>
+                                                <select class="form-select" name="nacionalidad" id="nacionalidad">
+                                                    <option value="" hidden>Selecciona una opción</option>
+                                                    <option value="Mexicana">Mexicana</option>
+                                                    <option value="Extranjera">Extranjera</option>
+                                                </select>
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Estado civil</label>
+                                                <select class="form-select" name="estado_civil" id="estado_civil">
+                                                    <option value="" hidden>Selecciona una opción</option>
+                                                    <option value="Soltero">Soltero</option>
+                                                    <option value="Casado">Casado</option>
+                                                    <option value="Divorciado">Divorciado</option>
+                                                    <option value="Union libre">Union libre</option>
+                                                </select>
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Numero de seguridad social</label>
+                                                <input type="number" class="form-control" name="nss" id="nss" value="<?php echo isset($_POST['nss']) ? $_POST['nss'] : '';?>" placeholder="10 caracteres">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">CURP</label>
+                                                <input type="text" class="form-control" name="curp" id="curp" value="<?php echo isset($_POST['curp']) ? $_POST['curp'] : '';?>" placeholder="18 caracteres">
+                                            </div>
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Documento CURP</label>
+                                                <input type="file" class="form-control" name="doc_curp" id="doc_curp">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">RFC</label>
+                                                <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo isset($_POST['rfc']) ? $_POST['rfc'] : '';?>" placeholder="13 caracteres">
+                                            </div>
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Documento RFC</label>
+                                                <input type="file" class="form-control" name="doc_rfc" id="doc_rfc">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-6">
+                                                
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                     </div>
                                 </div>
                             </div>
@@ -375,16 +415,24 @@ switch($decision){ // Apartado de deciciones
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Correo institucional</label>
-                                        <input type="email" class="form-control" name="correo_ins" id="correo_ins" value="<?php echo isset($_POST['correo_ins']) ? $_POST['correo_ins'] : '';?>" placeholder="correo@ejemplo.com">
-                                        <label class="form-label mt-2">Correo personal</label>
-                                        <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo isset($_POST['correo_per']) ? $_POST['correo_per'] : '';?>" placeholder="correo@ejemplo.com">
-                                        <label class="form-label mt-2">Numero telefonico</label>
-                                        <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : '';?>" placeholder="10 digitos">
-                                    </div>
-                                    <div class="text-center">
-                                        <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <div class="row">
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Correo institucional</label>
+                                                <input type="email" class="form-control" name="correo_ins" id="correo_ins" value="<?php echo isset($_POST['correo_ins']) ? $_POST['correo_ins'] : '';?>" placeholder="correo@ejemplo.com">
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Correo personal</label>
+                                                <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo isset($_POST['correo_per']) ? $_POST['correo_per'] : '';?>" placeholder="correo@ejemplo.com">
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Numero telefonico</label>
+                                                <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : '';?>" placeholder="10 digitos">
+                                            </div>
+                                        </div>
+                                        <div class="text-center">
+                                            <br>
+                                            <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -396,30 +444,56 @@ switch($decision){ // Apartado de deciciones
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Calle</label>
-                                        <input type="text" class="form-control" name="calle" id="calle" value="<?php echo isset($_POST['calle']) ? $_POST['calle'] : '';?>" placeholder="Nombre de la calle">
-                                        <label class="form-label mt-2">Numero exterior</label>
-                                        <input type="text" class="form-control" name="num_ext" id="num_ext" value="<?php echo isset($_POST['num_ext']) ? $_POST['num_ext'] : '';?>" placeholder="Numero exterior">
-                                        <label class="form-label mt-2">Numero interior</label>
-                                        <input type="text" class="form-control" name="num_int" id="num_int" value="<?php echo isset($_POST['num_int']) ? $_POST['num_int'] : '';?>" placeholder="Numero interior">
-                                        <label class="form-label mt-2">Codigo Postal</label>
-                                        <input type="number" class="form-control" name="codigo_postal" value="<?php echo isset($_POST['codigo_postal']) ? $_POST['codigo_postal'] : '';?>" id="codigo_postal" placeholder="xxxxx">
-                                        <label class="form-label mt-2">Colonia</label>
-                                        <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo isset($_POST['colonia']) ? $_POST['colonia'] : '';?>" placeholder="Nombre de la colonia">
-                                        <label class="form-label mt-2">Municipio</label>
-                                        <input type="text" class="form-control" name="municipio" id="municipio" value="<?php echo isset($_POST['municipio']) ? $_POST['municipio'] : '';?>" placeholder="Nombre del municipio">
-                                        <label class="form-label mt-2">Ciudad</label>
-                                        <input type="text" class="form-control" name="ciudad" id="ciudad" value="<?php echo isset($_POST['ciudad']) ? $_POST['ciudad'] : '';?>" placeholder="Nombre de la ciudad">
-                                        <label class="form-label mt-2">Estado</label>
-                                        <input type="text" class="form-control" name="estado" id="estado" value="<?php echo isset($_POST['estado']) ? $_POST['estado'] : '';?>" placeholder="Nombre del estado">
-                                        <label class="form-label mt-2">Pais</label>
-                                        <input type="text" class="form-control" name="pais" id="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Nombre del pais">
-                                        <label class="form-label mt-2">Comprobante de domicilio</label>
-                                        <input type="file" class="form-control" name="doc_dom" id="doc_dom">
+                                        <div class="row">
+                                            <div class = "form-group col-md-3">
+                                                <label class="form-label mt-2">Calle</label>
+                                                <input type="text" class="form-control" name="calle" id="calle" value="<?php echo isset($_POST['calle']) ? $_POST['calle'] : '';?>" placeholder="Nombre de la calle">
+                                            </div>
+                                            <div class = "form-group col-md-2">
+                                                <label class="form-label mt-2">Numero exterior</label>
+                                                <input type="text" class="form-control" name="num_ext" id="num_ext" value="<?php echo isset($_POST['num_ext']) ? $_POST['num_ext'] : '';?>" placeholder="Numero exterior">
+                                            </div>
+                                            <div class = "form-group col-md-2">
+                                                <label class="form-label mt-2">Numero interior</label>
+                                                <input type="text" class="form-control" name="num_int" id="num_int" value="<?php echo isset($_POST['num_int']) ? $_POST['num_int'] : '';?>" placeholder="Numero interior">
+                                            </div>
+                                            <div class = "form-group col-md-3">
+                                                <label class="form-label mt-2">Colonia</label>
+                                                <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo isset($_POST['colonia']) ? $_POST['colonia'] : '';?>" placeholder="Nombre de la colonia">
+                                            </div>
+                                            <div class = "form-group col-md-2">
+                                                <label class="form-label mt-2">Codigo Postal</label>
+                                                <input type="number" class="form-control" name="codigo_postal" value="<?php echo isset($_POST['codigo_postal']) ? $_POST['codigo_postal'] : '';?>" id="codigo_postal" placeholder="xxxxx">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Municipio</label>
+                                                <input type="text" class="form-control" name="municipio" id="municipio" value="<?php echo isset($_POST['municipio']) ? $_POST['municipio'] : '';?>" placeholder="Nombre del municipio">
+                                            </div>
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Ciudad</label>
+                                                <input type="text" class="form-control" name="ciudad" id="ciudad" value="<?php echo isset($_POST['ciudad']) ? $_POST['ciudad'] : '';?>" placeholder="Nombre de la ciudad">
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Estado</label>
+                                                <input type="text" class="form-control" name="estado" id="estado" value="<?php echo isset($_POST['estado']) ? $_POST['estado'] : '';?>" placeholder="Nombre del estado">
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Pais</label>
+                                                <input type="text" class="form-control" name="pais" id="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Nombre del pais">
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Comprobante de domicilio</label>
+                                                <input type="file" class="form-control" name="doc_dom" id="doc_dom">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                     </div>
                                 </div>
                             </div>
@@ -431,17 +505,28 @@ switch($decision){ // Apartado de deciciones
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
-                                        <label class="form-label mt-2">Disponibilidad de viajar</label><br>
-                                        <input type="radio" name="disp_viaje" value="Si">Si<br>
-                                        <input type="radio" name="disp_viaje" value="No">No<br>
-                                        <label class="form-label mt-2">Numero de pasaporte</label>
-                                        <input type="number" class="form-control" name="num_pasaporte" id="num_pasaporte" value="<?php echo isset($_POST['num_pasaporte']) ? $_POST['num_pasaporte'] : '';?>" placeholder="xxxxxxxxxx">
-                                        <label class="form-label mt-2">Fecha de vencimiento del pasaporte</label>
-                                        <input type="date" class="form-control" name="fecha_ven_pas" id="fecha_ven_pas" value="<?php echo isset($_POST['fecha_ven_pas']) ? $_POST['fecha_ven_pas'] : '';?>">
+                                        <div class="row">
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Disponibilidad de viajar</label>
+                                                <select class="form-select" name="disp_viaje" id="disp_viaje">
+                                                    <option value="" hidden>Selecciona una opción</option>
+                                                    <option value="Si">Si</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Numero de pasaporte</label>
+                                                <input type="number" class="form-control" name="num_pasaporte" id="num_pasaporte" value="<?php echo isset($_POST['num_pasaporte']) ? $_POST['num_pasaporte'] : '';?>" placeholder="xxxxxxxxxx">
+                                            </div>
+                                            <div class = "form-group col-md-4">
+                                                <label class="form-label mt-2">Fecha de vencimiento del pasaporte</label>
+                                                <input type="date" class="form-control" name="fecha_ven_pas" id="fecha_ven_pas" value="<?php echo isset($_POST['fecha_ven_pas']) ? $_POST['fecha_ven_pas'] : '';?>">
+                                            </div>
+                                        </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                         <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: center;">Guardar</button>
                                     </div>
                                 </div>
@@ -455,5 +540,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[nuevoDocente] (Prototipo) ---
-Ultima modificacion -- [30/06/2022 (09:19 hrs)]
+Ultima modificacion -- [30/06/2022 (13:14 hrs)]
 -->
