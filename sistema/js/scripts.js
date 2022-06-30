@@ -8,7 +8,7 @@ function archivo(evt) {
     var reader = new FileReader();
     reader.onload = (function(theFile) {
         return function(e) {
-        document.getElementById("previsual").innerHTML = ['<img class="img-rounded" width="200" height="200" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''); // Insertamos la imagen
+        document.getElementById("previsual").innerHTML = ['<img class="img-rounded" width="245" height="245" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''); // Insertamos la imagen
         };
     })(f);
     reader.readAsDataURL(f);
