@@ -19,7 +19,7 @@ $iduser = $_GET['id']; // Almacena la clave del usuario
 
 include "../config/conexion.php"; //Realiza la conexion con la bd
 // Consulta todos los datos de la clave del usuario
-$sql = mysqli_query($conexion,"SELECT u.cve_usuario,
+$sql = mysqli_query($conexion,"SELECT u.cve_usuario, 
                                       u.nombre,
                                       u.apellido1,
                                       u.apellido2,
