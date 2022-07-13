@@ -54,13 +54,13 @@ function fechaC(){ // Definir el formato
 					<ul class="navbar-nav me-auto">
 						<?php if($s_tipo == 4){ ?> <!-- Valida que el usuario es un Docente -->
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a>
+								<a class="nav-link" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi informacion</a>
+								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi informacion</a> <!-- Redirecciona a ver la informacion del docente actual -->
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/inpDocente.php">Importar informacion</a>
+								<a class="nav-link" href="/SITA/sistema/secciones/inpDocente.php">Importar informacion</a> <!-- Redirecciona a importar los datos en archivo JSON -->
 							</li>
 						<?php } ?>
 						<?php if($s_tipo != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
@@ -71,7 +71,7 @@ function fechaC(){ // Definir el formato
 										<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoUsuario.php">Nuevo usuario</a> <!-- Redirecciona a registrar usuario -->
 										<a class="dropdown-item" href="/SITA/sistema/secciones/verUsuario.php">Ver usuarios</a> <!-- Redirecciona a ver los usuarios -->
 										<div class="dropdown-divider"></div> <!-- Muestra una linea para dividir la lista -->
-										<a class="dropdown-item" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver el usuario -->
+										<a class="dropdown-item" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
 									</div>
 								</li>
 							<?php } ?>
@@ -102,5 +102,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (13:17 hrs)]
+Ultima modificacion -- [13/07/2022 (11:53 hrs)]
 -->
