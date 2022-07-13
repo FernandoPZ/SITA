@@ -85,7 +85,7 @@ switch($decision){
                                                                            cve_docente = '$cve_docente',
                                                                            user_cve = '$user_cve'
                                                                            WHERE cve_docente = '$idDoc'");
-                if($query_update){
+                if($sql_update){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
                         <strong>Listo!</strong> La informacion se actualizó correctamente.
@@ -183,6 +183,6 @@ switch($decision){
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de la pagina -->
 
 <!--
---- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+--- Pagina[editarFormacion] (Prototipo) ---
+Ultima modificacion -- [13/07/2022 (12:10 hrs)]
 -->
