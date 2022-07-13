@@ -15,7 +15,7 @@
 							<img class="card-img-top" src="elementos/recuhum.png" alt="">
 							<div class="col text-center">
 								</br>
-								<a name="" id="" class="btn btn-primary" href="secciones/mi_usuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de ususarios -->
+								<a name="" id="" class="btn btn-primary" href="secciones/mi_usuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la cuenta actual -->
 							</div>
 						</div>
 					</div>
@@ -27,7 +27,7 @@
 							<img class="card-img-top" src="elementos/recuhum.png" alt="">
 							<div class="col text-center">
 								</br>
-								<a name="" id="" class="btn btn-primary" href="secciones/infDocente.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de ususarios -->
+								<a name="" id="" class="btn btn-primary" href="secciones/infDocente.php" role="button">Entrar</a> <!-- Redirecciona para ver la informacion del docente actual -->
 							</div>
 						</div>
 					</div>
@@ -78,5 +78,5 @@
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Ultima modificacion -- [04/07/2022 (09:49 hrs)]
+Ultima modificacion -- [13/07/2022 (12:00 hrs)]
 -->
