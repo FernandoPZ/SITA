@@ -11,12 +11,12 @@ function archivo(evt) {
         document.getElementById("previsual").innerHTML = ['<img class="img-rounded" width="245" height="245" src="', e.target.result,'" title="', escape(theFile.name), '"/>'].join(''); // Insertamos la imagen
         };
     })(f);
-    reader.readAsDataURL(f);
+    reader.readAsDataURL(f); // ???
     }
 }
-document.getElementById('foto').addEventListener('change', archivo, false);
+document.getElementById('foto').addEventListener('change', archivo, false); // Llama elementos para identificar
 
 /*
---- Scripts en JavaScript ---
-Ultima modificacion -- [29/06/2022 (13:14 hrs)]
+[Scripts en JavaScript]
+Ultima modificacion -- [13/07/2022 (11:48 hrs)]
 */
