@@ -31,7 +31,7 @@ CREATE TABLE `contacto` (
   PRIMARY KEY (`cve_contacto`),
   KEY `cve_docente` (`cve_docente`),
   CONSTRAINT `contacto_ibfk_1` FOREIGN KEY (`cve_docente`) REFERENCES `docente` (`cve_docente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -61,6 +61,7 @@ CREATE TABLE `docente` (
   `tipo_contratacion` varchar(50) NOT NULL,
   `fecha_ingreso` date NOT NULL,
   `num_empleado` int(11) NOT NULL,
+  `cuenta` int(11) NOT NULL,
   `fecha_add` datetime NOT NULL DEFAULT current_timestamp(),
   `user_cve` int(11) NOT NULL,
   `activo` int(1) NOT NULL DEFAULT 1,
@@ -69,7 +70,7 @@ CREATE TABLE `docente` (
   KEY `user_cve` (`user_cve`),
   CONSTRAINT `docente_ibfk_1` FOREIGN KEY (`puesto`) REFERENCES `puesto` (`cve_puesto`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `docente_ibfk_2` FOREIGN KEY (`user_cve`) REFERENCES `usuario` (`cve_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=10 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -104,7 +105,7 @@ CREATE TABLE `domicilio` (
   PRIMARY KEY (`cve_domicilio`),
   KEY `cve_docente` (`cve_docente`),
   CONSTRAINT `domicilio_ibfk_1` FOREIGN KEY (`cve_docente`) REFERENCES `docente` (`cve_docente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -178,7 +179,7 @@ CREATE TABLE `formacion` (
   KEY `user_cve` (`user_cve`),
   CONSTRAINT `formacion_ibfk_1` FOREIGN KEY (`cve_docente`) REFERENCES `docente` (`cve_docente`) ON DELETE CASCADE ON UPDATE CASCADE,
   CONSTRAINT `formacion_ibfk_2` FOREIGN KEY (`user_cve`) REFERENCES `usuario` (`cve_usuario`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -213,7 +214,7 @@ CREATE TABLE `informacion` (
   PRIMARY KEY (`cve_info`),
   KEY `cve_docente` (`cve_docente`),
   CONSTRAINT `informacion_ibfk_1` FOREIGN KEY (`cve_docente`) REFERENCES `docente` (`cve_docente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -340,7 +341,7 @@ CREATE TABLE `tipo_usuario` (
   `tipo` varchar(20) NOT NULL,
   `activo` int(1) NOT NULL DEFAULT 1,
   PRIMARY KEY (`cve_tipo_usu`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -349,7 +350,7 @@ CREATE TABLE `tipo_usuario` (
 
 LOCK TABLES `tipo_usuario` WRITE;
 /*!40000 ALTER TABLE `tipo_usuario` DISABLE KEYS */;
-INSERT INTO `tipo_usuario` VALUES (1,'administrador',1),(2,'editor',1),(3,'consultor',1);
+INSERT INTO `tipo_usuario` VALUES (1,'Administrador',1),(2,'Editor',1),(3,'Consultor',1),(4,'Docente',1);
 /*!40000 ALTER TABLE `tipo_usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -375,7 +376,7 @@ CREATE TABLE `usuario` (
   KEY `cve_tipo_usu` (`tipo`),
   KEY `tipo` (`tipo`),
   CONSTRAINT `usuario_ibfk_1` FOREIGN KEY (`tipo`) REFERENCES `tipo_usuario` (`cve_tipo_usu`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -384,7 +385,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,1,'Administrador','admi01','admi02','Admin','0192023a7bbd73250516f069df18b500','admin.png','master@correo.com',1),(2,2,'Editor','Edit01','Edit02','Editor','202cb962ac59075b964b07152d234b70','default.png','editor@correo.com',1),(3,3,'Consultor','Cons01','Cons02','Consultor','202cb962ac59075b964b07152d234b70','default.png','consultor@correo.com',1);
+INSERT INTO `usuario` VALUES (1,1,'Administrador','admi01','admi02','Admin','0192023a7bbd73250516f069df18b500','admin.png','master@correo.com',1),(2,2,'Editor','Edit01','Edit02','Editor','202cb962ac59075b964b07152d234b70','default.png','editor@correo.com',1),(3,3,'Consultor','Cons01','Cons02','Consultor','202cb962ac59075b964b07152d234b70','default.png','consultor@correo.com',1),(4,4,'Docente01','01Doc1','01Doc2','Docente01','202cb962ac59075b964b07152d234b70','default.png','docente01@correo.com',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -404,7 +405,7 @@ CREATE TABLE `viaje` (
   PRIMARY KEY (`cve_viaje`),
   KEY `cve_docente` (`cve_docente`),
   CONSTRAINT `viaje_ibfk_1` FOREIGN KEY (`cve_docente`) REFERENCES `docente` (`cve_docente`) ON DELETE CASCADE ON UPDATE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb4;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -425,6 +426,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-06-29 12:23:25
-
--- Ultima version del respaldo [29-06-2022(12:52)]
+-- Dump completed on 2022-07-13 11:16:17
