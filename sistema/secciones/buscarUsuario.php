@@ -24,16 +24,16 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
                     ?>
                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                         <div class="container-fluid">
-                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo usuario</button>
+                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo usuario</button> <!-- Redirecciona a formulario de crear nuevo usuario -->
                             <form action="buscarUsuario.php" method="get" class="d-flex">
-                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>">
-                                <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar">
+                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar" value="<?php echo $busqueda; ?>"> <!-- Campo para buscar -->
+                                <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar"> <!-- Boton para buscar -->
                             </form>
                         </div>
                     </nav>
                 </div>
-                <table class="table table-hover">
-                    <thead>
+                <table class="table table-hover"> <!-- Tabla de contenido -->
+                    <thead class="text-center">
                         <tr>
                         <th scope="col">Clave</th>
                         <th scope="col">Tipo</th>
@@ -96,14 +96,14 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
                         if($result > 0){ // Valida si el numero de consultas es mayor a cero
                             while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
                                 ?>
-                                <tbody>
+                                <tbody class="text-center">
                                     <tr class="table-active"> <!-- Campos a llenar -->
                                     <th scope="row"><?php echo $data ['cve_usuario']; ?></th> <!-- La clave del usuario -->
                                     <td><?php echo $data ['tipo']; ?></td> <!-- El tipo del usuario -->
                                     <td><?php echo $data ['nombre']; ?></td> <!-- El nombre del usuario -->
                                     <td><?php echo $data ['apellido1']; ?></td> <!-- El primer apellido del usuario -->
                                     <td><?php echo $data ['apellido2']; ?></td> <!-- El segundo apellido del usuario -->
-                                    <td> <img src="/SITA/sistema/files/upload/fotos/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
+                                    <td> <img src="/SITA/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
                                     <td><?php echo $data ['usuario']; ?></td> <!-- El ID del usuario -->
                                     <td><?php echo $data ['correo']; ?></td> <!-- El correo del usuario -->
                                     <td>
@@ -122,7 +122,7 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
                     ?>
                 </table>
                 <?php
-                    if($total_registro!= 0){ //Valida si el toal de registros es diferente a cero
+                    if($total_registro!= 0){ //Valida si el total de registros es diferente a cero
                 ?>
                 <div>
                     <ul class="pagination justify-content-end">
@@ -161,6 +161,5 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 
 <!--
 --- Pagina[buscarUsuarios] (Prototipo) ---
-Codificacion final -- [22/06/2022 (09:47 hrs)]
-Comentario final ---- [22/06/2022 (09:47 hrs)]
+Ultima modificacion -- [18/07/2022 (10:09 hrs)]
 -->
