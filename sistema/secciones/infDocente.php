@@ -1,6 +1,6 @@
-<?php include("../template/cabecera.php"); ?>
+<?php include("../template/cabecera.php"); ?> <!-- Llama al encabezado de la pagina -->
 
-<?php include ("../config/conexion.php"); ?>
+<?php include ("../config/conexion.php"); ?> <!-- Realiza la conexion de la bd -->
 
 <?php
 $user = $_SESSION['cve_usuario']; // Guarda la clave de usuario con la que entra
@@ -138,13 +138,13 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
             <div class="jumbotron">
                 <h1 class="display-3">Informacion del docente</h1>
                 <hr class="my-2">
-                <?php if($datos == 0){ ?> <!-- Valida que el usuario tenga sus datos -->
+                <?php if($datos == 0){ ?> <!-- Valida que contenga datos -->
                     <div class="text-center">
                         <div class="col-md-5 mx-auto">
                         </br>
-                            <div class="alert alert-dismissible alert-warning"> <!-- Alerta de que el usuario no se puede eliminar -->
+                            <div class="alert alert-dismissible alert-warning"> <!-- Alerta de que el docente no tiene infromacion -->
                                 <h4 class="alert-heading">oh, vaya...</h4>
-                                <p class="mb-0"> Parece que aun no ingresas tu informacion </p>
+                                <p class="mb-0"> Parece que aun no ingresa la informacion </p>
                                 <br>
                                 <div class="text-center">
                                     <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary mx-auto">Agregar informacion</button> <!-- Redirecciona para crear un nuevo registro -->
@@ -194,19 +194,19 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                     <div class="row">
                                         <div class = "form-group col-md-8">
                                             <label class="form-label mt-2">Nombre o nombres</label>
-                                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre; ?>" disabled="">
+                                            <input type="text" class="form-control" name="nombre" id="nombre" value="<?php echo $nombre; ?>" disabled=""> <!-- Muestra el nombre del docente -->
                                             <label class="form-label mt-2">Primer apellido</label>
-                                            <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo $apellido1; ?>" disabled="">
+                                            <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo $apellido1; ?>" disabled=""> <!-- Muestra el primer apellido del docente -->
                                             <label class="form-label mt-2">Segundo apellido</label>
-                                            <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo $apellido2; ?>" disabled="">
+                                            <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo $apellido2; ?>" disabled=""> <!-- Muestra el segundo apellido del docente -->
                                             <label class="form-label mt-2">Institucion</label>
-                                            <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo $institucion; ?>" disabled="">
+                                            <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo $institucion; ?>" disabled=""> <!-- Muestra el nombre de la institucion -->
                                         </div>
                                         <div class = "form-group col-md-4 mx-auto">
                                             <label class="form-label mt-2">Fotografia</label>
                                             <div class="m-0 vh-50 row justify-content-center align-items-center">
                                                 <div class="col-auto">
-                                                <output><img src="/SITA/sistema/files/docente/foto/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output>
+                                                <output><img src="/SITA/sistema/files/docente/foto/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output> <!-- Muestra la fotografia del docente -->
                                                 </div>
                                             </div>
                                         </div>
@@ -215,16 +215,16 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <div class = "form-group col-md-3">
                                             <label class="form-label mt-2">Tipo de contratacion</label>
                                             <select class="form-select" name="tipo_contratacion" id="tipo_contratacion" disabled="">
-                                                <option value="<?php echo $tipo_contratacion; ?>" hidden><?php echo $tipo_contratacion; ?></option>
+                                                <option value="<?php echo $tipo_contratacion; ?>" hidden><?php echo $tipo_contratacion; ?></option> <!-- Muestra el tipo de contratacion -->
                                             </select>
                                         </div>
                                         <div class = "form-group col-md-3">
                                             <label class="form-label mt-2">Fecha de ingreso</label>
-                                            <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="<?php echo $fecha_ingreso; ?>" disabled="">
+                                            <input type="date" class="form-control" name="fecha_ingreso" id="fecha_ingreso" value="<?php echo $fecha_ingreso; ?>" disabled=""> <!-- Muestra la fecha de ingreso -->
                                         </div>
                                         <div class = "form-group col-md-3">
                                             <label class="form-label mt-2">Numero de empleado</label>
-                                            <input type="number" class="form-control" name="num_empleado" id="num_empleado" value="<?php echo $num_empleado; ?>" disabled="">
+                                            <input type="number" class="form-control" name="num_empleado" id="num_empleado" value="<?php echo $num_empleado; ?>" disabled=""> <!-- Muestra el numero de empleado -->
                                         </div>
                                         <div class = "form-group col-md-3">
                                             <label class="form-label mt-2">Puesto</label>
@@ -236,7 +236,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             ?>
                                             <select class="form-select" name="puesto" id="puesto" disabled="">
                                                 <?php
-                                                    echo $option; // Muestra la opcion actual
+                                                    echo $option; // Muestra el puesto del docente
                                                 ?>
                                             </select>
                                         </div>
@@ -244,8 +244,8 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                     <div class="text-center">
                                         <br>
                                         <form method="post">
-                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona para eliminar al usuario -->
+                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
+                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -261,47 +261,47 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <div class="row">
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Fecha de nacimiento</label>
-                                                <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="<?php echo $fecha_nac; ?>" disabled="">
+                                                <input type="date" class="form-control" name="fecha_nac" id="fecha_nac" value="<?php echo $fecha_nac; ?>" disabled=""> <!-- Muestra la fecha de nacimiento -->
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Genero</label>
                                                 <select class="form-select" name="genero" id="genero" disabled="">
-                                                    <option value="<?php echo $genero; ?>" hidden><?php echo $genero; ?></option>
+                                                    <option value="<?php echo $genero; ?>" hidden><?php echo $genero; ?></option> <!-- Muestra el genero del docente -->
                                                 </select>
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Nacionalidad</label><br>
                                                 <select class="form-select" name="nacionalidad" id="nacionalidad" disabled="">
-                                                    <option value="<?php echo $nacionalidad; ?>" hidden><?php echo $nacionalidad; ?></option>
+                                                    <option value="<?php echo $nacionalidad; ?>" hidden><?php echo $nacionalidad; ?></option> <!-- Muestra la nacionalidad -->
                                                 </select>
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Estado civil</label>
                                                 <select class="form-select" name="estado_civil" id="estado_civil" disabled="">
-                                                    <option value="<?php echo $estado_civil; ?>" hidden><?php echo $estado_civil; ?></option>
+                                                    <option value="<?php echo $estado_civil; ?>" hidden><?php echo $estado_civil; ?></option> <!-- Muestra el estado civil -->
                                                 </select>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Numero de seguridad social</label>
-                                                <input type="number" class="form-control" name="nss" id="nss" value="<?php echo $nss; ?>" disabled="">
+                                                <input type="number" class="form-control" name="nss" id="nss" value="<?php echo $nss; ?>" disabled=""> <!-- Muestra el numero de seguridad social -->
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">CURP</label>
-                                                <input type="text" class="form-control" name="curp" id="curp" value="<?php echo $curp; ?>" disabled="">
+                                                <input type="text" class="form-control" name="curp" id="curp" value="<?php echo $curp; ?>" disabled=""> <!-- Muestra el CURP -->
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">RFC</label>
-                                                <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo $rfc; ?>" disabled="">
+                                                <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo $rfc; ?>" disabled=""> <!-- Muestra el RFC -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
                                         <form method="post">
-                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona para eliminar al usuario -->
+                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
+                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -317,22 +317,22 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <div class="row">
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Correo institucional</label>
-                                                <input type="email" class="form-control" name="correo_ins" id="correo_ins" value="<?php echo $correo_ins; ?>" disabled="">
+                                                <input type="email" class="form-control" name="correo_ins" id="correo_ins" value="<?php echo $correo_ins; ?>" disabled=""> <!-- Muestra el correo institucional -->
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Correo personal</label>
-                                                <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo $correo_per; ?>" disabled="">
+                                                <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo $correo_per; ?>" disabled=""> <!-- Muestra el correo personal -->
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Numero telefonico</label>
-                                                <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo $telefono; ?>" disabled="">
+                                                <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo $telefono; ?>" disabled=""> <!-- Muestra el numero telefonico -->
                                             </div>
                                         </div>
                                         <div class="text-center">
                                             <br>
                                             <form method="post">
-                                                <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                                <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona para eliminar al usuario -->
+                                                <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al docente -->
+                                                <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
                                             </form>
                                         </div>
                                     </div>
@@ -349,49 +349,49 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <div class="row">
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Calle</label>
-                                                <input type="text" class="form-control" name="calle" id="calle" value="<?php echo $calle; ?>" disabled="">
+                                                <input type="text" class="form-control" name="calle" id="calle" value="<?php echo $calle; ?>" disabled=""> <!-- Muestra en nombre de la calle -->
                                             </div>
                                             <div class = "form-group col-md-2">
                                                 <label class="form-label mt-2">Numero exterior</label>
-                                                <input type="text" class="form-control" name="num_ext" id="num_ext" value="<?php echo $num_ext; ?>" disabled="">
+                                                <input type="text" class="form-control" name="num_ext" id="num_ext" value="<?php echo $num_ext; ?>" disabled=""> <!-- Muestra el numero exterior -->
                                             </div>
                                             <div class = "form-group col-md-2">
                                                 <label class="form-label mt-2">Numero interior</label>
-                                                <input type="text" class="form-control" name="num_int" id="num_int" value="<?php echo $num_int; ?>" disabled="">
+                                                <input type="text" class="form-control" name="num_int" id="num_int" value="<?php echo $num_int; ?>" disabled=""> <!-- Muestra el numero interior -->
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Colonia</label>
-                                                <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo $colonia; ?>" disabled="">
+                                                <input type="text" class="form-control" name="colonia" id="colonia" value="<?php echo $colonia; ?>" disabled=""> <!-- Muestra el nombre de la colonia -->
                                             </div>
                                             <div class = "form-group col-md-2">
                                                 <label class="form-label mt-2">Codigo Postal</label>
-                                                <input type="number" class="form-control" name="codigo_postal" value="<?php echo $codigo_postal; ?>" id="codigo_postal" disabled="">
+                                                <input type="number" class="form-control" name="codigo_postal" value="<?php echo $codigo_postal; ?>" id="codigo_postal" disabled=""> <!-- Muestra el codigo postal -->
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Municipio</label>
-                                                <input type="text" class="form-control" name="municipio" id="municipio" value="<?php echo $municipio; ?>" disabled="">
+                                                <input type="text" class="form-control" name="municipio" id="municipio" value="<?php echo $municipio; ?>" disabled=""> <!-- Muestra el municipio -->
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Ciudad</label>
-                                                <input type="text" class="form-control" name="ciudad" id="ciudad" value="<?php echo $ciudad; ?>" disabled="">
+                                                <input type="text" class="form-control" name="ciudad" id="ciudad" value="<?php echo $ciudad; ?>" disabled=""> <!-- Muestra la ciudad -->
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Estado</label>
-                                                <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado; ?>" disabled="">
+                                                <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado; ?>" disabled=""> <!-- Muestra el estado -->
                                             </div>
                                             <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Pais</label>
-                                                <input type="text" class="form-control" name="pais" id="pais" value="<?php echo $pais; ?>" disabled="">
+                                                <input type="text" class="form-control" name="pais" id="pais" value="<?php echo $pais; ?>" disabled=""> <!-- Muestra el pais -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
                                         <form method="post">
-                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona para eliminar al usuario -->
+                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
+                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -408,24 +408,24 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Disponibilidad de viajar</label>
                                                 <select class="form-select" name="disp_viaje" id="disp_viaje" disabled="">
-                                                    <option value="<?php echo $disp_viaje; ?>" hidden><?php echo $disp_viaje; ?></option>
+                                                    <option value="<?php echo $disp_viaje; ?>" hidden><?php echo $disp_viaje; ?></option> <!-- Muestra la disponibilidad de viajar -->
                                                 </select>
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Numero de pasaporte</label>
-                                                <input type="number" class="form-control" name="num_pasaporte" id="num_pasaporte" value="<?php echo $num_pasaporte; ?>" disabled="">
+                                                <input type="number" class="form-control" name="num_pasaporte" id="num_pasaporte" value="<?php echo $num_pasaporte; ?>" disabled=""> <!-- Muestra el numero de pasaporte -->
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Fecha de vencimiento del pasaporte</label>
-                                                <input type="date" class="form-control" name="fecha_ven_pas" id="fecha_ven_pas" value="<?php echo $fecha_ven_pas; ?>" disabled="">
+                                                <input type="date" class="form-control" name="fecha_ven_pas" id="fecha_ven_pas" value="<?php echo $fecha_ven_pas; ?>" disabled=""> <!-- Muestra la fecha de vencimiento -->
                                             </div>
                                         </div>
                                     </div>
                                     <div class="text-center">
                                         <br>
                                         <form method="post">
-                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona para eliminar al usuario -->
+                                            <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
+                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -439,11 +439,11 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                                         <div class="container-fluid">
-                                            <button type="button" onclick="location.href='nuevoFormacion.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo usuario -->
+                                            <button type="button" onclick="location.href='nuevoFormacion.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar Formacion -->
                                         </div>
                                     </nav>
                                     <table class="table table-hover">
-                                        <thead>
+                                        <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
                                             <th scope="col">Clave</th>
                                             <th scope="col">Nivel de estudio</th>
@@ -478,16 +478,16 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
                                                 while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
                                                     ?>
-                                                    <tbody>
+                                                    <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
                                                             <th scope="row"><?php echo $data ['cve_formacion']; ?></th> <!-- La clave del usuario -->
-                                                            <td><?php echo $data ['nivel_estudio']; ?></td> <!-- El tipo del usuario -->
-                                                            <td><?php echo $data ['siglas_estudio']; ?></td> <!-- El nombre del usuario -->
-                                                            <td><?php echo $data ['institucion']; ?></td> <!-- El primer apellido del usuario -->
-                                                            <td><?php echo $data ['area']; ?></td> <!-- El segundo apellido del usuario -->
-                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La fotografia del usuario -->
-                                                            <td><?php echo $data ['pais']; ?></td> <!-- El ID del usuario -->
-                                                            <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- El correo del usuario -->
+                                                            <td><?php echo $data ['nivel_estudio']; ?></td> <!-- El nivel de estudios -->
+                                                            <td><?php echo $data ['siglas_estudio']; ?></td> <!-- Las siglas de los estudios -->
+                                                            <td><?php echo $data ['institucion']; ?></td> <!-- El nombre de la institucion -->
+                                                            <td><?php echo $data ['area']; ?></td> <!-- El area aplicable -->
+                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La disiplina aplicable -->
+                                                            <td><?php echo $data ['pais']; ?></td> <!-- El pais de los estudios -->
+                                                            <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- La fecha de titulacion -->
                                                             <td>
                                                                 <form method="post">
                                                                     <a role="button" class="btn btn-outline-info" href="infFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Ver</a> <!-- Redirecciona para visualizar la Formacion -->
@@ -503,7 +503,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             ?>
                                         </table>
                                         <?php
-                                            if($total_formacion!= 0){
+                                            if($total_formacion!= 0){ // Almacena el total de registros de Formacion
                                         ?>
                                         <div>
                                             <ul class="pagination justify-content-end">
@@ -531,18 +531,18 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             </ul>
                                         </div>
                                         <?php }else{ ?>
-                                            <div class="alert alert-dismissible alert-light mx-auto">
+                                            <div class="alert alert-dismissible alert-light mx-auto"> <!-- Mensaje de que no hay registros -->
                                                 <h4 class="alert-heading text-center">No hay formacion registrada para este docente, aun...</h4>
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
-                                                    <a role="button" class="btn btn-primary" href="nuevoFormacion.php?id_d=<?php echo $idDoc;?>" >Nuevo registro</a> <!-- Redirecciona para eliminar al usuario -->
+                                                    <a role="button" class="btn btn-primary" href="nuevoFormacion.php?id_d=<?php echo $idDoc;?>" >Nuevo registro</a> <!-- Redirecciona para registrar Formacion -->
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button> <!-- Boton para volver -->
                                     </div>
                                 </div>
                             </div>
@@ -663,29 +663,26 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                                         <div class="container-fluid">
-                                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo usuario -->
+                                            <button type="button" onclick="location.href='nuevoPremio.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo premio -->
                                         </div>
                                     </nav>
                                     <table class="table table-hover">
-                                        <thead>
+                                        <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
                                             <th scope="col">Clave</th>
-                                            <th scope="col">Nivel de estudio</th>
-                                            <th scope="col">Siglas de los estudios</th>
+                                            <th scope="col">Nombre</th>
+                                            <th scope="col">Fecha</th>
                                             <th scope="col">Institucion</th>
-                                            <th scope="col">Area</th>
-                                            <th scope="col">Disiplina</th>
-                                            <th scope="col">Pais</th>
-                                            <th scope="col">Fecha de titulacion</th>
+                                            <th scope="col">Motivo</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
                                         <?php
                                             //Paginador
                                             include "../config/conexion.php";
-                                            $sql_formacion = mysqli_query($conexion, "SELECT COUNT(*) AS tr_formacion FROM formacion WHERE activo = 1"); // Cuenta y almacena todos los registros activos
-                                            $result_formacion = mysqli_fetch_array($sql_formacion);
-                                            $total_formacion = $result_formacion['tr_formacion'];
+                                            $sql_premio = mysqli_query($conexion, "SELECT COUNT(*) AS tr_premio FROM premios WHERE activo = 1"); // Cuenta y almacena todos los registros activos
+                                            $result_premio = mysqli_fetch_array($sql_premio);
+                                            $total_premio = $result_premio['tr_premio'];
                                             $por_pagina = 5; // Indicador de cuantos registros mostrara por pagina
                                             if(empty($_GET['pagina'])) // Identifica si el numero de paginas no este vacio
                                             {
@@ -696,41 +693,24 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                                             $total_pagina = ceil($total_formacion / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query = mysqli_query($conexion, "SELECT cve_formacion,
-                                                                                     nivel_estudio,
-                                                                                     siglas_estudio,
-                                                                                     institucion,
-                                                                                     area,
-                                                                                     disciplina,
-                                                                                     pais,
-                                                                                     fecha_inicio,
-                                                                                     fecha_fin,
-                                                                                     fecha_titulacion,
-                                                                                     habilidades,
-                                                                                     cve_docente,
-                                                                                     fecha_add,
-                                                                                     user_cve,
-                                                                                     activo
-                                                                                     FROM formacion WHERE activo = 1 ORDER BY cve_formacion ASC LIMIT $desde,$por_pagina;");
+                                            $query = mysqli_query($conexion, "SELECT * FROM premios WHERE activo = 1 ORDER BY cve_premio ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
                                             $result = mysqli_num_rows($query); // Calcula el numero de filas de la consulta
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
                                                 while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
                                                     ?>
-                                                    <tbody>
+                                                    <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
                                                             <th scope="row"><?php echo $data ['cve_formacion']; ?></th> <!-- La clave del usuario -->
-                                                            <td><?php echo $data ['nivel_estudio']; ?></td> <!-- El tipo del usuario -->
-                                                            <td><?php echo $data ['siglas_estudio']; ?></td> <!-- El nombre del usuario -->
+                                                            <td><?php echo $data ['nombre']; ?></td> <!-- El tipo del usuario -->
+                                                            <td><?php echo $data ['fecha']; ?></td> <!-- El nombre del usuario -->
                                                             <td><?php echo $data ['institucion']; ?></td> <!-- El primer apellido del usuario -->
-                                                            <td><?php echo $data ['area']; ?></td> <!-- El segundo apellido del usuario -->
-                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La fotografia del usuario -->
-                                                            <td><?php echo $data ['pais']; ?></td> <!-- El ID del usuario -->
-                                                            <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- El correo del usuario -->
+                                                            <td><?php echo $data ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>?id_d=<?php echo $data ['cve_formacion']; ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>?id_f=<?php echo $data ['cve_formacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -741,7 +721,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             ?>
                                         </table>
                                         <?php
-                                            if($total_formacion!= 0){
+                                            if($total_premio!= 0){
                                         ?>
                                         <div>
                                             <ul class="pagination justify-content-end">
@@ -770,11 +750,11 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         </div>
                                         <?php }else{ ?>
                                             <div class="alert alert-dismissible alert-light mx-auto">
-                                                <h4 class="alert-heading text-center">No hay formacion registrada para este docente, aun...</h4>
+                                                <h4 class="alert-heading text-center">No hay premios registrados para este docente, aun...</h4>
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
-                                                    <a role="button" class="btn btn-outline-danger" href="nuevoFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                    <button type="button" onclick="location.href='nuevoPremio.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo premio -->
                                                 </div>
                                             </div>
                                         <?php } ?>
