@@ -490,9 +490,9 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                             <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- El correo del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-info" href="infFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Ver</a> <!-- Redirecciona para editar al usuario -->
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Ver</a> <!-- Redirecciona para visualizar la Formacion -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Editar</a> <!-- Redirecciona para editar al Formacion -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Formacion -->
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -598,8 +598,9 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                             <td><?php echo $data_experiencia ['periodo']; ?></td> <!-- El primer apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarFormacion.php?id_d=<?php echo $idDoc; ?>&id_f=<?php echo $data ['cve_formacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infExperiencia.php?id_d=<?php echo $idDoc; ?>&id_e=<?php echo $data_experiencia ['cve_experiencia']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarExperiencia.php?id_d=<?php echo $idDoc; ?>&id_e=<?php echo $data_experiencia ['cve_experiencia']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarExperiencia.php?id_d=<?php echo $idDoc; ?>&id_e=<?php echo $data_experiencia ['cve_experiencia']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
                                                                 </form>
                                                             </td>
                                                         </tr>
