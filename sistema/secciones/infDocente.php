@@ -559,7 +559,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         </div>
                                     </nav>
                                     <table class="table table-hover">
-                                        <thead>
+                                        <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
                                             <th scope="col">Clave</th>
                                             <th scope="col">Actividad</th>
@@ -590,7 +590,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             if($result_experiencia > 0){ // Valida si el numero de consultas es mayor a cero
                                                 while ($data_experiencia = mysqli_fetch_array($query_experiencia)){ // Crea un bucle para mostrar los resultados
                                                     ?>
-                                                    <tbody>
+                                                    <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
                                                             <th scope="row"><?php echo $data_experiencia ['cve_experiencia']; ?></th> <!-- La clave del usuario -->
                                                             <td><?php echo $data_experiencia ['actividad']; ?></td> <!-- El tipo del usuario -->
@@ -658,7 +658,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="premios"> <!-- Tabla de Premios -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Listado pendiente
+                                    Lista de los premios del docente
                                 </div>
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -768,34 +768,33 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="publicaciones"> <!-- Tabla de Publicaciones -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Listado pendiente
+                                    Lista de publicaciones del docente
                                 </div>
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                                         <div class="container-fluid">
-                                            <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo usuario -->
+                                            <button type="button" onclick="location.href='nuevoPublicacion.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Publicacion -->
                                         </div>
                                     </nav>
                                     <table class="table table-hover">
-                                        <thead>
+                                        <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
+                                            cve_publicacion	tipo	autor	titulo_articulo	titulo_revista	pagina_inicio	pagina_fin	pais	editorial	volumen	issp	fecha_publicacion	proposito	estado	cve_docente	fecha_add	user_cve	activo	
                                             <th scope="col">Clave</th>
-                                            <th scope="col">Nivel de estudio</th>
-                                            <th scope="col">Siglas de los estudios</th>
-                                            <th scope="col">Institucion</th>
-                                            <th scope="col">Area</th>
-                                            <th scope="col">Disiplina</th>
-                                            <th scope="col">Pais</th>
-                                            <th scope="col">Fecha de titulacion</th>
+                                            <th scope="col">Articulo</th>
+                                            <th scope="col">Revista/Libro</th>
+                                            <th scope="col">Editorial</th>
+                                            <th scope="col">Volumen</th>
+                                            <th scope="col">Fecha de publicacion</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
                                         <?php
                                             //Paginador
                                             include "../config/conexion.php";
-                                            $sql_formacion = mysqli_query($conexion, "SELECT COUNT(*) AS tr_formacion FROM formacion WHERE activo = 1"); // Cuenta y almacena todos los registros activos
-                                            $result_formacion = mysqli_fetch_array($sql_formacion);
-                                            $total_formacion = $result_formacion['tr_formacion'];
+                                            $sql_publicacion = mysqli_query($conexion, "SELECT COUNT(*) AS tr_publicacion FROM publicaciones WHERE activo = 1"); // Cuenta y almacena todos los registros activos
+                                            $result_publicacion = mysqli_fetch_array($sql_publicacion);
+                                            $total_publicacion = $result_publicacion['tr_publicacion'];
                                             $por_pagina = 5; // Indicador de cuantos registros mostrara por pagina
                                             if(empty($_GET['pagina'])) // Identifica si el numero de paginas no este vacio
                                             {
@@ -804,43 +803,26 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                 $pagina = $_GET['pagina'];
                                             }
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
-                                            $total_pagina = ceil($total_formacion / $por_pagina); // Calcula el total de las paginas
+                                            $total_pagina = ceil($total_publicacion / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query = mysqli_query($conexion, "SELECT cve_formacion,
-                                                                                     nivel_estudio,
-                                                                                     siglas_estudio,
-                                                                                     institucion,
-                                                                                     area,
-                                                                                     disciplina,
-                                                                                     pais,
-                                                                                     fecha_inicio,
-                                                                                     fecha_fin,
-                                                                                     fecha_titulacion,
-                                                                                     habilidades,
-                                                                                     cve_docente,
-                                                                                     fecha_add,
-                                                                                     user_cve,
-                                                                                     activo
-                                                                                     FROM formacion WHERE activo = 1 ORDER BY cve_formacion ASC LIMIT $desde,$por_pagina;");
+                                            $query_publicacion = mysqli_query($conexion, "SELECT * FROM publicaciones WHERE activo = 1 ORDER BY cve_publicacion ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
-                                            $result = mysqli_num_rows($query); // Calcula el numero de filas de la consulta
+                                            $result = mysqli_num_rows($query_publicacion); // Calcula el numero de filas de la consulta
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
-                                                while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
+                                                while ($data_publicacion = mysqli_fetch_array($query_publicacion)){ // Crea un bucle para mostrar los resultados
                                                     ?>
-                                                    <tbody>
+                                                    <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
-                                                            <th scope="row"><?php echo $data ['cve_formacion']; ?></th> <!-- La clave del usuario -->
-                                                            <td><?php echo $data ['nivel_estudio']; ?></td> <!-- El tipo del usuario -->
-                                                            <td><?php echo $data ['siglas_estudio']; ?></td> <!-- El nombre del usuario -->
-                                                            <td><?php echo $data ['institucion']; ?></td> <!-- El primer apellido del usuario -->
-                                                            <td><?php echo $data ['area']; ?></td> <!-- El segundo apellido del usuario -->
-                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La fotografia del usuario -->
-                                                            <td><?php echo $data ['pais']; ?></td> <!-- El ID del usuario -->
-                                                            <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- El correo del usuario -->
+                                                            <th scope="row"><?php echo $data_publicacion ['cve_premio']; ?></th> <!-- La clave del usuario -->
+                                                            <td><?php echo $data_publicacion ['nombre']; ?></td> <!-- El tipo del usuario -->
+                                                            <td><?php echo $data_publicacion ['fecha']; ?></td> <!-- El nombre del usuario -->
+                                                            <td><?php echo $data_publicacion ['institucion']; ?></td> <!-- El primer apellido del usuario -->
+                                                            <td><?php echo $data_publicacion ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>?id_d=<?php echo $data ['cve_formacion']; ?>">Editar</a> <!-- Redirecciona para editar al usuario -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>?id_f=<?php echo $data ['cve_formacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
                                                                 </form>
                                                             </td>
                                                         </tr>
@@ -851,7 +833,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             ?>
                                         </table>
                                         <?php
-                                            if($total_formacion!= 0){
+                                            if($total_publicacion!= 0){
                                         ?>
                                         <div>
                                             <ul class="pagination justify-content-end">
@@ -880,17 +862,17 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         </div>
                                         <?php }else{ ?>
                                             <div class="alert alert-dismissible alert-light mx-auto">
-                                                <h4 class="alert-heading text-center">No hay formacion registrada para este docente, aun...</h4>
+                                                <h4 class="alert-heading text-center">No hay publicaciones registrados para este docente, aun...</h4>
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
-                                                    <a role="button" class="btn btn-outline-danger" href="nuevoFormacion.php?id_d=<?php echo $data ['cve_docente']; ?>" >Borrar</a> <!-- Redirecciona para eliminar al usuario -->
+                                                    <button type="button" onclick="location.href='nuevoPublicacion.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Publicacion -->
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                     </div>
                                 </div>
                             </div>
@@ -901,3 +883,8 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
             </div>
 
 <?php include("../template/pie.php"); ?>
+
+<!--
+--- Pagina[infDocente] (Prototipo) ---
+Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+-->
