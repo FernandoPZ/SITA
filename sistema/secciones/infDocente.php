@@ -779,7 +779,6 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                     <table class="table table-hover">
                                         <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
-                                            cve_publicacion	tipo	autor	titulo_articulo	titulo_revista	pagina_inicio	pagina_fin	pais	editorial	volumen	issp	fecha_publicacion	proposito	estado	cve_docente	fecha_add	user_cve	activo	
                                             <th scope="col">Clave</th>
                                             <th scope="col">Articulo</th>
                                             <th scope="col">Revista/Libro</th>
@@ -813,16 +812,17 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                     ?>
                                                     <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
-                                                            <th scope="row"><?php echo $data_publicacion ['cve_premio']; ?></th> <!-- La clave del usuario -->
-                                                            <td><?php echo $data_publicacion ['nombre']; ?></td> <!-- El tipo del usuario -->
-                                                            <td><?php echo $data_publicacion ['fecha']; ?></td> <!-- El nombre del usuario -->
-                                                            <td><?php echo $data_publicacion ['institucion']; ?></td> <!-- El primer apellido del usuario -->
-                                                            <td><?php echo $data_publicacion ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
+                                                            <th scope="row"><?php echo $data_publicacion ['cve_publicacion']; ?></th> <!-- La clave del usuario -->
+                                                            <td><?php echo $data_publicacion ['titulo_articulo']; ?></td> <!-- El tipo del usuario -->
+                                                            <td><?php echo $data_publicacion ['titulo_revista']; ?></td> <!-- El nombre del usuario -->
+                                                            <td><?php echo $data_publicacion ['editorial']; ?></td> <!-- El primer apellido del usuario -->
+                                                            <td><?php echo $data_publicacion ['volumen']; ?></td> <!-- El segundo apellido del usuario -->
+                                                            <td><?php echo $data_publicacion ['fecha_publicacion']; ?></td> <!-- El segundo apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-info" href="infPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infPublicacion.php?id_d=<?php echo $idDoc; ?>&id_pu=<?php echo $data_publicacion ['cve_publicacion']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_pu=<?php echo $data_publicacion ['cve_publicacion']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPublicacion.php?id_d=<?php echo $idDoc; ?>&id_pu=<?php echo $data_publicacion ['cve_publicacion']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
                                                                 </form>
                                                             </td>
                                                         </tr>
