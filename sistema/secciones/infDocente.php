@@ -663,7 +663,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                                         <div class="container-fluid">
-                                            <button type="button" onclick="location.href='nuevoPremio.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo premio -->
+                                            <button type="button" onclick="location.href='nuevoPremio.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Premio -->
                                         </div>
                                     </nav>
                                     <table class="table table-hover">
@@ -693,19 +693,19 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                                             $total_pagina = ceil($total_formacion / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query = mysqli_query($conexion, "SELECT * FROM premios WHERE activo = 1 ORDER BY cve_premio ASC LIMIT $desde,$por_pagina;");
+                                            $query_premio = mysqli_query($conexion, "SELECT * FROM premios WHERE activo = 1 ORDER BY cve_premio ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
-                                            $result = mysqli_num_rows($query); // Calcula el numero de filas de la consulta
+                                            $result = mysqli_num_rows($query_premio); // Calcula el numero de filas de la consulta
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
-                                                while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
+                                                while ($data_premio = mysqli_fetch_array($query_premio)){ // Crea un bucle para mostrar los resultados
                                                     ?>
                                                     <tbody class="text-center">
                                                         <tr class="table-active"> <!-- Campos a llenar -->
-                                                            <th scope="row"><?php echo $data ['cve_formacion']; ?></th> <!-- La clave del usuario -->
-                                                            <td><?php echo $data ['nombre']; ?></td> <!-- El tipo del usuario -->
-                                                            <td><?php echo $data ['fecha']; ?></td> <!-- El nombre del usuario -->
-                                                            <td><?php echo $data ['institucion']; ?></td> <!-- El primer apellido del usuario -->
-                                                            <td><?php echo $data ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
+                                                            <th scope="row"><?php echo $data_premio ['cve_premio']; ?></th> <!-- La clave del usuario -->
+                                                            <td><?php echo $data_premio ['nombre']; ?></td> <!-- El tipo del usuario -->
+                                                            <td><?php echo $data_premio ['fecha']; ?></td> <!-- El nombre del usuario -->
+                                                            <td><?php echo $data_premio ['institucion']; ?></td> <!-- El primer apellido del usuario -->
+                                                            <td><?php echo $data_premio ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
                                                                     <a role="button" class="btn btn-outline-info" href="infPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
@@ -754,13 +754,13 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
-                                                    <button type="button" onclick="location.href='nuevoPremio.php'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo premio -->
+                                                    <button type="button" onclick="location.href='nuevoPremio.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Premio -->
                                                 </div>
                                             </div>
                                         <?php } ?>
                                     <div class="text-center">
                                         <br>
-                                        <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: center;">Cancelar</button>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
                                     </div>
                                 </div>
                             </div>
@@ -899,7 +899,5 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                 </form>
                 <?php } ?>
             </div>
-                        
-                        
 
 <?php include("../template/pie.php"); ?>
