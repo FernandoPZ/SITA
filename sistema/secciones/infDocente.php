@@ -708,9 +708,9 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                             <td><?php echo $data_premio ['motivo']; ?></td> <!-- El segundo apellido del usuario -->
                                                             <td>
                                                                 <form method="post">
-                                                                    <a role="button" class="btn btn-outline-info" href="infPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
-                                                                    <a role="button" class="btn btn-outline-warning" href="editarPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
-                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPremio.php?id_d=<?php echo $idDoc; ?>&id_p=<?php echo $data_premio ['cve_premio']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-info" href="infPremio.php?id_d=<?php echo $idDoc; ?>&id_pr=<?php echo $data_premio ['cve_premio']; ?>">Ver</a> <!-- Redirecciona para visualizar la Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-warning" href="editarPremio.php?id_d=<?php echo $idDoc; ?>&id_pr=<?php echo $data_premio ['cve_premio']; ?>">Editar</a> <!-- Redirecciona para editar al Experiencia -->
+                                                                    <a role="button" class="btn btn-outline-danger" href="eliminarPremio.php?id_d=<?php echo $idDoc; ?>&id_pr=<?php echo $data_premio ['cve_premio']; ?>" >Borrar</a> <!-- Redirecciona para eliminar la Experiencia -->
                                                                 </form>
                                                             </td>
                                                         </tr>
