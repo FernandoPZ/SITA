@@ -82,6 +82,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
                                     <td>
                                         <form method="post">
                                             <a role="button" class="btn btn-outline-info" href="infDocente.php?id=<?php echo $data ['cve_docente']; ?>">Ver</a>
+                                            <a role="button" class="btn btn-outline-success" href="expDocente.php?id=<?php echo $data ['cve_docente'] ?>">Exportar</a>
                                             <?php if($_SESSION['tipo'] != 3){ ?> <!-- Valida que el usuario en sesion no sea consultor -->
                                             <a role="button" class="btn btn-outline-warning" href="editarDocente.php?id=<?php echo $data ['cve_docente']; ?>">Editar</a>
                                             <a role="button" class="btn btn-outline-danger" href="eliminarDocente.php?id=<?php echo $data ['cve_docente']; ?>" >Borrar</a>

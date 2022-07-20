@@ -4,7 +4,7 @@
 
 <?php
 $user = $_SESSION['cve_usuario']; // Guarda la clave de usuario con la que entra
-if($_SESSION['tipo'] != 1) // Valida si el usuario es nivel administrador
+if($_SESSION['tipo'] == 4) // Valida si el usuario es nivel administrador
 {
     // Consulta todos los datos de la clave del docente
     $sql_docente = mysqli_query($conexion,"SELECT d.cve_docente,
@@ -53,6 +53,7 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es nivel administrador
 
 if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
     $datos = 0;
+    echo "No hay datos";
 }else{
     $datos = 1;
     while ($data_docente = mysqli_fetch_array($sql_docente))

@@ -59,9 +59,6 @@ function fechaC(){ // Definir el formato
 							<li class="nav-item">
 								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi informacion</a> <!-- Redirecciona a ver la informacion del docente actual -->
 							</li>
-							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/inpDocente.php">Importar informacion</a> <!-- Redirecciona a importar los datos en archivo JSON -->
-							</li>
 						<?php } ?>
 						<?php if($s_tipo != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
 							<?php if($s_tipo == 1){ ?> <!-- Valida solo para mostrar a los administradores -->
