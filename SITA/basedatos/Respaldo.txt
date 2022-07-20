@@ -1,0 +1,7 @@
+//Codigo para respaldar la database//
+
+mysqldump -u root -p sita > sita_respaldo.sql
+
+Entrar a la carpeta sql y despues a la carpeta bin
+En esa ubicacion, escribir el codigo, contraseña, y
+se generara un respaldo de la bd.
