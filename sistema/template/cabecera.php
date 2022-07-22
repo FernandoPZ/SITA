@@ -99,5 +99,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [13/07/2022 (11:53 hrs)]
+Ultima modificacion -- [22/07/2022 (12:15 hrs)]
 -->
