@@ -160,5 +160,5 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 
 <!--
 --- Pagina[buscarUsuarios] (Prototipo) ---
-Ultima modificacion -- [18/07/2022 (10:09 hrs)]
+Ultima modificacion -- [22/07/2022 (12:19 hrs)]
 -->
