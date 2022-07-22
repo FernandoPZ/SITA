@@ -2,7 +2,6 @@
 
 <?php
 include "../config/conexion.php"; // Conecta con la base de datos
-
 if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 {
     header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal

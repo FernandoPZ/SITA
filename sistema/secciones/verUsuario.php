@@ -1,8 +1,8 @@
 <?php include("../template/cabecera.php"); ?> <!-- Llamamos a la cabecera -->
 
 <?php
-include "../config/conexion.php"; //Conexion a la base de datos
-if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
+include "../config/conexion.php"; // Conexion a la base de datos
+if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
 {
     header("location: /SITA/sistema/index.php"); //Si no, regresa a la pagina principal
 }

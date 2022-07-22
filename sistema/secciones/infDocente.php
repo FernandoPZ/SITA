@@ -572,7 +572,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <?php
                                             //Paginador
                                             include "../config/conexion.php";
-                                            $sql_experiencia = mysqli_query($conexion, "SELECT COUNT(*) AS tr_experiencia FROM experiencia WHERE activo = 1"); // Cuenta y almacena todos los registros activos
+                                            $sql_experiencia = mysqli_query($conexion, "SELECT COUNT(*) AS tr_experiencia FROM experiencia WHERE activo = 1 AND cve_docente = $idDoc"); // Cuenta y almacena todos los registros activos
                                             $result_experiencia = mysqli_fetch_array($sql_experiencia);
                                             $total_experiencia = $result_experiencia['tr_experiencia'];
                                             $por_pagina = 5; // Indicador de cuantos registros mostrara por pagina
@@ -585,7 +585,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                                             $total_pagina = ceil($total_experiencia / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query_experiencia = mysqli_query($conexion, "SELECT * FROM experiencia WHERE activo = 1 ORDER BY cve_experiencia ASC LIMIT $desde,$por_pagina;");
+                                            $query_experiencia = mysqli_query($conexion, "SELECT * FROM experiencia WHERE activo = 1 AND cve_docente = $idDoc ORDER BY cve_experiencia ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
                                             $result_experiencia = mysqli_num_rows($query_experiencia); // Calcula el numero de filas de la consulta
                                             if($result_experiencia > 0){ // Valida si el numero de consultas es mayor a cero
@@ -681,7 +681,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <?php
                                             //Paginador
                                             include "../config/conexion.php";
-                                            $sql_premio = mysqli_query($conexion, "SELECT COUNT(*) AS tr_premio FROM premios WHERE activo = 1"); // Cuenta y almacena todos los registros activos
+                                            $sql_premio = mysqli_query($conexion, "SELECT COUNT(*) AS tr_premio FROM premios WHERE activo = 1 AND cve_docente = $idDoc"); // Cuenta y almacena todos los registros activos
                                             $result_premio = mysqli_fetch_array($sql_premio);
                                             $total_premio = $result_premio['tr_premio'];
                                             $por_pagina = 5; // Indicador de cuantos registros mostrara por pagina
@@ -694,7 +694,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                                             $total_pagina = ceil($total_formacion / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query_premio = mysqli_query($conexion, "SELECT * FROM premios WHERE activo = 1 ORDER BY cve_premio ASC LIMIT $desde,$por_pagina;");
+                                            $query_premio = mysqli_query($conexion, "SELECT * FROM premios WHERE activo = 1 AND cve_docente = $idDoc ORDER BY cve_premio ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
                                             $result = mysqli_num_rows($query_premio); // Calcula el numero de filas de la consulta
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
@@ -792,7 +792,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <?php
                                             //Paginador
                                             include "../config/conexion.php";
-                                            $sql_publicacion = mysqli_query($conexion, "SELECT COUNT(*) AS tr_publicacion FROM publicaciones WHERE activo = 1"); // Cuenta y almacena todos los registros activos
+                                            $sql_publicacion = mysqli_query($conexion, "SELECT COUNT(*) AS tr_publicacion FROM publicaciones WHERE activo = 1 AND cve_docente = $idDoc"); // Cuenta y almacena todos los registros activos
                                             $result_publicacion = mysqli_fetch_array($sql_publicacion);
                                             $total_publicacion = $result_publicacion['tr_publicacion'];
                                             $por_pagina = 5; // Indicador de cuantos registros mostrara por pagina
@@ -805,7 +805,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                                             $total_pagina = ceil($total_publicacion / $por_pagina); // Calcula el total de las paginas
                                             // Realiza la consulta de los datos a mostrar en la lista
-                                            $query_publicacion = mysqli_query($conexion, "SELECT * FROM publicaciones WHERE activo = 1 ORDER BY cve_publicacion ASC LIMIT $desde,$por_pagina;");
+                                            $query_publicacion = mysqli_query($conexion, "SELECT * FROM publicaciones WHERE activo = 1 AND cve_docente = $idDoc ORDER BY cve_publicacion ASC LIMIT $desde,$por_pagina;");
                                             mysqli_close($conexion); // Cierra la conexion a la bd
                                             $result = mysqli_num_rows($query_publicacion); // Calcula el numero de filas de la consulta
                                             if($result > 0){ // Valida si el numero de consultas es mayor a cero
