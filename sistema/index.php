@@ -34,12 +34,12 @@
 				</div>
 				<?php
 				include ("config/conexion.php"); // Realiza la conexion con la bd
-				$consultaDocente = mysqli_query($conexion,"SELECT * FROM docente WHERE cuenta = $iduser");
+				$consultaDocente = mysqli_query($conexion,"SELECT * FROM docente WHERE cuenta = $iduser"); // Realiza la consulta de la tabla docente
 				$resultado = mysqli_num_rows($consultaDocente); // Almacena la cantidad todal de registros
-				while ($datos = mysqli_fetch_array($consultaDocente))
+				while ($datos = mysqli_fetch_array($consultaDocente)) // Bucle para almacenar los datos
 				{ $idDoc = $datos['cve_docente']; } // Guarda la clave del docente
 				?>
-				<?php if ($resultado != 0){ ?>
+				<?php if ($resultado != 0){ ?> <!-- Si el docente tiene informacion registrada -->
 					<div class="col-md-4 mx-auto">
 						<div class="card">
 							<h3 class="card-header col text-center">exportar mi informacion</h3>
@@ -61,10 +61,10 @@
 							<h3 class="card-header col text-center">Usuarios</h3>
 							<div class="card-body">
 								<img class="card-img-top" src="elementos/recuhum.png" alt="">
-									<div class="col text-center">
-										</br>
-										<a name="" id="" class="btn btn-primary" href="secciones/verUsuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de ususarios -->
-									</div>
+								<div class="col text-center">
+									</br>
+									<a name="" id="" class="btn btn-primary" href="secciones/verUsuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la lista de ususarios -->
+								</div>
 							</div>
 						</div>
 					</div>
@@ -87,5 +87,5 @@
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Ultima modificacion -- [13/07/2022 (12:00 hrs)]
+Ultima modificacion -- [22/07/2022 (12:08 hrs)]
 -->
