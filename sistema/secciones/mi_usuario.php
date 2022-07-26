@@ -27,15 +27,6 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
         $fotoa = $data['foto']; // Guarda el nombre de la fotografia del usuario
         $usuario = $data['usuario']; // Guarda el ID del usuario
         $correo = $data['correo']; // Guarda el correo del usuario
-        if($idtipo == 1){ // Si la clave del tipo de usuario es 1 entonces es Administrador
-            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }else if($idtipo == 2){ // Si la clave del tipo de usuario es 2 entonces es Editor
-            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }else if($idtipo == 3){ // Si la clave del tipo de usuario es 3 entonces es Consultor
-            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }else if($idtipo == 4){ // Si la clave del tipo de usuario es 3 entonces es Docente
-            $option = '<option value="'.$idtipo.'"select>'.$tipo.'</option>';
-        }
     }
 }
 ?>
@@ -84,17 +75,7 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
                                         </div>
                                         <div class = "form-group col-md-4">
                                             <label class="form-label mt-2">Tipo de usuario</label>
-                                            <?php
-                                            include "../config/conexion.php"; // Hace la conexion con la bd
-                                            $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario"); // Consulta todos los tipos de usuario
-                                            mysqli_close($conexion); // Cierra la conexion a la bd
-                                            $result_tipou = mysqli_num_rows($query_tipou); // Almacena el numero de registros
-                                            ?>
-                                            <select class="form-select form-select-sm" name="tipo" id="tipo" disabled="">
-                                            <?php
-                                                echo $option; // Muestra la opcion actual
-                                            ?>
-                                            </select>
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $tipo; ?>" readonly="">
                                         </div>
                                     </div>
                                 </div>
@@ -107,3 +88,8 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
             </div>
 
 <?php include("../template/pie.php"); ?>
+
+<!--
+--- Pagina[mi_usuario] (Prototipo) ---
+Ultima modificacion -- [26/07/2022 (17:06 hrs)]
+-->
