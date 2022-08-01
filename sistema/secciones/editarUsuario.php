@@ -166,7 +166,7 @@ switch($decision){
             }
         }
     break;
-    case "cancelar":  // Cancelar
+    case "volver":  // Cancelar
         header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de usuarios
         mysqli_close($conexion); // Cierra la conexion con la bd
     break;
@@ -185,30 +185,33 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
 <title>SITA - Editar usuario</title> <!-- Titulo de la pagina -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Editar informacion del usuario</h1>
+                <h1 class="display-3">Editar información del usuario</h1>
                 <hr class="my-2">
                 <br>
                 <?php
-                if($iduser == 1)
-                {
-                    if($_SESSION['cve_usuario'] == $iduser)
-                    {
-                        include "../config/edit_user_form.php";
-                    }else{ ?>
+                if($iduser == 1) {
+                    if($_SESSION['cve_usuario'] != $iduser) {
+                        ?>
                         <div class="alert alert-dismissible alert-warning mx-auto">
                             <h4 class="alert-heading text-center">Oh, vaya...</h4>
                             <p class="mb-0 text-center">No tienes permiso de editar este usuario</p>
+                            <div class="text-center">
+                                <br>
+                                <a role="button" class="btn btn-secondary" href="verUsuario.php">Volver</a> <!-- Redirecciona a la lista de los usuarios -->
+                            </div>
                         </div>
-                    <?php }
+                        <?php
+                    }else{
+                        include ("../config/edit_user_form.php");
+                    }
                 }else{
-                    include "../config/edit_user_form.php";
-                }
-                ?>
+                    include ("../config/edit_user_form.php");
+                } ?>
             </div>
 
 <?php include("../template/pie.php"); ?>
 
 <!--
---- Pagina[editarUsuarios] (Prototipo) ---
-Ultima modificacion -- [21/06/2022 (13:50 hrs)]
+--- Pagina[editarUsuario] (Prototipo) ---
+Ultima modificacion -- [01/08/2022 (10:17 hrs)]
 -->
