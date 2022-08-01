@@ -81,6 +81,7 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
                                 </div>
                             <div class="text-center">
                                 <a role="button" class="btn btn-warning" href="../index.php">Volver al inicio</a> <!-- Redirecciona al inicio -->
+                                <div><br></div>
                             </div>
                         </div>
                     </div>
@@ -91,5 +92,5 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[mi_usuario] (Prototipo) ---
-Ultima modificacion -- [26/07/2022 (17:06 hrs)]
+Ultima modificacion -- [01/08/2022 (13:40 hrs)]
 -->
