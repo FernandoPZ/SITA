@@ -96,7 +96,7 @@ switch($decision){
             break;
         }
 
-    case "cancelar": // Cancelar
+    case "volver": // volver
         header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
@@ -108,89 +108,91 @@ switch($decision){
             <div class="jumbotron">
                 <h1 class="display-3">Registrar nuevo usuario</h1>
                 <hr class="my-2">
-                <br>
-                <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
-                    <div class="card">
-                        <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
-                        </div>
-                        <div class="card-body">
-                                <div class="row">
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre</label>
-                                        <input type="text" class="form-control" name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Nombre(s)">
-                                    </div>
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Primer apellido</label>
-                                        <input type="text" class="form-control" name="apellido1" value="<?php echo isset($_POST['apellido1']) ? $_POST['apellido1'] : '';?>" placeholder="Primer apellido">
-                                    </div>
-                                    <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Segundo apellido</label>
-                                        <input type="text" class="form-control" name="apellido2" value="<?php echo isset($_POST['apellido2']) ? $_POST['apellido2'] : '';?>" placeholder="Segundo apellido">
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class = "form-group col-md-6 mb-3">
-                                        <label class="form-label mt-2">Usuario</label>
-                                        <input type="text" class="form-control" name="usuario" value="<?php echo isset($_POST['usuario']) ? $_POST['usuario'] : '';?>" placeholder="usuario">
-                                    </div>
-                                    <div class = "form-group col-md-6 mb-3">
-                                        <label class="form-label mt-2">Tipo de usuario</label>
-                                        <?php
-                                            include "../config/conexion.php"; // Realiza la conexion con la bd
-                                            $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario"); // Consulta todos los tipos de usuarios
-                                            mysqli_close($conexion); // Cierra conexion
-                                            $result_tipou = mysqli_num_rows($query_tipou); // Almacena la cantidad de registros en la consulta
-                                        ?>
-                                        <select class="form-select" name="tipo" id="tipo">
-                                            <?php
-                                                if($result_tipou > 0) // Valida si hay registros
-                                                {
-                                                    while ($tipou = mysqli_fetch_array($query_tipou)){ // Bucle para mostrar todos los registros
-                                                        ?>
-                                                        <option value="" hidden>Selecciona una opción</option>
-                                                        <option value="<?php echo $tipou["cve_tipo_usu"]; ?>"><?php echo $tipou["tipo"]; ?></option>
-                                                        <?php
-                                                    }
-                                                }
-                                            ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class = "form-group col-md-9">
-                                        <label class="form-label mt-2">Fotografia</label>
-                                        <input type="file" class="form-control" name="foto" id="foto">
-                                        <label class="form-label mt-2">Correo electronico</label>
-                                        <input type="text" class="form-control" name="correo" value="<?php echo isset($_POST['correo']) ? $_POST['correo'] : '';?>" placeholder="ejemplo@correo.com">
-                                        <label class="form-label mt-2">Escriba su contraseña</label>
-                                        <input type="password" class="form-control" name="pass1" placeholder="*******">
-                                        <label class="form-label mt-2">Escriba de nuevo su contraseña</label>
-                                        <input type="text" class="form-control" name="pass2" placeholder="contraseña">
-                                    </div>
-                                    <div class = "form-group col-md-3 mx-auto">
-                                        <div class="m-0 vh-50 row justify-content-center align-items-center">
-                                            <div class="col-auto">
-                                                <br>
-                                                <output id="previsual"></output> <!-- Espacio para previsualizar la foto subida -->
-                                                <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            <div class="text-center">
-                                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
-                                <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: left;">Guardar</button> <!-- Guarda el registro -->
-                                <button type="submit" name="decision" value="cancelar" class="btn btn-danger" style="float: right;">Cancelar</button> <!-- Redirecciona al listado de usuarios -->
+            </div>
+            <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
+            <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
+                <div class="card">
+                    <div class="card-header text-center">
+                        <h4>Llene el siguiente formulario</h4>
+                    </div>
+                    <div class="card-body">
+                        <div class="row">
+                            <div class = "form-group col-md-4">
+                                <label class="form-label mt-2">Nombre</label>
+                                <input type="text" class="form-control" name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Nombre(s)">
+                            </div>
+                            <div class = "form-group col-md-4">
+                                <label class="form-label mt-2">Primer apellido</label>
+                                <input type="text" class="form-control" name="apellido1" value="<?php echo isset($_POST['apellido1']) ? $_POST['apellido1'] : '';?>" placeholder="Primer apellido">
+                            </div>
+                            <div class = "form-group col-md-4">
+                                <label class="form-label mt-2">Segundo apellido</label>
+                                <input type="text" class="form-control" name="apellido2" value="<?php echo isset($_POST['apellido2']) ? $_POST['apellido2'] : '';?>" placeholder="Segundo apellido">
                             </div>
                         </div>
+                        <div class="row">
+                            <div class = "form-group col-md-4 mb-3">
+                                <label class="form-label mt-2">Usuario</label>
+                                <input type="text" class="form-control" name="usuario" value="<?php echo isset($_POST['usuario']) ? $_POST['usuario'] : '';?>" placeholder="Usuario">
+                            </div>
+                            <div class = "form-group col-md-4 mb-3">
+                                <label class="form-label mt-2">Tipo de usuario</label>
+                                <?php
+                                    include "../config/conexion.php"; // Realiza la conexion con la bd
+                                    $query_tipou = mysqli_query($conexion,"SELECT * FROM tipo_usuario"); // Consulta todos los tipos de usuarios
+                                    mysqli_close($conexion); // Cierra conexion
+                                    $result_tipou = mysqli_num_rows($query_tipou); // Almacena la cantidad de registros en la consulta
+                                ?>
+                                <select class="form-select" name="tipo" id="tipo">
+                                    <?php
+                                        if($result_tipou > 0) // Valida si hay registros
+                                        {
+                                            while ($tipou = mysqli_fetch_array($query_tipou)){ // Bucle para mostrar todos los registros
+                                                ?>
+                                                <option value="" hidden>Selecciona una opción</option>
+                                                <option value="<?php echo $tipou["cve_tipo_usu"]; ?>"><?php echo $tipou["tipo"]; ?></option>
+                                                <?php
+                                            }
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                            <div class = "form-group col-md-4 mb-3">
+                                <label class="form-label mt-2">Correo personal</label>
+                                <input type="text" class="form-control" name="correo" value="<?php echo isset($_POST['correo']) ? $_POST['correo'] : '';?>" placeholder="ejemplo@correo.com">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class = "form-group col-md-6">
+                                <label class="form-label mt-2">Fotografía</label>
+                                <input type="file" class="form-control" name="foto" id="foto">
+                                <label class="form-label mt-2">Escriba su contraseña</label>
+                                <input type="password" class="form-control" name="pass1" placeholder="*******">
+                                <label class="form-label mt-2">Escriba de nuevo su contraseña</label>
+                                <input type="password" class="form-control" name="pass2" placeholder="*******">
+                            </div>
+                            <div class = "form-group col-md-3 mx-auto">
+                                <div class="m-0 vh-50 row justify-content-center align-items-center">
+                                    <div class="col-auto">
+                                        <br>
+                                        <output id="previsual"></output> <!-- Espacio para previsualizar la foto subida -->
+                                        <script> <?php include("../js/scripts.js"); ?> </script> <!-- llama al script necesario para poder previsualizar -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="text-center">
+                            <br>
+                            <button type="submit" name="decision" value="guardar" class="btn btn-primary" style="float: left;">Guardar</button> <!-- Guarda el registro -->
+                            <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: right;">Volver</button> <!-- Redirecciona al listado de usuarios -->
+                        </div>
                     </div>
-                </form>
-            </div>
+                </div>
+            </form>
 
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de la pagina -->
 
 <!--
 --- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [01/08/2022 (13:24 hrs)]
 -->
