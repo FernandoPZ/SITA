@@ -36,7 +36,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
                             <th scope="col">Nombre</th>
                             <th scope="col">1er apellido</th>
                             <th scope="col">2do apellido</th>
-                            <th scope="col">Fotografia</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Numero</th>
                             <th scope="col">Puesto</th>
                             <th scope="col">Acciones</th>
@@ -138,5 +138,5 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
 
 <!--
 --- Pagina[verDocente] (Prototipo) ---
-Ultima modificacion -- [30/06/2022 (09:19 hrs)]
+Ultima modificacion -- [01/08/2022 (14:06 hrs)]
 -->
