@@ -41,13 +41,28 @@ if(empty($_REQUEST['id'])) // Verifica que la clave del usuario no este vacio
     mysqli_close($conexion); // Cierra conexion con la bd
 }else{
     $iduser = $_REQUEST['id']; // Almacena la clade del usuario
-    $query = mysqli_query($conexion,"SELECT u.usuario, u.foto, r.tipo FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipo_usu WHERE u.cve_usuario = $iduser"); // Consulta la informacion de la clave del usuario
+    $query = mysqli_query($conexion,"SELECT u.cve_usuario,
+                                            u.nombre,
+                                            u.apellido1,
+                                            u.apellido2,
+                                            u.foto,
+                                            u.usuario,
+                                            u.pass,
+                                            u.correo,
+                                            (u.tipo) as idtipo,
+                                            (r.tipo) as tipo
+                                            FROM usuario u INNER JOIN tipo_usuario r ON u.tipo = r.cve_tipo_usu WHERE u.cve_usuario = $iduser"); // Consulta la informacion de la clave del usuario
     $result = mysqli_num_rows($query); // Almacena los registros encontrados
     if($result > 0){ // Verifica si hay registros
         while ($data = mysqli_fetch_array($query)){
-            $usuario = $data['usuario']; // Almacena el ID del usuario
-            $foto = $data['foto']; // Almacena la foto del usuario
-            $tipo = $data['tipo']; // Almacena el tipo del usuario
+            $idtipo = $data['idtipo']; // Guarda la clave del tipo de usuario
+            $tipo = $data['tipo']; // Guarda el nombre del tipo de usuario
+            $nombre = $data['nombre']; // Guarda el nombre del usuario
+            $apellido1 = $data['apellido1']; // Guarda el primer apellido del usuario
+            $apellido2 = $data['apellido2']; // Guarda el segundo apellido del usuario
+            $fotoa = $data['foto']; // Guarda el nombre de la fotografia del usuario
+            $usuario = $data['usuario']; // Guarda el ID del usuario
+            $correo = $data['correo']; // Guarda el correo del usuario
         }
     }else{
         header("location: verUsuario.php"); // Redirecciona a la lista de usuarios
@@ -58,7 +73,7 @@ if(empty($_REQUEST['id'])) // Verifica que la clave del usuario no este vacio
 if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario acrual se elimina a si mismo
     $alert = '
     <div class="alert alert-dismissible alert-danger">
-        <strong>¡Atencion!</strong>
+        <strong>¡Atención!</strong>
         <br>
         <a>Estas a punto de eliminar tu propia cuenta.</a>
     </div>
@@ -89,9 +104,31 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                             <div class="card-body">
                                 <div class="text-center">
                                     <div><?php echo $alert; ?></div> <!-- Advertencia de auto-eliminacion -->
-                                    <p><img src="/SITA/sistema/files/usuario/<?php echo $foto; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
-                                    <p><strong>Usuario: </strong>[<span><em><?php echo $usuario; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
-                                    <p><strong>Tipo: </strong>[<span><em><?php echo $tipo; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
+                                    <p><img src="/SITA/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Usuario: </label>
+                                        </div>
+                                        <div class = "form-group col-md-7">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $usuario; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Tipo: </label>
+                                        </div>
+                                        <div class = "form-group col-md-7">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $tipo; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Correo: </label>
+                                        </div>
+                                        <div class = "form-group col-md-7">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $correo; ?>" readonly="">
+                                        </div>
+                                    </div>
                                     <form method="post" action="">
                                         <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>"> <!-- Verificacion de la clave del usuario -->
                                         <button type="submit" name="decision" value="eliminar" class="btn btn-danger" style="float: left;">Eliminar</button> <!-- Desactiva al usuario -->
@@ -110,7 +147,9 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                             </div>
                         </div>
                         <div class="text-center">
-                        <button type="submit" name="decision" value="volver" class="btn btn-primary">Volver</button>
+                            <form method="post" action="">
+                                <button type="submit" name="decision" value="volver" class="btn btn-primary">Volver</button>
+                            </form>
                         </div>
                     <?php } ?>
                 </div>
@@ -120,5 +159,5 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
 
 <!--
 --- Pagina[eliminarUsuario] (Prototipo) ---
-Ultima modificacion -- [30/06/2022 (08:54 hrs)]
+Ultima modificacion -- [01/08/2022 (12:01 hrs)]
 -->
