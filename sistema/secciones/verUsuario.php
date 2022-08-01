@@ -18,7 +18,7 @@ if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
                         <div class="container-fluid">
                             <button type="button" onclick="location.href='nuevoUsuario.php'" class="btn btn-primary">Nuevo usuario</button> <!-- Redirecciona a registrar un nuevo usuario -->
                             <form action="buscarUsuario.php" method="get" class="d-flex"> <!-- Barra de busqueda -->
-                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Nombre de usuario">
+                                <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar...">
                                 <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar">
                             </form>
                         </div>
@@ -26,7 +26,7 @@ if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
                 </div>
                 <table class="table table-hover">
                     <thead>
-                        <tr> <!-- Nombre de los campos a mostrar -->
+                        <tr class="text-center"> <!-- Nombre de los campos a mostrar -->
                         <th scope="col">Clave</th>
                         <th scope="col">Tipo</th>
                         <th scope="col">Nombre</th>
@@ -67,7 +67,7 @@ if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
                         if($result > 0){ // Valida si el numero de consultas es mayor a cero
                             while ($data = mysqli_fetch_array($query)){ // Crea un bucle para mostrar los resultados
                                 ?>
-                                <tbody>
+                                <tbody class="text-center">
                                     <tr class="table-active"> <!-- Campos a llenar -->
                                         <th scope="row"><?php echo $data ['cve_usuario']; ?></th> <!-- La clave del usuario -->
                                         <td><?php echo $data ['tipo']; ?></td> <!-- El tipo del usuario -->
@@ -132,5 +132,5 @@ if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
 
 <!--
 --- Pagina[verUsuarios] (Prototipo) ---
-Ultima modificacion -- [21/06/2022 (14:35 hrs)]
+Ultima modificacion -- [01/07/2022 (07:54 hrs)]
 -->
