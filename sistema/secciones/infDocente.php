@@ -53,7 +53,6 @@ if($_SESSION['tipo'] == 4) // Valida si el usuario es nivel administrador
 
 if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
     $datos = 0;
-    echo "No hay datos";
 }else{
     $datos = 1;
     while ($data_docente = mysqli_fetch_array($sql_docente))
@@ -134,10 +133,10 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
 }
 ?>
 
-<title>SITA - Informacion del docente</title> <!-- Nombre de la pagina --> 
+<title>SITA - Información del docente</title> <!-- Nombre de la pagina --> 
 
             <div class="jumbotron">
-                <h1 class="display-3">Informacion del docente</h1>
+                <h1 class="display-3">Información del docente</h1>
                 <hr class="my-2">
                 <?php if($datos == 0){ ?> <!-- Valida que contenga datos -->
                     <div class="text-center">
@@ -145,10 +144,10 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         </br>
                             <div class="alert alert-dismissible alert-warning"> <!-- Alerta de que el docente no tiene infromacion -->
                                 <h4 class="alert-heading">oh, vaya...</h4>
-                                <p class="mb-0"> Parece que aun no ingresa la informacion </p>
+                                <p class="mb-0"> Parece que aun no ingresa la información </p>
                                 <br>
                                 <div class="text-center">
-                                    <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary mx-auto">Agregar informacion</button> <!-- Redirecciona para crear un nuevo registro -->
+                                    <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary mx-auto">Agregar información</button> <!-- Redirecciona para crear un nuevo registro -->
                                 </div>
                             </div>
                         </div>
@@ -160,7 +159,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                             <a class="nav-link active" data-bs-toggle="tab" href="#docente">Docente</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#informacion">Informacion</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#informacion">Información</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#contacto">Contacto</a> <!-- boton del tab -->
@@ -189,7 +188,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos principales -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion general
+                                    Información general
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -255,7 +254,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="informacion"> <!-- Tabla de Informacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion especifica <!-- Nombre de la seccion -->
+                                    Información especifica <!-- Nombre de la seccion -->
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -311,7 +310,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="contacto"> <!-- Tabla de Contacto -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion de contacto
+                                    Información de contacto
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
