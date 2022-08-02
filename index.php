@@ -28,8 +28,12 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
                     $_SESSION['active'] = true; // Validacion de la sesion activa
                     $_SESSION['cve_usuario'] = $data['cve_usuario']; // Clave principal del usuario
                     $_SESSION['tipo'] = $data['tipo']; // Tipo del usuario
+                    $_SESSION["nombre"] = $data['nombre']; // Almacena el nombre del usuario
+                    $_SESSION["apellido1"] = $data['apellido1']; // Almacena el primer apellido
+                    $_SESSION['apellido2'] = $data['apellido2']; // Almacena el segundo apellido
                     $_SESSION['usuario'] = $data['usuario']; // Id del usuario
                     $_SESSION['foto'] = $data['foto']; // El nombre de la fotografia
+                    $_SESSION["correo"] = $data['correo']; // Almacena el correo del usuario
                     $_SESSION['activo'] = $data['activo']; // Identificador del estado de la cuenta (Activo o desactivado[Borrado])
                     header('location: sistema/index.php'); // Redirecciona a la pagina principal del sistema
                 }else{
@@ -91,5 +95,5 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
 
 <!--
 --- Login (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (12:42 hrs)]
+Ultima modificacion -- [02/08/2022 (09:13 hrs)]
 -->
