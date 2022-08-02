@@ -61,7 +61,7 @@ function fechaC(){ // Definir el formato
 								<a class="nav-link" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi informacion</a> <!-- Redirecciona a ver la informacion del docente actual -->
+								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi información</a> <!-- Redirecciona a ver la informacion del docente actual -->
 							</li>
 						<?php } ?>
 						<?php if($s_tipo != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
@@ -103,5 +103,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [02/08/2022 (09:06 hrs)]
+Ultima modificacion -- [02/08/2022 (13:23 hrs)]
 -->
