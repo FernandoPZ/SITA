@@ -6,8 +6,12 @@ if(!isset($_SESSION['usuario'])){ // Verifica que el usuario no esta vacio
 	if($_SESSION['active']==true){ // Valida que la sesion este activa
 		$iduser=$_SESSION['cve_usuario']; // Almacena la clave del usuario
 		$s_tipo=$_SESSION["tipo"]; // Almacena el tipo de usuario
+		$s_nombre=$_SESSION["nombre"]; // Almacena el id del usuario
+		$s_apellido1=$_SESSION["apellido1"]; // Almacena el nombre de la foto del usuario
+        $s_apellido2=$_SESSION['apellido2']; // Almacena el status del usuario
 		$s_usuario=$_SESSION["usuario"]; // Almacena el id del usuario
 		$s_foto=$_SESSION["foto"]; // Almacena el nombre de la foto del usuario
+		$s_correo=$_SESSION["correo"]; // Almacena el tipo de usuario
         $s_activo=$_SESSION['activo']; // Almacena el status del usuario
 	}
 }
@@ -99,5 +103,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [22/07/2022 (12:15 hrs)]
+Ultima modificacion -- [02/08/2022 (09:06 hrs)]
 -->
