@@ -22,7 +22,7 @@
 				</div>
 				<div class="col-md-4 mx-auto">
 					<div class="card">
-						<h3 class="card-header col text-center">Ver mi informacion</h3>
+						<h3 class="card-header col text-center">Ver mi información</h3>
 						<div class="card-body">
 							<img class="card-img-top" src="elementos/informacion.png" alt="">
 							<div class="col text-center">
@@ -42,7 +42,7 @@
 				<?php if ($resultado != 0){ ?> <!-- Si el docente tiene informacion registrada -->
 					<div class="col-md-4 mx-auto">
 						<div class="card">
-							<h3 class="card-header col text-center">exportar mi informacion</h3>
+							<h3 class="card-header col text-center">Exportar mi información</h3>
 							<div class="card-body">
 								<img class="card-img-top" src="elementos/exportar.png" alt="">
 								<div class="col text-center">
@@ -87,5 +87,5 @@
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Ultima modificacion -- [22/07/2022 (12:08 hrs)]
+Ultima modificacion -- [02/08/2022 (13:21 hrs)]
 -->
