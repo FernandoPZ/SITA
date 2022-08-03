@@ -57,16 +57,15 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar experiencia</title> <!-- Llama al encabezado -->
+<title>SITA - Eliminar experiencia</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar experiencia</h1>
+                <h1 class="display-3">Eliminar experiencia</h1>
                 <hr class="my-2">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de querer eliminar este registro?
@@ -79,7 +78,7 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $actividad; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Nombre de la institucion</label>
+                                            <label class="form-label mt-2">Nombre de la institución</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $institucion; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
@@ -89,7 +88,7 @@ switch($decision){
                                     </div>
                                     <div class="row"> <!-- Cuarta fila -->
                                         <div class = "form-group col-md-12">
-                                            <label class="form-label mt-2">Descripcion de intereses</label>
+                                            <label class="form-label mt-2">Descripción de intereses</label>
                                             <textarea class="form-control" rows="3" readonly=""><?php echo $intereses; ?></textarea>
                                         </div>
                                     </div>
@@ -108,6 +107,6 @@ switch($decision){
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de la pagina -->
 
 <!--
---- Pagina[editarExperiencia] (Prototipo) ---
-Ultima modificacion -- [18/07/2022 (09:31 hrs)]
+--- Pagina[eliminarExperiencia] (Prototipo) ---
+Ultima modificacion -- [03/08/2022 (13:31 hrs)]
 -->

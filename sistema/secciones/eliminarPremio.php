@@ -58,16 +58,15 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar premio</title> <!-- Llama al encabezado -->
+<title>SITA - Eliminar premio</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar premio</h1>
+                <h1 class="display-3">Eliminar premio</h1>
                 <hr class="my-2">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de querer eliminar este registro?
@@ -80,11 +79,11 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $nombre; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Fecha de optencion</label>
+                                            <label class="form-label mt-2">Fecha de obtención</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $fecha; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Nombre de la institucion</label>
+                                            <label class="form-label mt-2">Nombre de la institución</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $institucion; ?>" readonly="">
                                         </div>
                                     </div>
@@ -94,7 +93,7 @@ switch($decision){
                                             <textarea class="form-control" rows="3" readonly=""><?php echo $motivo; ?></textarea>
                                         </div>
                                         <div class = "form-group col-md-6">
-                                            <label class="form-label mt-2">Descripcion del premio</label>
+                                            <label class="form-label mt-2">Descripción del premio</label>
                                             <textarea class="form-control" rows="3" readonly=""><?php echo $descripcion; ?></textarea>
                                         </div>
                                     </div>
@@ -114,5 +113,5 @@ switch($decision){
 
 <!--
 --- Pagina[eliminarPremio] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (13:38 hrs)]
 -->

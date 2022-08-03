@@ -32,16 +32,15 @@ if($_GET['id_d'] != $idDoc){
 }
 ?>
 
-<title>SITA - Registrar premio</title> <!-- Llama al encabezado -->
+<title>SITA - Ver premio</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar premio</h1>
+                <h1 class="display-3">Ver premio</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>Información del premio</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -50,11 +49,11 @@ if($_GET['id_d'] != $idDoc){
                                     <input type="text" class="form-control" name="nombre" value="<?php echo $nombre; ?>" readonly="">
                                 </div>
                                 <div class = "form-group col-md-4">
-                                    <label class="form-label mt-2">Fecha de optencion</label>
+                                    <label class="form-label mt-2">Fecha de obtención</label>
                                     <input type="date" class="form-control" name="fecha" value="<?php echo $fecha; ?>" readonly="">
                                 </div>
                                 <div class = "form-group col-md-4">
-                                    <label class="form-label mt-2">Nombre de la institucion</label>
+                                    <label class="form-label mt-2">Nombre de la institución</label>
                                     <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>" readonly="">
                                 </div>
                             </div>
@@ -64,7 +63,7 @@ if($_GET['id_d'] != $idDoc){
                                     <textarea class="form-control" name="motivo" id="motivo" rows="3" readonly=""><?php echo $motivo; ?></textarea>
                                 </div>
                                 <div class = "form-group col-md-6">
-                                    <label class="form-label mt-2">Descripcion del premio</label>
+                                    <label class="form-label mt-2">Descripción del premio</label>
                                     <textarea class="form-control" name="descripcion" id="descripcion" rows="3" readonly=""><?php echo $descripcion; ?></textarea>
                                 </div>
                             </div>
@@ -82,5 +81,5 @@ if($_GET['id_d'] != $idDoc){
 
 <!--
 --- Pagina[nuevoPremio] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (14:15 hrs)]
 -->

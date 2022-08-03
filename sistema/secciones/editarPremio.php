@@ -68,13 +68,13 @@ switch($decision){
                 if($sql_update){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> La informacion se actualizó correctamente.
+                        <strong>Listo!</strong> La información se actualizó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
                     $alert='
                         <div class="alert alert-dismissible alert-danger">
-                            <strong>Algo salio mal...</strong> La informacion no se pudo actualizar.
+                            <strong>Algo salio mal...</strong> La información no se pudo actualizar.
                         </div>
                     '; // Alerta de algun problema al actualizar el registro
                 }
@@ -90,16 +90,16 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar premio</title> <!-- Llama al encabezado -->
+<title>SITA - Editar premio</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar premio</h1>
+                <h1 class="display-3">Editar premio</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>No deje campos vacíos</h4>
                         </div>
                         <div class="card-body">
                                 <div class="row">
@@ -108,11 +108,11 @@ switch($decision){
                                         <input type="text" class="form-control" name="nombre" value="<?php echo $nombre; ?>" placeholder="Indique el nivel de estudio finalizado">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Fecha de optencion</label>
+                                        <label class="form-label mt-2">Fecha de obtención</label>
                                         <input type="date" class="form-control" name="fecha" value="<?php echo $fecha; ?>">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
+                                        <label class="form-label mt-2">Nombre de la institución</label>
                                         <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>" placeholder="Nombre de la institucion del estudio">
                                     </div>
                                 </div>
@@ -122,7 +122,7 @@ switch($decision){
                                         <textarea class="form-control" name="motivo" id="motivo" rows="3" placeholder="Motivo aplicable"><?php echo $motivo; ?></textarea>
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label class="form-label mt-2">Descripcion del premio</label>
+                                        <label class="form-label mt-2">Descripción del premio</label>
                                         <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripcion del premio"><?php echo $descripcion; ?></textarea>
                                     </div>
                                 </div>
@@ -140,5 +140,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoPremio] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (13:00 hrs)]
 -->

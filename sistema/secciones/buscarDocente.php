@@ -34,32 +34,38 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
                     </nav>
                 </div>
                 <table class="table table-hover">
-                    <thead>
+                    <thead class="text-center">
                         <tr class="text-center"> <!-- Nombre de los campos a mostrar -->
                             <th scope="col">Clave</th>
                             <th scope="col">Nombre</th>
                             <th scope="col">1er apellido</th>
                             <th scope="col">2do apellido</th>
-                            <th scope="col">Fotografia</th>
+                            <th scope="col">Foto</th>
                             <th scope="col">Numero</th>
                             <th scope="col">Puesto</th>
                             <th scope="col">Acciones</th>
                         </tr>
                     </thead>
                     <?php
+                        //Paginador
+                        $puesto = '';
+                        if($busqueda == 'profesor'){
+                            $puesto = " OR puesto LIKE '%1%' ";
+                        }else if($busqueda == 'administrativo'){
+                            $puesto = " OR puesto LIKE '%2%' ";
+                        }else if($busqueda == 'coordinador'){
+                            $puesto = " OR puesto LIKE '%3%' ";
+                        }
                         // Consulta todos los campos buscando coincidencias con lo buscado
                         $sql_registro = mysqli_query($conexion, "SELECT COUNT(*) AS total_registro FROM docente WHERE (cve_docente LIKE '%$busqueda%'
-                                                                                                                       OR puesto LIKE '%$busqueda%'
                                                                                                                        OR nombre LIKE '%$busqueda%'
                                                                                                                        OR apellido1 LIKE '%$busqueda%'
                                                                                                                        OR apellido2 LIKE '%$busqueda%'
-                                                                                                                       OR foto LIKE '%$busqueda%'
                                                                                                                        OR institucion LIKE '%$busqueda%'
                                                                                                                        OR tipo_contratacion LIKE '%$busqueda%'
                                                                                                                        OR fecha_ingreso LIKE '%$busqueda%'
-                                                                                                                       OR num_empleado LIKE '%$busqueda%')
-                                                                                                                       AND activo = 1;");
-                        //Paginador
+                                                                                                                       OR num_empleado LIKE '%$busqueda%'
+                                                                                                                       $puesto ) AND activo = 1;");
                         $result_registro = mysqli_fetch_array($sql_registro); // Cuenta la cantidad de registros consultados
                         $total_registro = $result_registro['total_registro']; // Almacena el numero de registros
                         $por_pagina = 5; // La cantidad de registros para mostrar por pagina
@@ -72,17 +78,25 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
                         $desde = ($pagina-1) * $por_pagina; //Identifica la posicion de la pagina
                         $total_pagina = ceil($total_registro / $por_pagina); // Calcula el total de las paginas
                         // Realiza la consulta de los datos a mostrar en la lista
-                        $query = mysqli_query($conexion, "SELECT * FROM docente WHERE (cve_docente LIKE '%$busqueda%'
-                                                                                       OR puesto LIKE '%$busqueda%'
-                                                                                       OR nombre LIKE '%$busqueda%'
-                                                                                       OR apellido1 LIKE '%$busqueda%'
-                                                                                       OR apellido2 LIKE '%$busqueda%'
-                                                                                       OR foto LIKE '%$busqueda%'
-                                                                                       OR institucion LIKE '%$busqueda%'
-                                                                                       OR tipo_contratacion LIKE '%$busqueda%'
-                                                                                       OR fecha_ingreso LIKE '%$busqueda%'
-                                                                                       OR num_empleado LIKE '%$busqueda%')
-                                                                                       AND activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
+                        $query = mysqli_query($conexion, "SELECT u.cve_docente,
+                                                                 r.puesto,
+                                                                 u.nombre,
+                                                                 u.apellido1,
+                                                                 u.apellido2,
+                                                                 u.foto,
+                                                                 u.institucion,
+                                                                 u.tipo_contratacion,
+                                                                 u.fecha_ingreso,
+                                                                 u.num_empleado
+                                                                 FROM docente u INNER JOIN puesto r ON u.puesto = r.cve_puesto WHERE (u.cve_docente LIKE '%$busqueda%'
+                                                                                                                                      OR u.nombre LIKE '%$busqueda%'
+                                                                                                                                      OR u.apellido1 LIKE '%$busqueda%'
+                                                                                                                                      OR u.apellido2 LIKE '%$busqueda%'
+                                                                                                                                      OR u.institucion LIKE '%$busqueda%'
+                                                                                                                                      OR u.tipo_contratacion LIKE '%$busqueda%'
+                                                                                                                                      OR u.fecha_ingreso LIKE '%$busqueda%'
+                                                                                                                                      OR u.num_empleado LIKE '%$busqueda%'
+                                                                                                                                      OR r.puesto LIKE '%$busqueda%') AND u.activo = 1 ORDER BY cve_docente ASC LIMIT $desde,$por_pagina;");
                         mysqli_close($conexion); // Cierra la conexion con la bd
                         $result = mysqli_num_rows($query); // Calcula el numero de filas de la consulta
                         if($result > 0){ // Valida si el numero de consultas es mayor a cero
@@ -114,7 +128,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
                         }
                     ?>
                 </table>
-                <?php if($total_registro!= 0){ ?> <!-- Valida si no hay registros para mostrar -->
+                <?php if($result!= 0){ ?> <!-- Valida si no hay registros para mostrar -->
                 <div>
                     <ul class="pagination justify-content-end">
                         <?php
@@ -152,5 +166,5 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
 
 <!--
 --- Pagina[buscarDocente] (Prototipo) ---
-Ultima modificacion -- [22/07/2022 (11:33 hrs)]
+Ultima modificacion -- [03/08/2022 (12:20 hrs)]
 -->

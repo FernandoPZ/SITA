@@ -61,7 +61,7 @@ switch($decision){
                 if($query_insert){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> El usuario se guardo correctamente.
+                        <strong>Listo!</strong> El usuario se guardó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
@@ -88,7 +88,7 @@ switch($decision){
             <div class="jumbotron">
                 <h1 class="display-3">Registrar formación</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
@@ -119,7 +119,7 @@ switch($decision){
                                         <input type="text" class="form-control" name="disciplina" value="<?php echo isset($_POST['disciplina']) ? $_POST['disciplina'] : '';?>" placeholder="Disciplina aplicable">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Pais donde se realizó</label>
+                                        <label class="form-label mt-2">País donde se realizó</label>
                                         <input type="text" class="form-control" name="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Pais donde se realizó el estudio">
                                     </div>
                                 </div>
@@ -157,5 +157,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoFormacion] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (09:18 hrs)]
+Ultima modificacion -- [03/08/2022 (14:41 hrs)]
 -->

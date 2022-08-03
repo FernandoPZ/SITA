@@ -81,7 +81,6 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                     if($idDoc != 1) // Valida que no se intente eliminar el master
                     {?>
                     <div class="col-md-5 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de eliminar este usuario?
@@ -90,12 +89,54 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                                 <div class="text-center">
                                     <div><?php echo $alert; ?></div> <!-- Advertencia de auto-eliminacion -->
                                     <p><img src="/SITA/sistema/files/docente/foto/<?php echo $foto; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
-                                    <p><strong>Nombre: </strong>[<span><em><?php echo $nombre; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
-                                    <p><strong>1er Apellido: </strong>[<span><em><?php echo $apellido1; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
-                                    <p><strong>2do Apellido: </strong>[<span><em><?php echo $apellido2; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
-                                    <p><strong>Puesto: </strong>[<span><em><?php echo $puesto; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
-                                    <p><strong>Numero: </strong>[<span><em><?php echo $num_empleado; ?></em></span>]</p> <!-- Muestra el ID del usuario -->
-                                    <p><strong>Clave de cuenta: </strong>[<span><em><?php echo $cuenta; ?></em></span>]</p> <!-- Muestra el tipo de usuario -->
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Nombre: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $nombre; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">1er Apellido: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $apellido1; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">2do Apellido: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $apellido2; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Puesto: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $puesto; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Numero: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $num_empleado; ?>" readonly="">
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <div class = "form-group col-md-3">
+                                            <label class="form-label mt-2">Cuenta: </label>
+                                        </div>
+                                        <div class = "form-group col-md-4">
+                                            <input type="text" class="form-control form-control-sm" value="<?php echo $cuenta; ?>" readonly="">
+                                        </div>
+                                    </div>
                                     <form method="post" action="">
                                         <input type="hidden" name="cve_docente" value="<?php echo $idDoc; ?>"> <!-- Verificacion de la clave del docente -->
                                         <button type="submit" name="decision" value="eliminar" class="btn btn-danger" style="float: left;">Eliminar</button> <!-- Desactiva al usuario -->
@@ -124,5 +165,5 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
 
 <!--
 --- Pagina[eliminarDocente] (Prototipo) ---
-Ultima modificacion -- [01/06/2022 (14:25 hrs)]
+Ultima modificacion -- [03/08/2022 (14:57 hrs)]
 -->

@@ -65,16 +65,15 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar premio</title> <!-- Llama al encabezado -->
+<title>SITA - Eliminar publicación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar premio</h1>
+                <h1 class="display-3">Eliminar publicación</h1>
                 <hr class="my-2">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de querer eliminar este registro?
@@ -83,7 +82,7 @@ switch($decision){
                                 <div class="text-center">
                                     <div class="row"> <!-- Linea 1 -->
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Tipo de publicacion</label>
+                                            <label class="form-label mt-2">Tipo de publicación</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $tipo?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
@@ -101,15 +100,15 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $titulo_revista?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Pagina inicial</label>
+                                            <label class="form-label mt-2">Página inicial</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $pagina_inicio?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Pagina final</label>
+                                            <label class="form-label mt-2">Página final</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $pagina_fin?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Pais de origen</label>
+                                            <label class="form-label mt-2">País de origen</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $pais?>" readonly="">
                                         </div>
                                     </div>
@@ -123,7 +122,7 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $volumen?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Fecha de publicacion</label>
+                                            <label class="form-label mt-2">Fecha de publicación</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $fecha_publicacion?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-3">
@@ -133,7 +132,7 @@ switch($decision){
                                     </div>
                                     <div class="row d-flex justify-content-center">
                                         <div class = "form-group col-md-7">
-                                            <label class="form-label mt-2">Proposito</label>
+                                            <label class="form-label mt-2">Propósito</label>
                                             <textarea class="form-control form-control-sm" rows="3" readonly=""><?php echo $proposito ?></textarea>
                                         </div>
                                     </div>
@@ -152,5 +151,5 @@ switch($decision){
 
 <!--
 --- Pagina[eliminarPublicacion] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (13:44 hrs)]
 -->

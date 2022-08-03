@@ -295,8 +295,9 @@ if (is_file($path)) {
 } else {
     die("El archivo no existe.");
 }
+//header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal
 ?>
 <?php
 // --- Pagina[expDocente] (Prototipo) ---
-// Ultima modificacion -- [22/07/2022 (11:04 hrs)]
+// Ultima modificacion -- [03/08/2022 (14:59 hrs)]
 ?>

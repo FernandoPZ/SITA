@@ -50,14 +50,14 @@ switch($decision){
                 if($result_usu > 0){ // Si hay alguna coincidencia con el usuario, muestra la alerta
                     $alert='
                     <div class="alert alert-dismissible alert-warning">
-                        <strong>Oh vaya...</strong> el nombre de usuario introducido ya esta registrado, escoge otro.
+                        <strong>Oh vaya...</strong> el nombre de usuario introducido ya está registrado, escoge otro.
                     </div>
                     '; // Alerta de coincidencia de usuario
                 }else{
                     if($result_cor > 0){ // Si hay alguna coincidencia con el correo, muestra la alerta
                         $alert='
                         <div class="alert alert-dismissible alert-warning">
-                            <strong>Oh vaya...</strong> el correo introducido ya esta registrado, escoge otro.
+                            <strong>Oh vaya...</strong> el correo introducido ya está registrado, escoge otro.
                         </div>
                         '; // Alerta de coincidencia de correo
                     }else{
@@ -74,7 +74,7 @@ switch($decision){
                             if($query_insert){
                                 $alert='
                                     <div class="alert alert-dismissible alert-success">
-                                        <strong>Listo!</strong> El usuario se guardo correctamente.
+                                        <strong>Listo!</strong> El usuario se guardó correctamente.
                                     </div>
                                 '; // Alerta de que se guardo correctamente
                                 $archivoFoto=$_FILES["foto"]["tmp_name"]; // Almacena la imagen subida
@@ -194,5 +194,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (13:24 hrs)]
+Ultima modificacion -- [03/08/2022 (14:49 hrs)]
 -->

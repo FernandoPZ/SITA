@@ -38,16 +38,15 @@ if($_GET['id_d'] != $idDoc){
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
 
-<title>SITA - Registrar formación</title> <!-- Llama al encabezado -->
+<title>SITA - Ver formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formación</h1>
+                <h1 class="display-3">Ver formación</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>Datos de la formación</h4>
                         </div>
                         <div class="card-body">
                                 <div class="row">
@@ -66,7 +65,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Area aplicable</label>
+                                        <label class="form-label mt-2">Área aplicable</label>
                                         <input type="text" class="form-control" name="area" value="<?php echo $area; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
@@ -74,7 +73,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                         <input type="text" class="form-control" name="disciplina" value="<?php echo $disciplina; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Pais donde se realizó</label>
+                                        <label class="form-label mt-2">País donde se realizó</label>
                                         <input type="text" class="form-control" name="pais" value="<?php echo $pais; ?>" readonly="">
                                     </div>
                                 </div>
@@ -112,5 +111,5 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
 
 <!--
 --- Pagina[infFormacion] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (09:30 hrs)]
+Ultima modificacion -- [03/08/2022 (14:13 hrs)]
 -->

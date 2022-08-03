@@ -62,13 +62,13 @@ switch($decision){
                 if($sql_update){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> La inexperiencia se actualizó correctamente.
+                        <strong>Listo!</strong> La experiencia se actualizó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
                     $alert='
                         <div class="alert alert-dismissible alert-danger">
-                            <strong>Algo salio mal...</strong> La inexperiencia no se pudo actualizar.
+                            <strong>Algo salió mal...</strong> La experiencia no se pudo actualizar.
                         </div>
                     '; // Alerta de algun problema al actualizar el registro
                 }
@@ -84,16 +84,16 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Editar experiencia</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Editar experiencia</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>No deje campos vacíos</h4>
                         </div>
                         <div class="card-body">
                             <div class="row">
@@ -102,8 +102,8 @@ switch($decision){
                                     <input type="text" class="form-control" name="actividad" value="<?php echo $actividad; ?>" placeholder="Indique el nombre de la actividad">
                                 </div>
                                 <div class = "form-group col-md-4">
-                                    <label class="form-label mt-2">Nombre de la institucion</label>
-                                    <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>"" placeholder="Nombre de la institucion del estudio">
+                                    <label class="form-label mt-2">Nombre de la institución</label>
+                                    <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>"" placeholder="Nombre de la institución de la actividad">
                                 </div>
                                 <div class = "form-group col-md-4">
                                     <label class="form-label mt-2">Periodo aplicable</label>
@@ -130,5 +130,5 @@ switch($decision){
 
 <!--
 --- Pagina[editarExperiencia] (Prototipo) ---
-Ultima modificacion -- [18/07/2022 (09:31 hrs)]
+Ultima modificacion -- [03/08/2022 (11:06 hrs)]
 -->

@@ -96,7 +96,6 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                     if($iduser != 1) // Valida que no se intente eliminar el master
                     {?>
                     <div class="col-md-5 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de eliminar este usuario?

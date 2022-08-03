@@ -118,21 +118,21 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar publicacion</title> <!-- Llama al encabezado -->
+<title>SITA - Editar publicacion</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar publicacion</h1>
+                <h1 class="display-3">Editar publicacion</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>No deje campos vacíos</h4>
                         </div>
                         <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class = "form-group col-md-3">
-                                        <label class="form-label mt-2">Tipo de publicacion</label>
+                                        <label class="form-label mt-2">Tipo de publicación</label>
                                         <select class="form-select" name="tipo" id="tipo">
                                             <option value="<?php echo $tipo?>" hidden=""><?php echo $tipo?></option>
                                             <option value="Articulo de libro">Articulo de libro</option>
@@ -163,7 +163,7 @@ switch($decision){
                                     </div>
                                     <div class = "form-group col-md-2">
                                         <label class="form-label mt-2">Pais de origen</label>
-                                        <input type="text" class="form-control" name="pais" value="<?php echo $pais?>" placeholder="Indique el pais de la publicacion">
+                                        <input type="text" class="form-control" name="pais" value="<?php echo $pais?>" placeholder="Indique el país de la publicación">
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-center">
@@ -173,26 +173,26 @@ switch($decision){
                                     </div>
                                     <div class = "form-group col-md-2">
                                         <label class="form-label mt-2">Volumen</label>
-                                        <input type="text" class="form-control" name="volumen" value="<?php echo $volumen?>" placeholder="Indiquei el volumen de la publicacion">
+                                        <input type="text" class="form-control" name="volumen" value="<?php echo $volumen?>" placeholder="Indique el volumen de la publicación">
                                     </div>
                                     <div class = "form-group col-md-2">
-                                        <label class="form-label mt-2">Fecha de publicacion</label>
+                                        <label class="form-label mt-2">Fecha de publicación</label>
                                         <input type="date" class="form-control" name="fecha_publicacion" value="<?php echo $fecha_publicacion?>">
                                     </div>
                                     <div class = "form-group col-md-3">
                                         <label class="form-label mt-2">Estado</label>
                                         <select class="form-select" name="estado" id="estado">
-                                            <option value="" hidden=""><?php echo $estado?></option>
+                                            <option value="<?php echo $estado?>" hidden=""><?php echo $estado?></option>
                                             <option value="En borrador">En borrador</option>
-                                            <option value="En revision">En revision</option>
+                                            <option value="En revision">En revisión</option>
                                             <option value="Publicado">Publicado</option>
                                         </select>
                                     </div>
                                 </div>
                                 <div class="row d-flex justify-content-center">
                                     <div class = "form-group col-md-7">
-                                        <label class="form-label mt-2">Proposito</label>
-                                        <textarea class="form-control" name="proposito" id="proposito" rows="3" placeholder="Indique el proposito de la publicacion"><?php echo $proposito ?></textarea>
+                                        <label class="form-label mt-2">Propósito</label>
+                                        <textarea class="form-control" name="proposito" id="proposito" rows="3" placeholder="Indique el propósito de la publicacion"><?php echo $proposito ?></textarea>
                                     </div>
                                 </div>
                             <div class="text-center">
@@ -209,5 +209,5 @@ switch($decision){
 
 <!--
 --- Pagina[editarPublicacion] (Prototipo) ---
-Ultima modificacion -- [19/07/2022 (14:50 hrs)]
+Ultima modificacion -- [03/08/2022 (13:10 hrs)]
 -->

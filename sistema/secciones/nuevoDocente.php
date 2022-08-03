@@ -136,7 +136,7 @@ switch($decision){ // Apartado de deciciones
                 if($result_num > 0){ // Si hay alguna coincidencia con el numero de empleado, muestra la alerta
                     $alert='
                     <div class="alert alert-dismissible alert-warning">
-                        <strong>Oh vaya...</strong> el numero de empleado introducido ya esta registrado.
+                        <strong>Oh vaya...</strong> el numero de empleado introducido ya está registrado.
                     </div>
                     '; // Alerta de coincidencia de numero de empleado
                 }else{
@@ -146,7 +146,7 @@ switch($decision){ // Apartado de deciciones
                     if($result_nss > 0){ // Si hay alguna coincidencia, muestra la alerta
                         $alert='
                         <div class="alert alert-dismissible alert-warning">
-                            <strong>Oh vaya...</strong> el numero de seguro social introducido ya esta registrado.
+                            <strong>Oh vaya...</strong> el numero de seguro social introducido ya está registrado.
                         </div>
                         '; // Alerta de coincidencia de nss
                     }else{
@@ -156,7 +156,7 @@ switch($decision){ // Apartado de deciciones
                         if($result_curp > 0){ // Si hay alguna coincidencia, muestra la alerta
                             $alert='
                             <div class="alert alert-dismissible alert-warning">
-                                <strong>Oh vaya...</strong> el curp introducido ya esta registrado.
+                                <strong>Oh vaya...</strong> el CURP introducido ya está registrado.
                             </div>
                             '; // Alerta de coincidencia de curp
                         }else{
@@ -166,7 +166,7 @@ switch($decision){ // Apartado de deciciones
                             if($result_rfc > 0){ // Si hay alguna coincidencia, muestra la alerta
                                 $alert='
                                 <div class="alert alert-dismissible alert-warning">
-                                    <strong>Oh vaya...</strong> el rfc introducido ya esta registrado.
+                                    <strong>Oh vaya...</strong> el RFC introducido ya está registrado.
                                 </div>
                                 '; // Alerta de coincidencia de rfc
                             }else{
@@ -176,7 +176,7 @@ switch($decision){ // Apartado de deciciones
                                 if($result_ins > 0){ // Si hay alguna coincidencia, muestra la alerta
                                     $alert='
                                     <div class="alert alert-dismissible alert-warning">
-                                        <strong>Oh vaya...</strong> el correo institucional introducido ya esta registrado.
+                                        <strong>Oh vaya...</strong> el correo institucional introducido ya está registrado.
                                     </div>
                                     '; // Alerta de coincidencia de correo
                                 }else{
@@ -186,7 +186,7 @@ switch($decision){ // Apartado de deciciones
                                     if($result_per > 0){ // Si hay alguna coincidencia, muestra la alerta
                                         $alert='
                                         <div class="alert alert-dismissible alert-warning">
-                                            <strong>Oh vaya...</strong> el correo personal introducido ya esta registrado.
+                                            <strong>Oh vaya...</strong> el correo personal introducido ya está registrado.
                                         </div>
                                         '; // Alerta de coincidencia de correo
                                     }else{
@@ -196,7 +196,7 @@ switch($decision){ // Apartado de deciciones
                                         if($result_tel > 0){ // Si hay alguna coincidencia, muestra la alerta
                                             $alert='
                                             <div class="alert alert-dismissible alert-warning">
-                                                <strong>Oh vaya...</strong> el numero telefonico introducido ya esta registrado.
+                                                <strong>Oh vaya...</strong> el numero telefónico introducido ya está registrado.
                                             </div>
                                             '; // Alerta de coincidencia de telefono
                                         }else{
@@ -206,7 +206,7 @@ switch($decision){ // Apartado de deciciones
                                             if($result_pas > 0){ // Si hay alguna coincidencia, muestra la alerta
                                                 $alert='
                                                 <div class="alert alert-dismissible alert-warning">
-                                                    <strong>Oh vaya...</strong> el numero de pasaporte introducido ya esta registrado.
+                                                    <strong>Oh vaya...</strong> el numero de pasaporte introducido ya está registrado.
                                                 </div>
                                                 '; // Alerta de coincidencia de telefono
                                             }else{
@@ -237,7 +237,7 @@ switch($decision){ // Apartado de deciciones
                                                                 if($query_insert_viaje){ // Valida si se realizo la insercion en la tabla viaje
                                                                     $alert='
                                                                         <div class="alert alert-dismissible alert-success">
-                                                                            <strong>Listo!</strong> El docente se guardo correctamente.
+                                                                            <strong>Listo!</strong> El docente se guardó correctamente.
                                                                         </div>
                                                                     '; // Alerta de que se guardo correctamente
                                                                     if($_SESSION['tipo'] == 4){
@@ -393,7 +393,7 @@ switch($decision){ // Apartado de deciciones
                                             <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institución">
                                         </div>
                                         <div class = "form-group col-md-4 mx-auto">
-                                            <label class="form-label mt-2">Fotografia</label>
+                                            <label class="form-label mt-2">Fotografía</label>
                                             <?php if($_SESSION['tipo'] == 4){ ?>
                                                 <br>
                                                 <div class="d-flex justify-content-center">
@@ -413,7 +413,7 @@ switch($decision){ // Apartado de deciciones
                                     </div>
                                     <div class="row">
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Tipo de contratacion</label>
+                                            <label class="form-label mt-2">Tipo de contratación</label>
                                             <select class="form-select" name="tipo_contratacion" id="tipo_contratacion">
                                                 <option value="" hidden>Selecciona una opción</option>
                                                 <option value="Tiempo completo">Tiempo completo</option>
@@ -562,7 +562,7 @@ switch($decision){ // Apartado de deciciones
                                                 <?php } ?>
                                             </div>
                                             <div class = "form-group col-md-4">
-                                                <label class="form-label mt-2">Numero telefonico</label>
+                                                <label class="form-label mt-2">Numero telefónico</label>
                                                 <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo isset($_POST['telefono']) ? $_POST['telefono'] : '';?>" placeholder="10 digitos">
                                             </div>
                                         </div>
@@ -577,7 +577,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="domicilio"> <!-- Tabla de Domicilio -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Domicilio
+                                    Información de domicilio
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -619,8 +619,8 @@ switch($decision){ // Apartado de deciciones
                                                 <input type="text" class="form-control" name="estado" id="estado" value="<?php echo isset($_POST['estado']) ? $_POST['estado'] : '';?>" placeholder="Nombre del estado">
                                             </div>
                                             <div class = "form-group col-md-4">
-                                                <label class="form-label mt-2">Pais</label>
-                                                <input type="text" class="form-control" name="pais" id="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Nombre del pais">
+                                                <label class="form-label mt-2">País</label>
+                                                <input type="text" class="form-control" name="pais" id="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Nombre del país">
                                             </div>
                                             <div class = "form-group col-md-4">
                                                 <label class="form-label mt-2">Comprobante de domicilio</label>
@@ -638,7 +638,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="viaje"> <!-- Tabla de Viaje -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Viaje
+                                    Información de viaje
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -677,5 +677,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[nuevoDocente] (Prototipo) ---
-Ultima modificacion -- [02/08/2022 (13:03 hrs)]
+Ultima modificacion -- [03/08/2022 (14:35 hrs)]
 -->

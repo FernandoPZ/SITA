@@ -54,9 +54,9 @@
             </div>
             <div class="row">
                 <div class = "form-group col-md-4">
-                    <label class="form-label mt-2">Fotografia</label>
+                    <label class="form-label mt-2">Fotografía</label>
                     <input type="file" class="form-control" name="foto" id="foto">
-                    <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografia</p>
+                    <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografía</p>
                     <label class="form-label mt-2">Escriba su nueva contraseña</label>
                     <input type="password" class="form-control" name="pass" placeholder="*******">
                     <p class="text-secondary">Dejar en blanco si no quiere cambiar de contraseña</p>
@@ -89,5 +89,5 @@
 </form>
 <!--
 --- Formulario de editar usuario (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (10:17 hrs)]
+Ultima modificacion -- [03/08/2022 (12:34 hrs)]
 -->

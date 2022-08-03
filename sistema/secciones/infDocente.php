@@ -245,7 +245,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <br>
                                         <form method="post">
                                             <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
+                                            <a role="button" class="btn btn-danger" href="verDocente.php" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -301,7 +301,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <br>
                                         <form method="post">
                                             <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
+                                            <a role="button" class="btn btn-danger" href="verDocente.php" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -332,7 +332,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <br>
                                             <form method="post">
                                                 <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar al docente -->
-                                                <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
+                                                <a role="button" class="btn btn-danger" href="verDocente.php" >Volver</a> <!-- Redirecciona a ver la lista de docentes -->
                                             </form>
                                         </div>
                                     </div>
@@ -342,7 +342,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="domicilio"> <!-- Tabla de Domicilio -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Domicilio
+                                    Información de domicilio
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -382,7 +382,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                 <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado; ?>" disabled=""> <!-- Muestra el estado -->
                                             </div>
                                             <div class = "form-group col-md-3">
-                                                <label class="form-label mt-2">Pais</label>
+                                                <label class="form-label mt-2">país</label>
                                                 <input type="text" class="form-control" name="pais" id="pais" value="<?php echo $pais; ?>" disabled=""> <!-- Muestra el pais -->
                                             </div>
                                         </div>
@@ -391,7 +391,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <br>
                                         <form method="post">
                                             <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
+                                            <a role="button" class="btn btn-danger" href="verDocente.php" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -400,7 +400,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="viaje"> <!-- Tabla de Viaje -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Viaje
+                                    Información de viaje
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -425,7 +425,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <br>
                                         <form method="post">
                                             <a role="button" class="btn btn-info" href="editarDocente.php?id=<?php echo $idDoc ?>">Editar</a> <!-- Redirecciona para editar el docente -->
-                                            <a role="button" class="btn btn-danger" href="../" >Volver</a> <!-- Redirecciona a home -->
+                                            <a role="button" class="btn btn-danger" href="verDocente.php" >Volver</a> <!-- Redirecciona a home -->
                                         </form>
                                     </div>
                                 </div>
@@ -449,10 +449,10 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <th scope="col">Nivel de estudio</th>
                                             <th scope="col">Siglas de los estudios</th>
                                             <th scope="col">Institución</th>
-                                            <th scope="col">Area</th>
-                                            <th scope="col">Disiplina</th>
-                                            <th scope="col">Pais</th>
-                                            <th scope="col">Fecha de titulacion</th>
+                                            <th scope="col">Área</th>
+                                            <th scope="col">Disciplina</th>
+                                            <th scope="col">País</th>
+                                            <th scope="col">Fecha de titulación</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
@@ -485,7 +485,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                             <td><?php echo $data ['siglas_estudio']; ?></td> <!-- Las siglas de los estudios -->
                                                             <td><?php echo $data ['institucion']; ?></td> <!-- El nombre de la institucion -->
                                                             <td><?php echo $data ['area']; ?></td> <!-- El area aplicable -->
-                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La disiplina aplicable -->
+                                                            <td><?php echo $data ['disciplina']; ?></td> <!-- La disciplina aplicable -->
                                                             <td><?php echo $data ['pais']; ?></td> <!-- El pais de los estudios -->
                                                             <td><?php echo $data ['fecha_titulacion']; ?></td> <!-- La fecha de titulacion -->
                                                             <td>
@@ -780,11 +780,11 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         <thead class="text-center">
                                             <tr> <!-- Nombre de los campos a mostrar -->
                                             <th scope="col">Clave</th>
-                                            <th scope="col">Articulo</th>
+                                            <th scope="col">Artículo</th>
                                             <th scope="col">Revista/Libro</th>
                                             <th scope="col">Editorial</th>
                                             <th scope="col">Volumen</th>
-                                            <th scope="col">Fecha de publicacion</th>
+                                            <th scope="col">Fecha de publicación</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
                                         </thead>
@@ -886,5 +886,5 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[infDocente] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (08:59 hrs)]
+Ultima modificacion -- [03/08/2022 (12:54 hrs)]
 -->

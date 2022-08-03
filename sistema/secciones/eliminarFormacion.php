@@ -63,16 +63,15 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Eliminar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Eliminar formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Eliminar registro de formacion</h1>
+                <h1 class="display-3">Eliminar registro de formación</h1>
                 <hr class="my-2">
             </div>
             <div class="container">
                 <div class="row">
                     <div class="col-md-7 mx-auto">
-                        <br>
                         <div class="card">
                             <div class="card-header text-center">
                                 ¿Esta seguro de querer eliminar este registro?
@@ -89,13 +88,13 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $siglas_estudio; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Nombre de la institucion</label>
+                                            <label class="form-label mt-2">Nombre de la institución</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $institucion; ?>" readonly="">
                                         </div>
                                     </div>
                                     <div class="row"> <!-- Segunda fila -->
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Area aplicable</label>
+                                            <label class="form-label mt-2">Área aplicable</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $area; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
@@ -103,7 +102,7 @@ switch($decision){
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $disciplina; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Pais donde se realizó</label>
+                                            <label class="form-label mt-2">País donde se realizó</label>
                                             <input type="text" class="form-control form-control-sm" value="<?php echo $pais; ?>" readonly="">
                                         </div>
                                     </div>
@@ -113,7 +112,7 @@ switch($decision){
                                             <input type="date" class="form-control form-control-sm" value="<?php echo $fecha_inicio; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
-                                            <label class="form-label mt-2">Fecha de conclusion del estudio</label>
+                                            <label class="form-label mt-2">Fecha de conclusión del estudio</label>
                                             <input type="date" class="form-control form-control-sm" value="<?php echo $fecha_fin; ?>" readonly="">
                                         </div>
                                         <div class = "form-group col-md-4">
@@ -123,7 +122,7 @@ switch($decision){
                                     </div>
                                     <div class="row"> <!-- Cuarta fila -->
                                         <div class = "form-group col-md-12">
-                                            <label class="form-label mt-2">Habilidades aprendidas en la formacion</label>
+                                            <label class="form-label mt-2">Habilidades aprendidas en la formación</label>
                                             <textarea class="form-control" name="habilidades" id="habilidades" rows="3" readonly=""><?php echo $habilidades; ?></textarea>
                                         </div>
                                     </div>
@@ -143,5 +142,5 @@ switch($decision){
 
 <!--
 --- Pagina[eliminarFormacion] (Prototipo) ---
-Ultima modificacion -- [13/07/2022 (14:15 hrs)]
+Ultima modificacion -- [03/08/2022 (13:33 hrs)]
 -->

@@ -125,7 +125,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
                 <?php }else{ ?>
                     <div class="alert alert-dismissible alert-light mx-auto"> <!-- Muestra un mensaje de aviso si no hay docentes registrados -->
                         <h4 class="alert-heading text-center">No hay docentes registrados, aun...</h4>
-                        <p class="mb-0 text-center">Agrega al primer registro :D</p>
+                        <p class="mb-0 text-center">Agrega al primer registro</p>
                         <br>
                         <div class="text-center">
                             <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary mx-auto">Nuevo Registro</button> <!-- Redirecciona para crear un nuevo registro -->
@@ -138,5 +138,5 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
 
 <!--
 --- Pagina[verDocente] (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (14:06 hrs)]
+Ultima modificacion -- [03/08/2022 (14:50 hrs)]
 -->

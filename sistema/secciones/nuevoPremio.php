@@ -51,7 +51,7 @@ switch($decision){
                 if($query_insert){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> El usuario se guardo correctamente.
+                        <strong>Listo!</strong> El usuario se guardó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
@@ -78,7 +78,7 @@ switch($decision){
             <div class="jumbotron">
                 <h1 class="display-3">Registrar premio</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
@@ -88,15 +88,15 @@ switch($decision){
                                 <div class="row">
                                     <div class = "form-group col-md-4">
                                         <label class="form-label mt-2">Nombre del premio</label>
-                                        <input type="text" class="form-control" name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Indique el nivel de estudio finalizado">
+                                        <input type="text" class="form-control" name="nombre" value="<?php echo isset($_POST['nombre']) ? $_POST['nombre'] : '';?>" placeholder="Indique el nombre del premio">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Fecha de optencion</label>
+                                        <label class="form-label mt-2">Fecha de obtención</label>
                                         <input type="date" class="form-control" name="fecha" value="<?php echo isset($_POST['fecha']) ? $_POST['fecha'] : '';?>">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
-                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion del estudio">
+                                        <label class="form-label mt-2">Nombre de la institución</label>
+                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institución que otorga el premio">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -105,7 +105,7 @@ switch($decision){
                                         <textarea class="form-control" name="motivo" id="motivo" rows="3" placeholder="Motivo aplicable"><?php echo isset($_POST['motivo']) ? $_POST['motivo'] : '';?></textarea>
                                     </div>
                                     <div class = "form-group col-md-6">
-                                        <label class="form-label mt-2">Descripcion del premio</label>
+                                        <label class="form-label mt-2">Descripción del premio</label>
                                         <textarea class="form-control" name="descripcion" id="descripcion" rows="3" placeholder="Descripcion del premio"><?php echo isset($_POST['descripcion']) ? $_POST['descripcion'] : '';?></textarea>
                                     </div>
                                 </div>
@@ -123,5 +123,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoPremio] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (14:45 hrs)]
 -->

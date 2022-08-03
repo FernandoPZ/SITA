@@ -39,21 +39,20 @@ if($_GET['id_d'] != $idDoc){
 }
 ?>
 
-<title>SITA - Registrar publicacion</title> <!-- Llama al encabezado -->
+<title>SITA - Ver publicacion</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar publicacion</h1>
+                <h1 class="display-3">Ver publicacion</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>Información de la publicación</h4>
                         </div>
                         <div class="card-body">
                                 <div class="row d-flex justify-content-center">
                                     <div class = "form-group col-md-3">
-                                        <label class="form-label mt-2">Tipo de publicacion</label>
+                                        <label class="form-label mt-2">Tipo de publicación</label>
                                         <select class="form-select" disabled="">
                                             <option><?php echo $tipo?></option>
                                         </select>
@@ -73,15 +72,15 @@ if($_GET['id_d'] != $idDoc){
                                         <input type="text" class="form-control" value="<?php echo $titulo_revista?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-2">
-                                        <label class="form-label mt-2">Pagina inicial</label>
+                                        <label class="form-label mt-2">Página inicial</label>
                                         <input type="text" class="form-control" value="<?php echo $pagina_inicio?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-2">
-                                        <label class="form-label mt-2">Pagina final</label>
+                                        <label class="form-label mt-2">Página final</label>
                                         <input type="text" class="form-control" value="<?php echo $pagina_fin?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-2">
-                                        <label class="form-label mt-2">Pais de origen</label>
+                                        <label class="form-label mt-2">País de origen</label>
                                         <input type="text" class="form-control" value="<?php echo $pais?>" readonly="">
                                     </div>
                                 </div>
@@ -95,7 +94,7 @@ if($_GET['id_d'] != $idDoc){
                                         <input type="text" class="form-control" value="<?php echo $volumen?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-2">
-                                        <label class="form-label mt-2">Fecha de publicacion</label>
+                                        <label class="form-label mt-2">Fecha de publicación</label>
                                         <input type="date" class="form-control" readonly="">
                                     </div>
                                     <div class = "form-group col-md-3">
@@ -107,7 +106,7 @@ if($_GET['id_d'] != $idDoc){
                                 </div>
                                 <div class="row d-flex justify-content-center">
                                     <div class = "form-group col-md-7">
-                                        <label class="form-label mt-2">Proposito</label>
+                                        <label class="form-label mt-2">Propósito</label>
                                         <textarea class="form-control" rows="3" readonly=""><?php echo $proposito ?></textarea>
                                     </div>
                                 </div>
@@ -125,5 +124,5 @@ if($_GET['id_d'] != $idDoc){
 
 <!--
 --- Pagina[editarPublicacion] (Prototipo) ---
-Ultima modificacion -- [19/07/2022 (14:50 hrs)]
+Ultima modificacion -- [03/08/2022 (14:18 hrs)]
 -->

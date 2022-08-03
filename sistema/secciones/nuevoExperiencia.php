@@ -49,7 +49,7 @@ switch($decision){
                 if($query_insert){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> El registro se guardo correctamente.
+                        <strong>Listo!</strong> El registro se guardó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
@@ -71,12 +71,12 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Registrar experiencia</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Registrar experiencia</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
@@ -89,8 +89,8 @@ switch($decision){
                                         <input type="text" class="form-control" name="actividad" value="<?php echo isset($_POST['actividad']) ? $_POST['actividad'] : '';?>" placeholder="Indique el nombre de la actividad">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
-                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion del estudio">
+                                        <label class="form-label mt-2">Nombre de la institución</label>
+                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institución de la actividad">
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label class="form-label mt-2">Periodo aplicable</label>
@@ -117,5 +117,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (14:40 hrs)]
 -->

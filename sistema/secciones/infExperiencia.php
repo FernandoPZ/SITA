@@ -32,16 +32,15 @@ if($_GET['id_d'] != $idDoc){
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Ver experiencia</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Ver experiencia</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                     <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                         <div class="card">
                             <div class="card-header text-center">
-                                <h4>Llene el siguiente formulario</h4>
+                                <h4>Datos de la experiencia</h4>
                             </div>
                             <div class="card-body">
                                 <div class="row">
@@ -50,7 +49,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                         <input type="text" class="form-control" name="actividad" value="<?php echo $actividad; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
+                                        <label class="form-label mt-2">Nombre de la institución</label>
                                         <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>"" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
@@ -60,7 +59,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-10 mx-auto">
-                                        <label class="form-label mt-2">Describa sus intereses</label>
+                                        <label class="form-label mt-2">Intereses</label>
                                         <textarea class="form-control" rows="3" readonly=""><?php echo $intereses; ?></textarea>
                                     </div>
                                 </div>
@@ -78,5 +77,5 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
 
 <!--
 --- Pagina[infExperiencia] (Prototipo) ---
-Ultima modificacion -- [18/07/2022 (09:57 hrs)]
+Ultima modificacion -- [03/08/2022 (11:04 hrs)]
 -->

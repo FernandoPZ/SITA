@@ -110,16 +110,16 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar formación</title> <!-- Llama al encabezado -->
+<title>SITA - Editar formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formación</h1>
+                <h1 class="display-3">Editar formación</h1>
                 <hr class="my-2">
-                <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
+                <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
                     <div class="card">
                         <div class="card-header text-center">
-                            <h4>Llene el siguiente formulario</h4>
+                            <h4>No deje campos vacíos</h4>
                         </div>
                         <div class="card-body">
                                 <div class="row">
@@ -146,7 +146,7 @@ switch($decision){
                                         <input type="text" class="form-control" name="disciplina" value="<?php echo $disciplina; ?>" placeholder="Disciplina aplicable">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Pais donde se realizó</label>
+                                        <label class="form-label mt-2">País donde se realizó</label>
                                         <input type="text" class="form-control" name="pais" value="<?php echo $pais; ?>" placeholder="Pais donde se realizo el estudio">
                                     </div>
                                 </div>

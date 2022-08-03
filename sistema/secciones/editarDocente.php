@@ -366,7 +366,7 @@ switch($decision){ // Apartado de deciciones
                             <a class="nav-link active" data-bs-toggle="tab" href="#docente">Docente</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#informacion">Informacion</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#informacion">Información</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#contacto">Contacto</a> <!-- boton del tab -->
@@ -383,7 +383,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade active show" id="docente"> <!-- Tabla de datos principales -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion general
+                                    Información general
                                 </div>
                                 <div class="card-body">
                                     <div class="row">
@@ -394,12 +394,13 @@ switch($decision){ // Apartado de deciciones
                                             <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo $apellido1; ?>" placeholder="Primer apellido">
                                             <label class="form-label mt-2">Segundo apellido</label>
                                             <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo $apellido2; ?>" placeholder="Segundo apellido">
-                                            <label class="form-label mt-2">Institucion</label>
+                                            <label class="form-label mt-2">Institución</label>
                                             <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo $institucion; ?>" placeholder="Nombre de la institucion">
                                         </div>
                                         <div class = "form-group col-md-4 mx-auto">
-                                            <label class="form-label mt-2">Fotografia</label>
+                                            <label class="form-label mt-2">Fotografía</label>
                                             <input type="file" class="form-control" name="foto" id="foto">
+                                            <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografía</p>
                                             <div class="m-0 vh-50 row justify-content-center align-items-center">
                                                 <div class="col-auto">
                                                     <br>
@@ -411,7 +412,7 @@ switch($decision){ // Apartado de deciciones
                                     </div>
                                     <div class="row">
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Tipo de contratacion</label>
+                                            <label class="form-label mt-2">Tipo de contratación</label>
                                             <select class="form-select" name="tipo_contratacion" id="tipo_contratacion">
                                                 <option value="<?php echo $tipo_contratacion; ?>" hidden><?php echo $tipo_contratacion; ?></option>
                                                 <option value="Tiempo completo">Tiempo completo</option>
@@ -460,7 +461,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="informacion"> <!-- Tabla de Informacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion especifica <!-- Nombre de la seccion -->
+                                    Información especifica <!-- Nombre de la seccion -->
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -543,7 +544,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="contacto"> <!-- Tabla de Contacto -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Informacion de contacto
+                                    Información de contacto
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -557,7 +558,7 @@ switch($decision){ // Apartado de deciciones
                                                 <input type="email" class="form-control" name="correo_per" id="correo_per" value="<?php echo $correo_per; ?>" placeholder="correo@ejemplo.com">
                                             </div>
                                             <div class = "form-group col-md-4">
-                                                <label class="form-label mt-2">Numero telefonico</label>
+                                                <label class="form-label mt-2">Numero telefónico</label>
                                                 <input type="number" class="form-control" name="telefono" id="telefono" value="<?php echo $telefono; ?>" placeholder="10 digitos">
                                             </div>
                                         </div>
@@ -572,7 +573,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="domicilio"> <!-- Tabla de Domicilio -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Domicilio
+                                    Información de domicilio
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -614,7 +615,7 @@ switch($decision){ // Apartado de deciciones
                                                 <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado; ?>" placeholder="Nombre del estado">
                                             </div>
                                             <div class = "form-group col-md-4">
-                                                <label class="form-label mt-2">Pais</label>
+                                                <label class="form-label mt-2">País</label>
                                                 <input type="text" class="form-control" name="pais" id="pais" value="<?php echo $pais; ?>" placeholder="Nombre del pais">
                                             </div>
                                             <div class = "form-group col-md-4">
@@ -633,7 +634,7 @@ switch($decision){ // Apartado de deciciones
                         <div class="tab-pane fade" id="viaje"> <!-- Tabla de Viaje -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Viaje
+                                    Información de viaje
                                 </div>
                                 <div class="card-body">
                                     <div class = "form-group">
@@ -672,5 +673,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[editarDocente] (Prototipo) ---
-Ultima modificacion -- [01/07/2022 (12:30 hrs)]
+Ultima modificacion -- [03/08/2022 (12:41 hrs)]
 -->
