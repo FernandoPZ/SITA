@@ -38,10 +38,10 @@ if($_GET['id_d'] != $idDoc){
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Registrar formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Registrar formación</h1>
                 <hr class="my-2">
                 <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
@@ -60,7 +60,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                         <input type="text" class="form-control" name="siglas_estudio" value="<?php echo $siglas_estudio; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
+                                        <label class="form-label mt-2">Nombre de la institución</label>
                                         <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>" readonly="">
                                     </div>
                                 </div>
@@ -84,7 +84,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                         <input type="date" class="form-control" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Fecha de conclusion del estudio</label>
+                                        <label class="form-label mt-2">Fecha de conclusión del estudio</label>
                                         <input type="date" class="form-control" name="fecha_fin" value="<?php echo $fecha_fin; ?>" readonly="">
                                     </div>
                                     <div class = "form-group col-md-4">
@@ -94,7 +94,7 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-10 mx-auto">
-                                        <label class="form-label mt-2">Habilidades aprendidas en la formacion</label>
+                                        <label class="form-label mt-2">Habilidades aprendidas en la formación</label>
                                         <textarea class="form-control" name="habilidades" id="habilidades" rows="3" readonly=""><?php echo $habilidades; ?></textarea>
                                     </div>
                                 </div>
@@ -112,5 +112,5 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
 
 <!--
 --- Pagina[infFormacion] (Prototipo) ---
-Ultima modificacion -- [18/07/2022 (08:52 hrs)]
+Ultima modificacion -- [03/08/2022 (09:30 hrs)]
 -->
