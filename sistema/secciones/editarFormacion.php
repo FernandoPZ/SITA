@@ -88,13 +88,13 @@ switch($decision){
                 if($sql_update){
                     $alert='
                     <div class="alert alert-dismissible alert-success">
-                        <strong>Listo!</strong> La informacion se actualizó correctamente.
+                        <strong>Listo!</strong> La información se actualizó correctamente.
                     </div>
                     '; // Alerta de que se guardo correctamente
                 }else{
                     $alert='
                         <div class="alert alert-dismissible alert-danger">
-                            <strong>Algo salio mal...</strong> La informacion no se pudo actualizar.
+                            <strong>Algo salio mal...</strong> La información no se pudo actualizar.
                         </div>
                     '; // Alerta de algun problema al actualizar el registro
                 }
@@ -110,10 +110,10 @@ switch($decision){
 }
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Registrar formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Registrar formación</h1>
                 <hr class="my-2">
                 <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
@@ -132,14 +132,14 @@ switch($decision){
                                         <input type="text" class="form-control" name="siglas_estudio" value="<?php echo $siglas_estudio; ?>" placeholder="Escriba las siglas del estudio">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
-                                        <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>" placeholder="Nombre de la institucion del estudio">
+                                        <label class="form-label mt-2">Nombre de la institución</label>
+                                        <input type="text" class="form-control" name="institucion" value="<?php echo $institucion; ?>" placeholder="Nombre de la institución del estudio">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Area aplicable</label>
-                                        <input type="text" class="form-control" name="area" value="<?php echo $area; ?>" placeholder="Area aplicable">
+                                        <label class="form-label mt-2">Área aplicable</label>
+                                        <input type="text" class="form-control" name="area" value="<?php echo $area; ?>" placeholder="Área aplicable">
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label class="form-label mt-2">Disciplina aplicable</label>
@@ -156,7 +156,7 @@ switch($decision){
                                         <input type="date" class="form-control" name="fecha_inicio" value="<?php echo $fecha_inicio; ?>">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Fecha de conclusion del estudio</label>
+                                        <label class="form-label mt-2">Fecha de conclusión del estudio</label>
                                         <input type="date" class="form-control" name="fecha_fin" value="<?php echo $fecha_fin; ?>">
                                     </div>
                                     <div class = "form-group col-md-4">
@@ -166,7 +166,7 @@ switch($decision){
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-10 mx-auto">
-                                        <label class="form-label mt-2">Habilidades aprendidas en la formacion</label>
+                                        <label class="form-label mt-2">Habilidades aprendidas en la formación</label>
                                         <textarea class="form-control" name="habilidades" id="habilidades" rows="3" placeholder="Hablilidad 1, habilidad 2, habilidad..."><?php echo $habilidades; ?></textarea>
                                     </div>
                                 </div>
@@ -184,5 +184,5 @@ switch($decision){
 
 <!--
 --- Pagina[editarFormacion] (Prototipo) ---
-Ultima modificacion -- [13/07/2022 (12:10 hrs)]
+Ultima modificacion -- [03/08/2022 (10:10 hrs)]
 -->
