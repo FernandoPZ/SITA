@@ -77,16 +77,16 @@ switch($decision){
         }
 
     case "volver": // volver
-        header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
+        header('Location:/SITA/sistema/secciones/infDocente.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
 ?>
 
-<title>SITA - Registrar formacion</title> <!-- Llama al encabezado -->
+<title>SITA - Registrar formación</title> <!-- Llama al encabezado -->
 
             <div class="jumbotron">
-                <h1 class="display-3">Registrar formacion</h1>
+                <h1 class="display-3">Registrar formación</h1>
                 <hr class="my-2">
                 <div class="alert"><?php echo isset($alert) ? $alert : ''; ?></div> <!-- Espacio para las alertas -->
                 <form action="" method="POST" enctype="multipart/form-data"> <!-- "enctype" necesario para poder reconocer los archivos subidos -->
@@ -105,14 +105,14 @@ switch($decision){
                                         <input type="text" class="form-control" name="siglas_estudio" value="<?php echo isset($_POST['siglas_estudio']) ? $_POST['siglas_estudio'] : '';?>" placeholder="Escriba las siglas del estudio">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Nombre de la institucion</label>
-                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institucion del estudio">
+                                        <label class="form-label mt-2">Nombre de la institución</label>
+                                        <input type="text" class="form-control" name="institucion" value="<?php echo isset($_POST['institucion']) ? $_POST['institucion'] : '';?>" placeholder="Nombre de la institución del estudio">
                                     </div>
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Area aplicable</label>
-                                        <input type="text" class="form-control" name="area" value="<?php echo isset($_POST['area']) ? $_POST['area'] : '';?>" placeholder="Area aplicable">
+                                        <label class="form-label mt-2">Área aplicable</label>
+                                        <input type="text" class="form-control" name="area" value="<?php echo isset($_POST['area']) ? $_POST['area'] : '';?>" placeholder="Área aplicable">
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label class="form-label mt-2">Disciplina aplicable</label>
@@ -120,7 +120,7 @@ switch($decision){
                                     </div>
                                     <div class = "form-group col-md-4">
                                         <label class="form-label mt-2">Pais donde se realizó</label>
-                                        <input type="text" class="form-control" name="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Pais donde se realizo el estudio">
+                                        <input type="text" class="form-control" name="pais" value="<?php echo isset($_POST['pais']) ? $_POST['pais'] : '';?>" placeholder="Pais donde se realizó el estudio">
                                     </div>
                                 </div>
                                 <div class="row">
@@ -129,7 +129,7 @@ switch($decision){
                                         <input type="date" class="form-control" name="fecha_inicio" value="<?php echo isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : '';?>">
                                     </div>
                                     <div class = "form-group col-md-4">
-                                        <label class="form-label mt-2">Fecha de conclusion del estudio</label>
+                                        <label class="form-label mt-2">Fecha de conclusión del estudio</label>
                                         <input type="date" class="form-control" name="fecha_fin" value="<?php echo isset($_POST['fecha_fin']) ? $_POST['fecha_fin'] : '';?>">
                                     </div>
                                     <div class = "form-group col-md-4">
@@ -139,7 +139,7 @@ switch($decision){
                                 </div>
                                 <div class="row">
                                     <div class = "form-group col-md-10 mx-auto">
-                                        <label class="form-label mt-2">Habilidades aprendidas en la formacion</label>
+                                        <label class="form-label mt-2">Habilidades aprendidas en la formación</label>
                                         <textarea class="form-control" name="habilidades" id="habilidades" rows="3" placeholder="Hablilidad 1, habilidad 2, habilidad..."><?php echo isset($_POST['habilidades']) ? $_POST['habilidades'] : '';?></textarea>
                                     </div>
                                 </div>
@@ -156,6 +156,6 @@ switch($decision){
 <?php include("../template/pie.php"); ?> <!-- Llama al pie de la pagina -->
 
 <!--
---- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+--- Pagina[nuevoFormacion] (Prototipo) ---
+Ultima modificacion -- [03/08/2022 (09:18 hrs)]
 -->
