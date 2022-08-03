@@ -171,7 +171,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                             <a class="nav-link" data-bs-toggle="tab" href="#viaje">Viaje</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" data-bs-toggle="tab" href="#formacion">Formacion</a> <!-- boton del tab -->
+                            <a class="nav-link" data-bs-toggle="tab" href="#formacion">Formación</a> <!-- boton del tab -->
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#experiencia">Experiencia</a> <!-- boton del tab -->
@@ -199,7 +199,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <input type="text" class="form-control" name="apellido1" id="apellido1" value="<?php echo $apellido1; ?>" disabled=""> <!-- Muestra el primer apellido del docente -->
                                             <label class="form-label mt-2">Segundo apellido</label>
                                             <input type="text" class="form-control" name="apellido2" id="apellido2" value="<?php echo $apellido2; ?>" disabled=""> <!-- Muestra el segundo apellido del docente -->
-                                            <label class="form-label mt-2">Institucion</label>
+                                            <label class="form-label mt-2">Institución</label>
                                             <input type="text" class="form-control" name="institucion" id="institucion" value="<?php echo $institucion; ?>" disabled=""> <!-- Muestra el nombre de la institucion -->
                                         </div>
                                         <div class = "form-group col-md-4 mx-auto">
@@ -213,7 +213,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                     </div>
                                     <div class="row">
                                         <div class = "form-group col-md-3">
-                                            <label class="form-label mt-2">Tipo de contratacion</label>
+                                            <label class="form-label mt-2">Tipo de contratación</label>
                                             <select class="form-select" name="tipo_contratacion" id="tipo_contratacion" disabled="">
                                                 <option value="<?php echo $tipo_contratacion; ?>" hidden><?php echo $tipo_contratacion; ?></option> <!-- Muestra el tipo de contratacion -->
                                             </select>
@@ -434,7 +434,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="formacion"> <!-- Tabla de Formacion -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Lista de formacion academica
+                                    Lista de formación academica del docente
                                 </div>
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -448,7 +448,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <th scope="col">Clave</th>
                                             <th scope="col">Nivel de estudio</th>
                                             <th scope="col">Siglas de los estudios</th>
-                                            <th scope="col">Institucion</th>
+                                            <th scope="col">Institución</th>
                                             <th scope="col">Area</th>
                                             <th scope="col">Disiplina</th>
                                             <th scope="col">Pais</th>
@@ -532,11 +532,11 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                 </div>
                                             <?php }else{ ?>
                                                 <div class="alert alert-dismissible alert-light mx-auto"> <!-- Mensaje de que no hay registros -->
-                                                    <h4 class="alert-heading text-center">No hay formacion registrada para este docente, aun...</h4>
+                                                    <h4 class="alert-heading text-center">No hay formación registrada para este docente, aun...</h4>
                                                     <p class="mb-0 text-center">Agrega el primer registro</p>
                                                     <br>
                                                     <div class="text-center">
-                                                        <a role="button" class="btn btn-primary" href="nuevoFormacion.php?id_d=<?php echo $idDoc;?>" >Nuevo registro</a> <!-- Redirecciona para registrar Formacion -->
+                                                        <button type="button" onclick="location.href='nuevoFormacion.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Premio -->
                                                     </div>
                                                 </div>
                                             <?php } ?>
@@ -550,7 +550,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <div class="tab-pane fade" id="experiencia"> <!-- Tabla de Experiencia -->
                             <div class="card">
                                 <div class="card-header text-center">
-                                    Lista de experiencias
+                                    Lista de experiencias del docente
                                 </div>
                                 <div class="card-body">
                                     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -563,7 +563,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <tr> <!-- Nombre de los campos a mostrar -->
                                             <th scope="col">Clave</th>
                                             <th scope="col">Actividad</th>
-                                            <th scope="col">Institucion</th>
+                                            <th scope="col">Institución</th>
                                             <th scope="col">Periodo</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
@@ -644,7 +644,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
-                                                    <a role="button" class="btn btn-primary" href="nuevoExperiencia.php?id_d=<?php echo $idDoc;?>" >Nuevo registro</a> <!-- Redirecciona para eliminar al usuario -->
+                                                    <button type="button" onclick="location.href='nuevoExperiencia.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Nuevo Registro</button> <!-- Redirecciona a registrar un nuevo Premio -->
                                                 </div>
                                             </div>
                                         <?php } ?>
@@ -672,7 +672,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <th scope="col">Clave</th>
                                             <th scope="col">Nombre</th>
                                             <th scope="col">Fecha</th>
-                                            <th scope="col">Institucion</th>
+                                            <th scope="col">Institución</th>
                                             <th scope="col">Motivo</th>
                                             <th scope="col">Acciones</th>
                                             </tr>
@@ -862,7 +862,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                         </div>
                                         <?php }else{ ?>
                                             <div class="alert alert-dismissible alert-light mx-auto">
-                                                <h4 class="alert-heading text-center">No hay publicaciones registrados para este docente, aun...</h4>
+                                                <h4 class="alert-heading text-center">No hay publicaciones registradas para este docente, aun...</h4>
                                                 <p class="mb-0 text-center">Agrega el primer registro</p>
                                                 <br>
                                                 <div class="text-center">
@@ -886,5 +886,5 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[infDocente] (Prototipo) ---
-Ultima modificacion -- [29/06/2022 (14:45 hrs)]
+Ultima modificacion -- [03/08/2022 (08:59 hrs)]
 -->
