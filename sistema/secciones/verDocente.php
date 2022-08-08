@@ -22,6 +22,9 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel administrador
                             <?php if($_SESSION['tipo'] != 3){ ?> <!-- Valida que el usuario no sea un Consultor -->
                             <button type="button" onclick="location.href='nuevoDocente.php'" class="btn btn-primary">Nuevo Registro</button>
                             <?php } ?>
+                            <?php if($_SESSION['tipo'] == 1){ ?> <!-- Valida que el usuario sea un Administrador -->
+                            <button type="button" onclick="location.href='reporteDocente.php'" class="btn btn-success">Generar reporte</button>
+                            <?php } ?>
                             <form action="buscarDocente.php" method="get" class="d-flex">
                                 <input class="form-control me-sm-2" type="text" name="busqueda" id="busqueda" placeholder="Buscar docente">
                                 <input class="btn btn-secondary my-2 my-sm-0" type="submit" value="Buscar">
