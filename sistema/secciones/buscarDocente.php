@@ -1,7 +1,7 @@
 <?php include("../template/cabecera.php"); ?> <!-- Llama al encabezado de pagina -->
 
 <?php
-include "../config/conexion.php"; // Inicia la conexion con la bd
+include "../config/conexion.php"; // Inicia la conexión con la bd
 if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
 {
     header("location: /SITA/sistema/index.php"); // Regresa a la pagina principal
@@ -157,7 +157,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
                 <?php }else{ ?>
                     <div class="alert alert-dismissible alert-warning mx-auto"> <!-- Alerta de que no se encontraron coincidencias -->
                         <h4 class="alert-heading text-center">Oh vaya...</h4>
-                        <p class="mb-0 text-center">No se han encontrado similitudes :(</p>
+                        <p class="mb-0 text-center">No se han encontrado similitudes</p>
                     </div>
                 <?php } ?>
 			</div>
@@ -166,5 +166,5 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
 
 <!--
 --- Pagina[buscarDocente] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (12:20 hrs)]
+Ultima modificacion -- [10/08/2022 (11:34 hrs)]
 -->

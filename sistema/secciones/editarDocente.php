@@ -311,35 +311,35 @@ switch($decision){ // Apartado de deciciones
                                     }else{
                                         $alert='
                                             <div class="alert alert-dismissible alert-danger">
-                                                <strong>Algo salio mal en el apartado Viaje...</strong> El usuario no se pudo guardar, contacte a soporte.
+                                                <strong>Algo salió mal en el apartado Viaje...</strong> El usuario no se pudo guardar, contacte a soporte.
                                             </div>
                                         '; // Alerta de algun problema al guardar el registro
                                     }
                                 }else{
                                     $alert='
                                         <div class="alert alert-dismissible alert-danger">
-                                            <strong>Algo salio mal en el apartado Domicilio...</strong> El usuario no se pudo guardar, contacte a soporte.
+                                            <strong>Algo salió mal en el apartado Domicilio...</strong> El usuario no se pudo guardar, contacte a soporte.
                                         </div>
                                     '; // Alerta de algun problema al guardar el registro
                                 }
                             }else{
                                 $alert='
                                     <div class="alert alert-dismissible alert-danger">
-                                        <strong>Algo salio mal en el apartado Contacto...</strong> El usuario no se pudo guardar, contacte a soporte.
+                                        <strong>Algo salió mal en el apartado Contacto...</strong> El usuario no se pudo guardar, contacte a soporte.
                                     </div>
                                 '; // Alerta de algun problema al guardar el registro
                             }
                         }else{
                             $alert='
                                 <div class="alert alert-dismissible alert-danger">
-                                    <strong>Algo salio mal en el apartado Informacion...</strong> El usuario no se pudo guardar, contacte a soporte.
+                                    <strong>Algo salió mal en el apartado Información...</strong> El usuario no se pudo guardar, contacte a soporte.
                                 </div>
                             '; // Alerta de algun problema al guardar el registro
                         }
                     }else{
                         $alert='
                             <div class="alert alert-dismissible alert-danger">
-                                <strong>Algo salio mal en el apartado Docente...</strong> El usuario no se pudo guardar, contacte a soporte.
+                                <strong>Algo salió mal en el apartado Docente...</strong> El usuario no se pudo guardar, contacte a soporte.
                             </div>
                         '; // Alerta de algun problema al guardar el registro
                     }
@@ -400,7 +400,7 @@ switch($decision){ // Apartado de deciciones
                                         <div class = "form-group col-md-4 mx-auto">
                                             <label class="form-label mt-2">Fotografía</label>
                                             <input type="file" class="form-control" name="foto" id="foto">
-                                            <p class="text-secondary">Dejar en blanco si no quiere cambiar de fotografía</p>
+                                            <p class="text-secondary"><small>Dejar en blanco si no quiere cambiar de fotografía</small></p>
                                             <div class="m-0 vh-50 row justify-content-center align-items-center">
                                                 <div class="col-auto">
                                                     <br>
@@ -480,7 +480,7 @@ switch($decision){ // Apartado de deciciones
                                                 </select>
                                             </div>
                                             <div class = "form-group col-md-6">
-                                                <label class="form-label mt-2">Acta de nacimiento</label>
+                                                <label class="form-label mt-2">Acta de nacimiento </label><span class="text-secondary"><small> (Dejar en blanco si no quiere actualizar el archivo)</small></span>
                                                 <input type="file" class="form-control" name="doc_nac" id="doc_nac">
                                             </div>
                                         </div>
@@ -500,7 +500,7 @@ switch($decision){ // Apartado de deciciones
                                                     <option value="Soltero">Soltero</option>
                                                     <option value="Casado">Casado</option>
                                                     <option value="Divorciado">Divorciado</option>
-                                                    <option value="Union libre">Union libre</option>
+                                                    <option value="Union libre">Unión libre</option>
                                                 </select>
                                             </div>
                                             <div class = "form-group col-md-4">
@@ -514,7 +514,7 @@ switch($decision){ // Apartado de deciciones
                                                 <input type="text" class="form-control" name="curp" id="curp" value="<?php echo $curp; ?>" placeholder="18 caracteres">
                                             </div>
                                             <div class = "form-group col-md-6">
-                                                <label class="form-label mt-2">Documento CURP</label>
+                                                <label class="form-label mt-2">Documento CURP</label><span class="text-secondary"><small> (Dejar en blanco si no quiere actualizar el archivo)</small></span>
                                                 <input type="file" class="form-control" name="doc_curp" id="doc_curp">
                                             </div>
                                         </div>
@@ -524,7 +524,7 @@ switch($decision){ // Apartado de deciciones
                                                 <input type="text" class="form-control" name="rfc" id="rfc" value="<?php echo $rfc; ?>" placeholder="13 caracteres">
                                             </div>
                                             <div class = "form-group col-md-6">
-                                                <label class="form-label mt-2">Documento RFC</label>
+                                                <label class="form-label mt-2">Documento RFC</label><span class="text-secondary"><small> (Dejar en blanco si no quiere actualizar el archivo)</small></span>
                                                 <input type="file" class="form-control" name="doc_rfc" id="doc_rfc">
                                             </div>
                                         </div>
@@ -610,16 +610,16 @@ switch($decision){ // Apartado de deciciones
                                             </div>
                                         </div>
                                         <div class="row">
-                                            <div class = "form-group col-md-4">
+                                            <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">Estado</label>
                                                 <input type="text" class="form-control" name="estado" id="estado" value="<?php echo $estado; ?>" placeholder="Nombre del estado">
                                             </div>
-                                            <div class = "form-group col-md-4">
+                                            <div class = "form-group col-md-3">
                                                 <label class="form-label mt-2">País</label>
                                                 <input type="text" class="form-control" name="pais" id="pais" value="<?php echo $pais; ?>" placeholder="Nombre del pais">
                                             </div>
-                                            <div class = "form-group col-md-4">
-                                                <label class="form-label mt-2">Comprobante de domicilio</label>
+                                            <div class = "form-group col-md-6">
+                                                <label class="form-label mt-2">Comprobante de domicilio</label><span class="text-secondary"><small> (Dejar en blanco si no quiere actualizar el archivo)</small></span>
                                                 <input type="file" class="form-control" name="doc_dom" id="doc_dom">
                                             </div>
                                         </div>
@@ -673,5 +673,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[editarDocente] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (12:41 hrs)]
+Ultima modificacion -- [10/08/2022 (12:53 hrs)]
 -->

@@ -182,6 +182,9 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                         <li class="nav-item">
                             <a class="nav-link" data-bs-toggle="tab" href="#publicaciones">Publicaciones</a> <!-- boton del tab -->
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" data-bs-toggle="tab" href="#cv">Generar CV</a> <!-- boton del tab -->
+                        </li>
                     </ul>
                     <div id="myTabContent" class="tab-content"> <!-- Tablas de contenido -->
                         <a><?php echo isset($alert) ? $alert : ''; ?></a> <!-- Espacio para las alertas -->
@@ -877,6 +880,27 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                 </div>
                             </div>
                         </div>
+                        <div class="tab-pane fade" id="cv"> <!-- Generar cv -->
+                            <div class="card">
+                                <div class="card-header text-center">
+                                    Generar el CV del docente <?php echo $nombre; ?> <?php echo $apellido1; ?>
+                                </div>
+                                <div class="card-body">
+                                    <div class="alert alert-dismissible alert-light mx-auto">
+                                        <h4 class="alert-heading text-center">Se generará un cv con toda la informacion en este apartado</h4>
+                                        <p class="mb-0 text-center">Por favor, verifique que toda su informacion que quiera incluir en el CV se encuentre ya registrada antes de generar.</p>
+                                        <br>
+                                        <div class="d-flex justify-content-center">
+                                            <button type="button" onclick="location.href='generarCV.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Generar CV</button> <!-- Redirecciona al generador del CV -->
+                                        </div>
+                                    </div>
+                                    <div class="d-flex justify-content-center">
+                                        <br>
+                                        <button type="submit" name="decision" value="volver" class="btn btn-danger" style="float: center;">Volver</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </form>
                 <?php } ?>
@@ -886,5 +910,5 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[infDocente] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (12:54 hrs)]
+Ultima modificacion -- [09/08/2022 (09:03 hrs)]
 -->

@@ -114,7 +114,7 @@ ob_start();
                     <p class="text-center"><b>Reporte de docentes en el sistema</b></p>
                     <p class="text-center">Generado el <b><?php echo fechaC(); ?></b></p>
                     <p class="text-center">Por el usuario <b><?php echo $s_usuario; ?></b><br></p>
-                    <p class="text-center">Sistema Integral de Trayectoria Academica (SITA)</p>
+                    <p class="text-center">Sistema Integral de Trayectoria Académica (SITA)</p>
                 </div>
             </div>
         </div>
@@ -137,5 +137,11 @@ $dompdf->loadHtml($html);
 
 $dompdf->setPaper('letter');
 $dompdf->render();
-$dompdf->stream("reporteDocente_.pdf", array("Attachment" => false));
+$fecha= new DateTime(); // Determina la fecha actual
+$dompdf->stream("reporteDocente_".$fecha->getTimestamp().".pdf", array("Attachment" => false));
 ?>
+
+<!--
+--- Generador[reporteDocente] (Prototipo) ---
+Ultima modificacion -- [10/08/2022 (14:10 hrs)]
+-->

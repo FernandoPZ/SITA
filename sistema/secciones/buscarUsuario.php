@@ -151,7 +151,7 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
                 <?php }else{ ?>
                     <div class="alert alert-dismissible alert-warning mx-auto"> <!-- Alerta de que no se encontraron coincidencias -->
                         <h4 class="alert-heading text-center">Oh vaya...</h4>
-                        <p class="mb-0 text-center">No se han encontrado similitudes :(</p>
+                        <p class="mb-0 text-center">No se han encontrado similitudes</p>
                     </div>
                 <?php } ?>
 			</div>
@@ -160,5 +160,5 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 
 <!--
 --- Pagina[buscarUsuarios] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (12:24 hrs)]
+Ultima modificacion -- [10/08/2022 (11:35 hrs)]
 -->
