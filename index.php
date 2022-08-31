@@ -14,7 +14,7 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
         {
             $alert1="Inserte su usuario y/o contraseña"; // Alerta de campos vacios
         } else {
-            require_once "https://utec-sita.herokuapp.com/sistema/config/conexion.php"; // Hace la conexio a la bd
+            require_once "sistema/config/conexion.php"; // Hace la conexio a la bd
             $user = mysqli_real_escape_string($conexion,$_POST['usuario']); //protegido contra inyeccion de comandos sql
             $pass = md5(mysqli_real_escape_string($conexion,$_POST['contra'])); //protegido contra inyeccion de comandos sql y encriptado de contraseña
             $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'"); // Verifica que lo introducido coincide con algun usuario registrado
