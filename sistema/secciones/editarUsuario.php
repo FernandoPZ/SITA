@@ -197,7 +197,7 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
                             <p class="mb-0 text-center">No tienes permiso de editar este usuario</p>
                             <div class="text-center">
                                 <br>
-                                <a role="button" class="btn btn-secondary" href="verUsuario.php">Volver</a> <!-- Redirecciona a la lista de los usuarios -->
+                                <a role="button" class="btn btn-secondary" href="https://utec-sita.herokuapp.com/sistema/secciones/verUsuario.php">Volver</a> <!-- Redirecciona a la lista de los usuarios -->
                             </div>
                         </div>
                         <?php
