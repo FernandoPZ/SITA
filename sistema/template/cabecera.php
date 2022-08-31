@@ -1,7 +1,7 @@
 <?php
 session_start(); // Se inicia la sesion
 if(!isset($_SESSION['usuario'])){ // Verifica que el usuario no esta vacio
-	header("Location:/SITA/index.php"); // Redirecciona al login
+	header("Location:https://utec-sita.herokuapp.com/index.php"); // Redirecciona al login
 }else{
 	if($_SESSION['active']==true){ // Valida que la sesion este activa
 		$iduser=$_SESSION['cve_usuario']; // Almacena la clave del usuario
@@ -42,8 +42,8 @@ function fechaC(){ // Definir el formato
 	<meta charset="UTF-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="/SITA/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
-	<link rel="stylesheet" href="/SITA/sistema/css/style.css"/> <!-- hoja de estilos propia -->
+	<link rel="stylesheet" href="https://utec-sita.herokuapp.com/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
+	<link rel="stylesheet" href="https://utec-sita.herokuapp.com/sistema/css/style.css"/> <!-- hoja de estilos propia -->
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script><!-- JavaScript Bundle with Popper -->
 </head>
 <body>
