@@ -4,7 +4,7 @@
 include "../config/conexion.php"; // Conecta con la base de datos
 if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 {
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina principal
 }
 ?>
 
@@ -102,7 +102,7 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
                                     <td><?php echo $data ['nombre']; ?></td> <!-- El nombre del usuario -->
                                     <td><?php echo $data ['apellido1']; ?></td> <!-- El primer apellido del usuario -->
                                     <td><?php echo $data ['apellido2']; ?></td> <!-- El segundo apellido del usuario -->
-                                    <td> <img src="/SITA/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
+                                    <td> <img src="/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
                                     <td><?php echo $data ['usuario']; ?></td> <!-- El ID del usuario -->
                                     <td><?php echo $data ['correo']; ?></td> <!-- El correo del usuario -->
                                     <td>
@@ -160,5 +160,5 @@ if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 
 <!--
 --- Pagina[buscarUsuarios] (Prototipo) ---
-Ultima modificacion -- [10/08/2022 (11:35 hrs)]
+Ultima modificacion -- [31/08/2022 (14:35 hrs)]
 -->

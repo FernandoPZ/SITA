@@ -3,7 +3,7 @@
 <?php
 if($_SESSION['tipo'] != 1) // Identifica si el usuario no sea el Master
 {
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina principal
 }
 
 include "../config/conexion.php"; //Conexion con la base de datos
@@ -23,14 +23,14 @@ switch($decision){
             $query_delete = mysqli_query($conexion,"UPDATE usuario SET activo = 0 WHERE cve_usuario = $iduser");// Desactiva el registro
             mysqli_close($conexion); // Cierra la conexion con la bd
             if($_SESSION['cve_usuario'] == $iduser){ // Identifica que el usuario acrual se elimina a si mismo
-                header("location: /SITA/sistema/config/salir.php"); // Cierra sesion si es el mismo usuario
+                header("location: /sistema/config/salir.php"); // Cierra sesion si es el mismo usuario
             }else{
                 header("location: verUsuario.php"); // Redirecciona a la lista de los usuarios
             }
         }
     break;
     case "volver": // Volver
-        header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
+        header('Location:/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra la conexion con la bd
     break;
 }
@@ -103,7 +103,7 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
                             <div class="card-body">
                                 <div class="text-center">
                                     <div><?php echo $alert; ?></div> <!-- Advertencia de auto-eliminacion -->
-                                    <p><img src="/SITA/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
+                                    <p><img src="/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
                                     <div class="d-flex justify-content-center">
                                         <div class = "form-group col-md-3">
                                             <label class="form-label mt-2">Usuario: </label>
@@ -158,5 +158,5 @@ if($_SESSION['cve_usuario'] == $_REQUEST['id']){ // Identifica que el usuario ac
 
 <!--
 --- Pagina[eliminarUsuario] (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (12:01 hrs)]
+Ultima modificacion -- [31/08/2022 (14:40 hrs)]
 -->

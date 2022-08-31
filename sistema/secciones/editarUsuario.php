@@ -3,7 +3,7 @@
 <?php
 if($_SESSION['tipo'] != 1) // Valida si el usuario es administrador
 {
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina principal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina principal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; //Boton de decision
 include "../config/conexion.php"; //Conexion con la base de datos
@@ -167,7 +167,7 @@ switch($decision){
         }
     break;
     case "volver":  // Cancelar
-        header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de usuarios
+        header('Location:/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de usuarios
         mysqli_close($conexion); // Cierra la conexion con la bd
     break;
 }
@@ -197,7 +197,7 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
                             <p class="mb-0 text-center">No tienes permiso de editar este usuario</p>
                             <div class="text-center">
                                 <br>
-                                <a role="button" class="btn btn-secondary" href="https://utec-sita.herokuapp.com/sistema/secciones/verUsuario.php">Volver</a> <!-- Redirecciona a la lista de los usuarios -->
+                                <a role="button" class="btn btn-secondary" href="verUsuario.php">Volver</a> <!-- Redirecciona a la lista de los usuarios -->
                             </div>
                         </div>
                         <?php
@@ -213,5 +213,5 @@ if($iduser == 1) // Valida si el usuario a editar sea el master
 
 <!--
 --- Pagina[editarUsuario] (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (10:17 hrs)]
+Ultima modificacion -- [31/08/2022 (14:38 hrs)]
 -->

@@ -47,7 +47,7 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
                             </div>
                             <div class="card-body">
                                 <div class="text-center">
-                                    <p><img src="/SITA/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
+                                    <p><img src="/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 200px; height:200px;"></p> <!-- Muestra la imagen del usuario -->
                                 </div>
                                     <div class="row">
                                         <input type="hidden" name="cve_usuario" value="<?php echo $iduser; ?>">
@@ -92,5 +92,5 @@ if($result_sql == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[mi_usuario] (Prototipo) ---
-Ultima modificacion -- [01/08/2022 (13:40 hrs)]
+Ultima modificacion -- [31/08/2022 (14:43 hrs)]
 -->

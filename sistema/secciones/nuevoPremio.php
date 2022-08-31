@@ -15,7 +15,7 @@ while ($data_docente = mysqli_fetch_array($sql_docente)){
 if($_SESSION['tipo'] != 1) // Valida si el usuario es nivel administrador
 {
     if($_SESSION['cve_usuario'] != $cuenta){
-        header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+        header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
     }
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
@@ -67,7 +67,7 @@ switch($decision){
         }
 
     case "volver": // volver
-        header('Location:/SITA/sistema/secciones/infDocente.php'); // Redirecciona a la lista de los usuarios
+        header('Location:/sistema/secciones/infDocente.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -123,5 +123,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoPremio] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:45 hrs)]
+Ultima modificacion -- [31/08/2022 (14:46 hrs)]
 -->

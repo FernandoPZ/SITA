@@ -27,7 +27,7 @@ if($result == 0){ // Verifica que la cantidad no este vacia
     }
 }
 if($_GET['id_d'] != $idDoc){
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
@@ -78,7 +78,7 @@ switch($decision){
         }
 
     case "volver": // volver
-        header('Location:/SITA/sistema/secciones/infDocente.php'); // Redirecciona a la lista de los usuarios
+        header('Location:/sistema/secciones/infDocente.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -130,5 +130,5 @@ switch($decision){
 
 <!--
 --- Pagina[editarExperiencia] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (11:06 hrs)]
+Ultima modificacion -- [31/08/2022 (14:36 hrs)]
 -->

@@ -3,7 +3,7 @@
 <?php
 if($_SESSION['tipo'] != 1) // Valida si el usuario es nivel administrador
 {
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 include "../config/conexion.php"; // Realiza la coneccion de la bd
@@ -97,7 +97,7 @@ switch($decision){
         }
 
     case "volver": // volver
-        header('Location:/SITA/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
+        header('Location:/sistema/secciones/verUsuario.php'); // Redirecciona a la lista de los usuarios
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -194,5 +194,5 @@ switch($decision){
 
 <!--
 --- Pagina[nuevoUsuarios] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:49 hrs)]
+Ultima modificacion -- [31/08/2022 (14:47 hrs)]
 -->

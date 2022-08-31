@@ -4,7 +4,7 @@
 include "../config/conexion.php"; // Inicia la conexión con la bd
 if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
 {
-    header("location: /SITA/sistema/index.php"); // Regresa a la pagina principal
+    header("location: /sistema/index.php"); // Regresa a la pagina principal
 }
 ?>
 
@@ -108,7 +108,7 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
                                     <td><?php echo $data ['nombre']; ?></td> <!-- Nombre del docente -->
                                     <td><?php echo $data ['apellido1']; ?></td> <!-- Primer apellido del docente -->
                                     <td><?php echo $data ['apellido2']; ?></td> <!-- Segundo apellido del docente -->
-                                    <td><img src="/SITA/sistema/files/docente/foto/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"></td> <!-- Fotografia del docente -->
+                                    <td><img src="/sistema/files/docente/foto/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"></td> <!-- Fotografia del docente -->
                                     <td><?php echo $data ['num_empleado']; ?></td> <!-- Numero de empleado -->
                                     <td><?php echo $data ['puesto']; ?></td> <!-- Puesto asignado -->
                                     <td>
@@ -166,5 +166,5 @@ if($_SESSION['tipo'] == 4) //Valida si es un usuario nivel docente
 
 <!--
 --- Pagina[buscarDocente] (Prototipo) ---
-Ultima modificacion -- [10/08/2022 (11:34 hrs)]
+Ultima modificacion -- [31/08/2022 (14:32 hrs)]
 -->

@@ -35,7 +35,7 @@ if($result == 0){ // Verifica que la cantidad no este vacia
     }
 }
 if($_GET['id_d'] != $idDoc){
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
@@ -48,18 +48,18 @@ switch($decision){
             if(($_SESSION['tipo'] != 1) || ($_SESSION['tipo'] != 2)) // Identifica el tipo de usuario actual
             {
                 if($idDoc != $cve_docente){ // Verifica que el docente acceda a sus propios registros
-                    header("Location:/SITA/sistema/secciones/infDocente.php"); // Redirecciona a la informacion del docente
+                    header("Location:/sistema/secciones/infDocente.php"); // Redirecciona a la informacion del docente
                     mysqli_close($conexion); // Cierra la conexion a la bd
                     exit; // Sale del script
                 }
             }
             $query_delete = mysqli_query($conexion,"UPDATE publicaciones SET activo = 0 WHERE cve_publicacion = $idPub");// Desactiva el registro
             mysqli_close($conexion); // Cierra la conexion con la bd
-            header('Location:/SITA/sistema/secciones/infDocente.php'); // Redirecciona a la informacion del docente
+            header('Location:/sistema/secciones/infDocente.php'); // Redirecciona a la informacion del docente
         }
     break;
     case "volver": // volver
-        header('Location:/SITA/sistema/secciones/infDocente.php'); // Redirecciona a la informacion del docente
+        header('Location:/sistema/secciones/infDocente.php'); // Redirecciona a la informacion del docente
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -151,5 +151,5 @@ switch($decision){
 
 <!--
 --- Pagina[eliminarPublicacion] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (13:44 hrs)]
+Ultima modificacion -- [31/08/2022 (14:40 hrs)]
 -->

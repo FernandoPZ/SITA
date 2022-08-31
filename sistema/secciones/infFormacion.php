@@ -33,7 +33,7 @@ if($result == 0){ // Verifica que la cantidad no este vacia
     }
 }
 if($_GET['id_d'] != $idDoc){
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 ?>
@@ -111,5 +111,5 @@ $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decisio
 
 <!--
 --- Pagina[infFormacion] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:13 hrs)]
+Ultima modificacion -- [31/08/2022 (14:42 hrs)]
 -->

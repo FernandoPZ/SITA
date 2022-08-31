@@ -3,7 +3,7 @@
 <?php
 if($_SESSION['tipo'] == 3) // Validacion de tipo de usuario
 {
-    header("location: /SITA/sistema/index.php"); //Regresa a la pagina principal
+    header("location: /sistema/index.php"); //Regresa a la pagina principal
 }
 $decision=(isset($_POST['decision']))?$_POST['decision']:""; // Boton de decision
 include "../config/conexion.php"; // Realiza la coneccion de la bd
@@ -349,7 +349,7 @@ switch($decision){ // Apartado de deciciones
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
     case "volver": // Cancelar
-        header('Location:/SITA/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
+        header('Location:/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -673,5 +673,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[editarDocente] (Prototipo) ---
-Ultima modificacion -- [10/08/2022 (12:53 hrs)]
+Ultima modificacion -- [31/08/2022 (14:35 hrs)]
 -->

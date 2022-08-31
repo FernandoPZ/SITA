@@ -209,7 +209,7 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                             <label class="form-label mt-2">Fotografia</label>
                                             <div class="m-0 vh-50 row justify-content-center align-items-center">
                                                 <div class="col-auto">
-                                                <output><img src="/SITA/sistema/files/docente/foto/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output> <!-- Muestra la fotografia del docente -->
+                                                <output><img src="/sistema/files/docente/foto/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output> <!-- Muestra la fotografia del docente -->
                                                 </div>
                                             </div>
                                         </div>
@@ -887,8 +887,8 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
                                 </div>
                                 <div class="card-body">
                                     <div class="alert alert-dismissible alert-light mx-auto">
-                                        <h4 class="alert-heading text-center">Se generará un cv con toda la informacion en este apartado</h4>
-                                        <p class="mb-0 text-center">Por favor, verifique que toda su informacion que quiera incluir en el CV se encuentre ya registrada antes de generar.</p>
+                                        <h4 class="alert-heading text-center">Se generará un cv con toda la información en este apartado</h4>
+                                        <p class="mb-0 text-center">Por favor, verifique que toda su información que quiera incluir en el CV se encuentre ya registrada antes de generar.</p>
                                         <br>
                                         <div class="d-flex justify-content-center">
                                             <button type="button" onclick="location.href='generarCV.php?id_d=<?php echo $idDoc;?>'" class="btn btn-primary">Generar CV</button> <!-- Redirecciona al generador del CV -->
@@ -910,5 +910,5 @@ if($result_sql_docente == 0){ // Verifica que la cantidad no este vacia
 
 <!--
 --- Pagina[infDocente] (Prototipo) ---
-Ultima modificacion -- [09/08/2022 (09:03 hrs)]
+Ultima modificacion -- [31/08/2022 (14:42 hrs)]
 -->

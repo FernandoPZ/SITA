@@ -35,7 +35,7 @@ if($result == 0){ // Verifica que la cantidad no este vacia
     }
 }
 if($_GET['id_d'] != $idDoc){
-    header("location: /SITA/sistema/index.php"); // Redirecciona a la pagina pricipal
+    header("location: /sistema/index.php"); // Redirecciona a la pagina pricipal
 }
 ?>
 
@@ -124,5 +124,5 @@ if($_GET['id_d'] != $idDoc){
 
 <!--
 --- Pagina[editarPublicacion] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:18 hrs)]
+Ultima modificacion -- [31/08/2022 (14:43 hrs)]
 -->

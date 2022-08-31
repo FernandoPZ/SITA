@@ -1,7 +1,7 @@
 <?php
 session_start(); // Se inicia la sesion
 if(!isset($_SESSION['usuario'])){ // Verifica que el usuario no esta vacio
-	header("Location:/SITA/index.php"); // Redirecciona al login
+	header("Location:/index.php"); // Redirecciona al login
 }else{
 	if($_SESSION['active']==true){ // Valida que la sesion este activa
 		$iduser=$_SESSION['cve_usuario']; // Almacena la clave del usuario
@@ -18,7 +18,7 @@ if(!isset($_SESSION['usuario'])){ // Verifica que el usuario no esta vacio
 include "../config/conexion.php"; // Inicia la conexion con la bd
 if($_SESSION['tipo'] != 1) //Valida si es un usuario nivel administrador
 {
-    header("location: /SITA/sistema/index.php"); //Si no, regresa a la pagina principal
+    header("location: /sistema/index.php"); //Si no, regresa a la pagina principal
 }
 ?>
 
@@ -88,7 +88,7 @@ ob_start();
                     <tbody class="text-center">
                         <tr class="table-active"> <!-- Campos a llenar -->
                         <th scope="row"><?php echo $data ['cve_docente']; ?></th> <!-- Clave del docente -->
-                        <td><img class="" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/SITA/sistema/files/docente/foto/<?php echo $data ['foto']; ?> " width="50" alt="" srcset=""></td> <!-- Fotografia del docente -->
+                        <td><img class="" src="http://<?php echo $_SERVER['HTTP_HOST'];?>/sistema/files/docente/foto/<?php echo $data ['foto']; ?> " width="50" alt="" srcset=""></td> <!-- Fotografia del docente -->
                         <td><?php echo $data ['nombre']; ?></td> <!-- Nombre del docente -->
                         <td><?php echo $data ['apellido1']; ?></td> <!-- Primer apellido del docente -->
                         <td><?php echo $data ['apellido2']; ?></td> <!-- Segundo apellido del docente -->
@@ -143,5 +143,5 @@ $dompdf->stream("reporteDocente_".$fecha->getTimestamp().".pdf", array("Attachme
 
 <!--
 --- Generador[reporteDocente] (Prototipo) ---
-Ultima modificacion -- [10/08/2022 (14:10 hrs)]
+Ultima modificacion -- [31/08/2022 (14:47 hrs)]
 -->

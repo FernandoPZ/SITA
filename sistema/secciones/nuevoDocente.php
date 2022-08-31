@@ -9,14 +9,14 @@ $user = $_SESSION['cve_usuario']; // Guarda la clave de usuario con la que entra
 <?php
 if($_SESSION['tipo'] == 3) // Validacion de tipo de usuario
 {
-    header("location: /SITA/sistema/index.php"); //Regresa a la pagina principal
+    header("location: /sistema/index.php"); //Regresa a la pagina principal
 }
 if($_SESSION['tipo'] == 4) // Validacion de tipo de usuario
 {
     $sql_docente = mysqli_query($conexion,"SELECT * FROM docente WHERE cuenta = $user"); // Consulta todos los datos de la clave del docente
     $result_sql_docente = mysqli_num_rows($sql_docente); // Almacena la cantidad todal de registros
     if($result_sql_docente != 0){ // Verifica que la cantidad este vacia
-        header("location: /SITA/sistema/index.php"); //Regresa a la pagina principal
+        header("location: /sistema/index.php"); //Regresa a la pagina principal
     }
 }
 ?>
@@ -324,7 +324,7 @@ switch($decision){ // Apartado de deciciones
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
     case "volver": // Cancelar
-        header('Location:/SITA/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
+        header('Location:/sistema/secciones/verDocente.php'); // Redirecciona a la lista de los docentes
         mysqli_close($conexion); // Cierra conexion con la bd
     break;
 }
@@ -397,7 +397,7 @@ switch($decision){ // Apartado de deciciones
                                             <?php if($_SESSION['tipo'] == 4){ ?>
                                                 <br>
                                                 <div class="d-flex justify-content-center">
-                                                    <output><img src="/SITA/sistema/files/usuario/<?php echo $s_foto; ?>" style="width: 245px; height:245px;"></output>
+                                                    <output><img src="/sistema/files/usuario/<?php echo $s_foto; ?>" style="width: 245px; height:245px;"></output>
                                                 </div>
                                             <?php }else{ ?>
                                                 <input type="file" class="form-control" name="foto" id="foto">
@@ -677,5 +677,5 @@ switch($decision){ // Apartado de deciciones
 
 <!--
 --- Pagina[nuevoDocente] (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:35 hrs)]
+Ultima modificacion -- [31/08/2022 (14:44 hrs)]
 -->
