@@ -74,7 +74,7 @@ if($_SESSION['tipo'] != 1) // Valida si es un usuario nivel administrador
                                         <td><?php echo $data ['nombre']; ?></td> <!-- El nombre del usuario -->
                                         <td><?php echo $data ['apellido1']; ?></td> <!-- El primer apellido del usuario -->
                                         <td><?php echo $data ['apellido2']; ?></td> <!-- El segundo apellido del usuario -->
-                                        <td> <img src="/SITA/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
+                                        <td> <img src="/sistema/files/usuario/<?php echo $data ['foto']; ?>" style="width: 50px; height:50px;"> </td> <!-- La fotografia del usuario -->
                                         <td><?php echo $data ['usuario']; ?></td> <!-- El ID del usuario -->
                                         <td><?php echo $data ['correo']; ?></td> <!-- El correo del usuario -->
                                         <td>
