@@ -83,6 +83,8 @@
 				</div>
 			<?php } ?>
 
+<?php echo 'incia el pie de pagina'; ?>
+
 <?php include("template/pie.php"); ?> <!-- llamamos al pie de pagina -->
 
 <!--
