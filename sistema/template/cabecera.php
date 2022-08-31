@@ -58,10 +58,10 @@ function fechaC(){ // Definir el formato
 					<ul class="navbar-nav me-auto">
 						<?php if($s_tipo == 4){ ?> <!-- Valida que el usuario es un Docente -->
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
+								<a class="nav-link" href="/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
 							</li>
 							<li class="nav-item">
-								<a class="nav-link" href="/SITA/sistema/secciones/infDocente.php">Mi información</a> <!-- Redirecciona a ver la informacion del docente actual -->
+								<a class="nav-link" href="/sistema/secciones/infDocente.php">Mi información</a> <!-- Redirecciona a ver la informacion del docente actual -->
 							</li>
 						<?php } ?>
 						<?php if($s_tipo != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
@@ -69,10 +69,10 @@ function fechaC(){ // Definir el formato
 								<li class="nav-item dropdown">
 									<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Usuarios</a> <!-- Despliega la lista de opciones de usuarios -->
 									<div class="dropdown-menu">
-										<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoUsuario.php">Nuevo usuario</a> <!-- Redirecciona a registrar usuario -->
-										<a class="dropdown-item" href="/SITA/sistema/secciones/verUsuario.php">Ver usuarios</a> <!-- Redirecciona a ver los usuarios -->
+										<a class="dropdown-item" href="/sistema/secciones/nuevoUsuario.php">Nuevo usuario</a> <!-- Redirecciona a registrar usuario -->
+										<a class="dropdown-item" href="/sistema/secciones/verUsuario.php">Ver usuarios</a> <!-- Redirecciona a ver los usuarios -->
 										<div class="dropdown-divider"></div> <!-- Muestra una linea para dividir la lista -->
-										<a class="dropdown-item" href="/SITA/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
+										<a class="dropdown-item" href="/sistema/secciones/mi_usuario.php">Mi usuario</a> <!-- Redirecciona a ver la cuenta -->
 									</div>
 								</li>
 							<?php } ?>
@@ -80,9 +80,9 @@ function fechaC(){ // Definir el formato
 								<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Docentes</a> <!-- Despliega la lista de opciones de docentes -->
 								<div class="dropdown-menu">
 									<?php if($s_tipo != 3){ ?> <!-- Valida que el usuario no sea un Consultor -->
-									<a class="dropdown-item" href="/SITA/sistema/secciones/nuevoDocente.php">Nuevo registro</a> <!-- Redirecciona a registrar un docente -->
+									<a class="dropdown-item" href="/sistema/secciones/nuevoDocente.php">Nuevo registro</a> <!-- Redirecciona a registrar un docente -->
 									<?php } ?>
-									<a class="dropdown-item" href="/SITA/sistema/secciones/verDocente.php">Ver registros</a> <!-- Redirecciona a ver los docentes -->
+									<a class="dropdown-item" href="/sistema/secciones/verDocente.php">Ver registros</a> <!-- Redirecciona a ver los docentes -->
 								</div>
 							</li>
 						<?php } ?>
@@ -91,7 +91,7 @@ function fechaC(){ // Definir el formato
 						<p> <?php echo fechaC(); ?> |</p> <!-- Muestra la fecha actual -->
 						<span class="user">|  <?php echo $s_usuario .' - '. $s_tipo ?> </span>
 						<a href="/SITA/sistema/secciones/mi_usuario.php"><img class="photouser" src="/SITA/sistema/files/usuario/<?php echo $s_foto; ?>" alt="Usuario" style="width: 25px; height:25px;"></a> <!-- Redirecciona a su usuario -->
-						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/SITA/sistema/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a> <!-- Cierra la sesion del usuario -->
+						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/sistema/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a> <!-- Cierra la sesion del usuario -->
 					</form>
 				</div>
 			</div>
@@ -103,5 +103,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [02/08/2022 (13:23 hrs)]
+Ultima modificacion -- [31/08/2022 (13:13 hrs)]
 -->
