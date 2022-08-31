@@ -54,6 +54,7 @@
 					</div>
 				<?php } ?>
 			<?php } ?>
+<?php echo 'Salto en la condicion'; ?>
 			<?php if($_SESSION['tipo'] != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
 				<?php if($_SESSION['tipo'] == 1){ ?> <!-- Valida que el usuario es un Administrador -->
 					<div class="col-md-4 mx-auto">
