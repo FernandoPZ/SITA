@@ -12,7 +12,7 @@
 					<div class="card">
 						<h3 class="card-header col text-center">Ver mi usuario</h3>
 						<div class="card-body">
-							<img class="card-img-top" src="/SITA/sistema/files/usuario/<?php echo $s_foto; ?>" alt="">
+							<img class="card-img-top" src="/sistema/files/usuario/<?php echo $s_foto; ?>" alt="">
 							<div class="col text-center">
 								</br>
 								<a name="" id="" class="btn btn-primary" href="secciones/mi_usuario.php" role="button">Entrar</a> <!-- Redirecciona para ver la cuenta actual -->
@@ -87,5 +87,5 @@
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Ultima modificacion -- [02/08/2022 (13:21 hrs)]
+Ultima modificacion -- [31/08/2022 (13:21 hrs)]
 -->
