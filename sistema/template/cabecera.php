@@ -90,8 +90,8 @@ function fechaC(){ // Definir el formato
 					<form class="d-flex">
 						<p> <?php echo fechaC(); ?> |</p> <!-- Muestra la fecha actual -->
 						<span class="user">|  <?php echo $s_usuario .' - '. $s_tipo ?> </span>
-						<a href="/SITA/sistema/secciones/mi_usuario.php"><img class="photouser" src="/sistema/files/usuario/<?php echo $s_foto; ?>" alt="Usuario" style="width: 25px; height:25px;"></a> <!-- Redirecciona a su usuario -->
-						<a href="/SITA/sistema/config/salir.php"><img class="close" src="/sistema/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a> <!-- Cierra la sesion del usuario -->
+						<a href="/sistema/secciones/mi_usuario.php"><img class="photouser" src="/sistema/files/usuario/<?php echo $s_foto; ?>" alt="Usuario" style="width: 25px; height:25px;"></a> <!-- Redirecciona a su usuario -->
+						<a href="/sistema/config/salir.php"><img class="close" src="/sistema/elementos/salir.png" alt="Salir del sistema" style="width: 25px; height:25px;" title="Salir"></a> <!-- Cierra la sesion del usuario -->
 					</form>
 				</div>
 			</div>
@@ -103,5 +103,5 @@ function fechaC(){ // Definir el formato
 
 <!--
 --- Templates[Cabecera] (Prototipo) ---
-Ultima modificacion -- [31/08/2022 (13:13 hrs)]
+Ultima modificacion -- [31/08/2022 (13:47 hrs)]
 -->
