@@ -6,7 +6,7 @@ $alert2 = ''; // Declaracion de la alerta #2
 session_start(); // Inicia la sesion para almacenar datos introducidos
 if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
 {
-    header('location: sistema/index.php'); // Si ya esta activa manda a la pagina principal
+    header('location: https://utec-sita.herokuapp.com/sistema/index.php'); // Si ya esta activa manda a la pagina principal
 }else{ // Si no lo mantiene en esta pagina
     if(!empty($_POST)) // Valida si el "post" no este vacio
     {
@@ -14,7 +14,7 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
         {
             $alert1="Inserte su usuario y/o contraseña"; // Alerta de campos vacios
         } else {
-            require_once "sistema/config/conexion.php"; // Hace la conexio a la bd
+            require_once "https://utec-sita.herokuapp.com/sistema/config/conexion.php"; // Hace la conexio a la bd
             $user = mysqli_real_escape_string($conexion,$_POST['usuario']); //protegido contra inyeccion de comandos sql
             $pass = md5(mysqli_real_escape_string($conexion,$_POST['contra'])); //protegido contra inyeccion de comandos sql y encriptado de contraseña
             $query = mysqli_query($conexion,"SELECT * FROM usuario WHERE usuario = '$user' AND pass = '$pass'"); // Verifica que lo introducido coincide con algun usuario registrado
@@ -56,7 +56,7 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SITA | Inicio de sesión</title> <!-- Titulo de la pagina -->
-    <link rel="stylesheet" href="sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
+    <link rel="stylesheet" href="https://utec-sita.herokuapp.com/sistema/css/bootstrap.css"/> <!-- Referencia a la hoja de estilos -->
 </head>
 <body>
     <form action="" method="POST">
@@ -95,5 +95,5 @@ if(!empty($_SESSION['active'])) // Verifica si la sesion esta activa o no
 
 <!--
 --- Login (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (14:55 hrs)]
+Ultima modificacion -- [31/08/2022 (13:03 hrs)]
 -->
