@@ -89,5 +89,5 @@
 </form>
 <!--
 --- Formulario de editar usuario (Prototipo) ---
-Ultima modificacion -- [03/08/2022 (12:34 hrs)]
+Ultima modificacion -- [31/08/2022 (14:30 hrs)]
 -->
