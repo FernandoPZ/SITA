@@ -53,8 +53,9 @@
 						</div>
 					</div>
 				<?php } ?>
+				<?php include("template/pie.php"); ?> <!-- llamamos al pie de pagina -->
 			<?php } ?>
-<?php echo 'Salto en la condicion'; ?>
+
 			<?php if($_SESSION['tipo'] != 4){ ?> <!-- Valida que el usuario no sea un Docente -->
 				<?php if($_SESSION['tipo'] == 1){ ?> <!-- Valida que el usuario es un Administrador -->
 					<div class="col-md-4 mx-auto">
@@ -84,11 +85,9 @@
 				</div>
 			<?php } ?>
 
-<?php echo 'incia el pie de pagina'; ?>
-
 <?php include("template/pie.php"); ?> <!-- llamamos al pie de pagina -->
 
 <!--
 --- Pagina[Home] (Prototipo) ---
-Ultima modificacion -- [31/08/2022 (13:21 hrs)]
+Ultima modificacion -- [31/08/2022 (14:11 hrs)]
 -->
