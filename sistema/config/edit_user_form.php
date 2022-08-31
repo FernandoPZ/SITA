@@ -65,7 +65,7 @@
                     <div class="m-0 vh-50 row justify-content-center align-items-center">
                         <div class="col-auto">
                             <p>Foto actual: </p>
-                            <output><img src="/SITA/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output>
+                            <output><img src="/sistema/files/usuario/<?php echo $fotoa; ?>" style="width: 245px; height:245px;"></output>
                         </div>
                     </div>
                 </div>
